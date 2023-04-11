@@ -13,7 +13,7 @@ export class EmpleoService {
   constructor(private httpClient: HttpClient) { }
 
   public lista(): Observable<Empleo[]> {
-    return this.httpClient.get<Empleo[]>(this.empleoURL + 'lista');
+    return this.httpClient.get<Empleo[]>(this.empleoURL);
   }
 
   public detail(id: number): Observable<Empleo> {
@@ -29,6 +29,6 @@ export class EmpleoService {
   }
 
   public delete(id: number): Observable<any> {
-    return this.httpClient.delete<any>(this.empleoURL + `delete/${id}`);
+    return this.httpClient.delete<any>(this.empleoURL + `/${id}`);
   }
 }
