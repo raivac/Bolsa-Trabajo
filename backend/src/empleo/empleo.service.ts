@@ -37,7 +37,10 @@ export class EmpleoService {
     
     async update(id: number,dto: EmpleoDTO): Promise<any> {
         const empleo = await this.findById(id);
-
+        if (!empleo) {
+            throw new NotFoundException({ message: 'No existe el empleo' })
+        }
+        
         dto.titulo? empleo.titulo = dto.titulo : empleo.titulo = empleo.titulo;
         dto.descripcion? empleo.descripcion = dto.descripcion : empleo.descripcion = empleo.descripcion;
         dto.empresa? empleo.empresa = dto.empresa : empleo.empresa = empleo.empresa;

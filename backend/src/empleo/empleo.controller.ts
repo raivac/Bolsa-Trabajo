@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Param, ParseIntPipe, Post, Put, Body } from '@nestjs/common';
+import { Controller, Delete, Get, Param, ParseIntPipe, Post, Put, Body, UsePipes, ValidationPipe } from '@nestjs/common';
 import { EmpleoService } from './empleo.service';
 import { EmpleoDTO } from './dto/empleo.dto';
 
@@ -17,6 +17,8 @@ export class EmpleoController {
         return await this.empleoService.findById(id);
     }
 
+    //seguridad porque falla el validator del dto
+    @UsePipes(new ValidationPipe({whitelist: true}))
     @Post()
     async create(@Body() dto: EmpleoDTO) {
         return await this.empleoService.create(dto);
