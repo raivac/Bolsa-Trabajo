@@ -29,4 +29,7 @@ export class EmpleoEntity {
 
   @Column({ type: 'varchar', nullable: false })
   logo: string;
+
+  @Column({ type: 'decimal', nullable: false })
+  idEmpresa: number;
 }

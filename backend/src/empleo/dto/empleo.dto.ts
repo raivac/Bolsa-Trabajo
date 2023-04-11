@@ -31,4 +31,8 @@ export class EmpleoDTO{
     @IsString()
     @IsNotEmpty()
     logo: string;
+
+    @IsNumber()
+    @IsNotEmpty()
+    idEmpresa: number;
 }

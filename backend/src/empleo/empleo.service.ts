@@ -31,7 +31,7 @@ export class EmpleoService {
     async create(dto: EmpleoDTO): Promise<any> {
         const empleo = this.empleoRepository.create(dto);
         await this.empleoRepository.save(empleo)
-        return { message:`El empleo ${empleo.titulo} ha sido creado con exito`}
+        return empleo
     }
 
     //a
@@ -51,12 +51,12 @@ export class EmpleoService {
         dto.logo? empleo.logo = dto.logo : empleo.logo = empleo.logo;
 
         await this.empleoRepository.save(empleo)
-        return { message:`El empleo ${empleo} ha sido actualizado con exito`}
+        return empleo
     }
 
     async delete(id: number): Promise<any> {
         const empleo = await this.empleoRepository.delete(id);
-        return { message:`El empleo ${empleo} ha sido eliminado con exito`}
+        return empleo
     }
 
 }
