@@ -4,6 +4,12 @@
             <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
 
                 <div class="form-group">
+                    <label for="logo">Logo de la empresa(OPCIONAL)</label>
+                    <input type="file" class="form-control-file" id="logo" name="logo" (change)="guardarLogo($event)"
+                        accept="image/*">
+                </div>
+
+                <div class="form-group">
                     <label for="titulo">Titulo de la oferta</label>
                     <input type="text" class="form-control" id="titulo" name="titulo" [(ngModel)]="titulo" required>
                 </div>
@@ -33,14 +39,21 @@
 
                 <div class="form-group">
                     <label for="tipoContrato">Tipo de Contrato</label>
-                    <input type="text" class="form-control" id="tipoContrato" name="tipoContrato"
-                        [(ngModel)]="tipoContrato" required>
+                    <select class="form-control" id="tipoContrato" name="tipoContrato" [(ngModel)]="tipoContrato"
+                        required>
+                        <option value="Contrato Temporal">Contrato Temporal</option>
+                        <option value="Contrato Indefinido">Contrato Indefinido</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
                     <label for="jornada">Jornada laboral</label>
-                    <input type="text" class="form-control" id="jornada" name="jornada" [(ngModel)]="jornada" required>
+                    <select class="form-control" id="jornada" name="jornada" [(ngModel)]="jornada" required>
+                        <option value="Media Jornada">Media Jornada</option>
+                        <option value="Jornada Completa">Jornada Completa</option>
+                    </select>
                 </div>
+
 
                 <div class="form-group">
                     <label for="idEmpresa">ID EMPRESA (TEMPORAL)</label>
@@ -48,10 +61,7 @@
                         required>
                 </div>
 
-                <div class="form-group">
-                    <label for="logo">LOGO (TEMPORAL Y OPCIONAL)</label>
-                    <input type="file" class="form-control-file" id="logo" name="logo" (change)="guardarLogo($event)" accept="image/*">
-                </div>
+
 
                 <button class="btn btn-outline-success btn-block"> <i class="far fa-plus-square"></i> Crear</button>
             </form>

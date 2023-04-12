@@ -30,7 +30,7 @@ export class EmpleoEntity {
   @Column({ type: 'decimal', nullable: false })
   salario: number;
 
-  @Column({ type: 'text',nullable: false})
+  @Column({ type: 'longtext',nullable: false})
   logo: string;
 
   @Column({ type: 'int', nullable: false })

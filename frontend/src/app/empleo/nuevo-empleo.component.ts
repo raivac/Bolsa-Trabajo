@@ -46,13 +46,13 @@ export class NuevoEmpleoComponent implements OnInit {
     this.empleoService.save(empleo).subscribe(
       data => {
         console.log(empleo)
-        this.toastr.success('Empleo Creado', 'OK', {
+        this.toastr.success('Empleo creado exitosamente!', 'Exito', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
         this.router.navigate(['/']);
       },
       err => {
-        this.toastr.error(err.error.message, 'Fail', {
+        this.toastr.error('Rellene los campos correctamente', 'Error', {
           timeOut: 3000, positionClass: 'toast-top-center',
         });
       }
