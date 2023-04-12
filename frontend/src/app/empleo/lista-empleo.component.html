@@ -15,7 +15,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let empleo of empleos">
-      <td><img src="data:image/png;base64,{{empleo.logo}}" alt="logo"></td>
+      <td><img src="{{empleo.logo}}" alt="logo"></td>
       <td>{{empleo.titulo}}</td>
       <td>{{empleo.descripcion}}</td>
       <td>{{empleo.empresa}}</td>
@@ -23,13 +23,13 @@
       <td>{{empleo.salario}}€ Bruto/mes</td>
       <td>{{empleo.tipoContrato}}</td>
       <td>{{empleo.jornada}}</td>
-      <td>{{ getRelativeTime(empleo.createdAt) }}</td>
-      <td><button class="btn btn-outline-primary" routerLink="/detalle/{{empleo.id}}"><i class="far fa-eye"></i>
+      <td>{{ getTime(empleo.createdAt) }}</td>
+      <!--<td><button class="btn btn-outline-primary" routerLink="/detalle/{{empleo.id}}"><i class="far fa-eye"></i>
           Ver</button></td>
       <td><button class="btn btn-outline-warning" routerLink="/editar/{{empleo.id}}"><i class="far fa-edit"></i>
-          Editar</button></td>
+          Editar</button></td>-->
       <td><button class="btn btn-outline-danger" (click)="empleo.id !== undefined && borrar(empleo.id)"><i
-            class="far fa-trash-alt"></i> Eliminar</button></td>
+            class="far fa-trash-alt"></i> Eliminar </button></td>
     </tr>
   </tbody>
 </table>

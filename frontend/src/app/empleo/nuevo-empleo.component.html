@@ -1,1 +1,69 @@
-<p>nuevo-empleo works!</p>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-4 mx-auto">
+            <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
+
+                <div class="form-group">
+                    <label for="titulo">Titulo de la oferta</label>
+                    <input type="text" class="form-control" id="titulo" name="titulo" [(ngModel)]="titulo" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="descripcion">Descripcion de la oferta</label>
+                    <input type="text" class="form-control" id="descripcion" name="descripcion"
+                        [(ngModel)]="descripcion" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="empresa">Nombre de la empresa</label>
+                    <input type="text" class="form-control" id="empresa" name="empresa" [(ngModel)]="empresa" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="ubicacion">Ubicacion de la empresa</label>
+                    <input type="text" class="form-control" id="ubicacion" name="ubicacion" [(ngModel)]="ubicacion"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="salario">Salario Mensual</label>
+                    <input type="number" class="form-control" id="salario" name="salario" [(ngModel)]="salario"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipoContrato">Tipo de Contrato</label>
+                    <input type="text" class="form-control" id="tipoContrato" name="tipoContrato"
+                        [(ngModel)]="tipoContrato" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="jornada">Jornada laboral</label>
+                    <input type="text" class="form-control" id="jornada" name="jornada" [(ngModel)]="jornada" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="idEmpresa">ID EMPRESA (TEMPORAL)</label>
+                    <input type="number" class="form-control" id="idEmpresa" name="idEmpresa" [(ngModel)]="idEmpresa"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="logo">LOGO (TEMPORAL Y OPCIONAL)</label>
+                    <input type="file" class="form-control-file" id="logo" name="logo"
+                        (change)="handleLogoChange($event)" accept="image/*">
+                </div>
+
+
+
+                <!--  <div class="form-group">
+                    <label for="logo">LOGO (TEMPORAL Y OPCIONAL)</label>
+                    <input type="text" class="form-control" id="logo" name="logo"
+                    [(ngModel)]="logo" autocomplete="off">
+                </div>
+-->
+                <button class="btn btn-outline-success btn-block"> <i class="far fa-plus-square"></i> Crear</button>
+            </form>
+        </div>
+    </div>
+</div>

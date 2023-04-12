@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Empleo } from '../models/empleo';
 import { EmpleoService } from '../services/empleo.service';
 import { ToastrService } from 'ngx-toastr';
-import { da } from 'date-fns/locale';
 
 
 
@@ -51,13 +50,13 @@ export class ListaEmpleoComponent implements OnInit {
     );
   }
   
-  getRelativeTime(createdAt: Date | undefined): string {
+  getTime(createdAt: Date | undefined): string {
     if (!createdAt) {
       return '';
     }
     const created = new Date(createdAt);
     const now = new Date();
-    const diffMilliseconds = now.getTime() - created.getTime();
+    const diffMilliseconds = now.getTime() - (created.getTime()+7200000);
     const diffMinutes = Math.round(diffMilliseconds / 60000);
     if (diffMinutes === 0) {
       return 'justo ahora';
@@ -71,6 +70,4 @@ export class ListaEmpleoComponent implements OnInit {
       return `hace ${diffDays} ${diffDays === 1 ? 'día' : 'días'}`;
     }
   }
-  
-
 }
