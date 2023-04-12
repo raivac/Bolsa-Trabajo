@@ -11,6 +11,7 @@ import { NuevoEmpleoComponent } from './empleo/nuevo-empleo.component';
 import { EditarEmpleoComponent } from './empleo/editar-empleo.component';
 import { DetalleEmpleoComponent } from './empleo/detalle-empleo.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,7 @@ import { DetalleEmpleoComponent } from './empleo/detalle-empleo.component';
     FormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
