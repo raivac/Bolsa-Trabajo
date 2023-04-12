@@ -31,7 +31,8 @@ export class EmpleoDTO{
     @IsNumber()
     @IsNotEmpty()
     salario: number;
-
+    
+    @IsString()
     logo: string;
 
     @IsNumber()

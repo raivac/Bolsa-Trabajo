@@ -30,9 +30,9 @@ export class EmpleoService {
     }
 
     async create(dto: EmpleoDTO): Promise<any> {
-        // if (!dto.logo) {
-        //     dto.logo = LOGO_DEFAULT;
-        //   }
+        if (!dto.logo) {
+            dto.logo = LOGO_DEFAULT;
+          }
           const empleo = this.empleoRepository.create(dto);
           await this.empleoRepository.save(empleo);
           console.log(empleo)
