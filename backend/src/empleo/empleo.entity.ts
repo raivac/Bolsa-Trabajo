@@ -12,6 +12,9 @@ export class EmpleoEntity {
   @Column({ type: 'varchar', length: 30, nullable: false })
   empresa: string;
 
+  @Column({ type: 'varchar', nullable: false })
+  ubicacion: string;
+
   @Column({ type: 'datetime', default: ()=>'CURRENT_TIMESTAMP'})
   createdAt: Date;
 
@@ -27,9 +30,9 @@ export class EmpleoEntity {
   @Column({ type: 'decimal', nullable: false })
   salario: number;
 
-  @Column({ type: 'varchar', nullable: false })
+  @Column({ type: 'longtext',nullable :true})
   logo: string;
 
-  @Column({ type: 'decimal', nullable: false })
-  idEmpresa: number;
+  @Column({ type: 'int', nullable: false })
+  idEmpresa: number; 
 }

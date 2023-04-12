@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { EmpleoEntity } from './empleo.entity';
 import { EmpleoRepository } from './empleo.repository';
 import { EmpleoDTO } from './dto/empleo.dto';
+import { LOGO_DEFAULT } from 'src/config/constants';
 
 @Injectable()
 export class EmpleoService {
@@ -29,12 +30,15 @@ export class EmpleoService {
     }
 
     async create(dto: EmpleoDTO): Promise<any> {
-        const empleo = this.empleoRepository.create(dto);
-        await this.empleoRepository.save(empleo)
-        return empleo
+        if (!dto.logo) {
+            dto.logo = LOGO_DEFAULT;
+          }
+          const empleo = this.empleoRepository.create(dto);
+          await this.empleoRepository.save(empleo);
+          return empleo;
     }
 
-    //a
+    
     async update(id: number,dto: EmpleoDTO): Promise<any> {
         const empleo = await this.findById(id);
         if (!empleo) {
@@ -44,11 +48,13 @@ export class EmpleoService {
         dto.titulo? empleo.titulo = dto.titulo : empleo.titulo = empleo.titulo;
         dto.descripcion? empleo.descripcion = dto.descripcion : empleo.descripcion = empleo.descripcion;
         dto.empresa? empleo.empresa = dto.empresa : empleo.empresa = empleo.empresa;
+        dto.ubicacion? empleo.ubicacion = dto.ubicacion : empleo.ubicacion = empleo.ubicacion;
         dto.createdAt? empleo.createdAt = dto.createdAt : empleo.createdAt = empleo.createdAt;
         dto.tipoContrato? empleo.tipoContrato = dto.tipoContrato : empleo.tipoContrato = empleo.tipoContrato;
         dto.jornada? empleo.jornada = dto.jornada : empleo.jornada = empleo.jornada;
         dto.salario? empleo.salario = dto.salario : empleo.salario = empleo.salario;
         dto.logo? empleo.logo = dto.logo : empleo.logo = empleo.logo;
+        dto.idEmpresa? empleo.idEmpresa = dto.idEmpresa : empleo.idEmpresa = empleo.idEmpresa;
 
         await this.empleoRepository.save(empleo)
         return empleo

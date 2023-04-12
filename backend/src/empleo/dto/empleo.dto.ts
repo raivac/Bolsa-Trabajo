@@ -9,6 +9,10 @@ export class EmpleoDTO{
     @IsString()
     @IsNotEmpty()
     empresa: string;
+
+    @IsString()
+    @IsNotEmpty()
+    ubicacion: string;
     
     createdAt?: Date;
   
@@ -28,8 +32,6 @@ export class EmpleoDTO{
     @IsNotEmpty()
     salario: number;
 
-    @IsString()
-    @IsNotEmpty()
     logo: string;
 
     @IsNumber()

@@ -6,10 +6,11 @@ export class Empleo {
   tipoContrato: string;
   jornada: string;
   salario: number;
-  logo: string;
+  logo?: string;
   idEmpresa: number;
+  ubicacion: string;
 
-  constructor(titulo: string, empresa: string, descripcion: string, tipoContrato: string, jornada: string, salario: number, logo: string, idEmpresa: number) {
+  constructor(titulo: string, empresa: string, descripcion: string, tipoContrato: string, jornada: string, salario: number, logo: string, idEmpresa: number , ubicacion: string) {
     this.titulo = titulo;
     this.salario = salario;
     this.descripcion = descripcion;
@@ -18,5 +19,6 @@ export class Empleo {
     this.tipoContrato = tipoContrato;
     this.logo = logo;
     this.idEmpresa = idEmpresa;
+    this.ubicacion = ubicacion;
   }
 }

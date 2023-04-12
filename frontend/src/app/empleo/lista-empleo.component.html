@@ -1,24 +1,32 @@
-<div class="container">
-<table class="table table-dark text-center">
+
+<table id="tablaOfertas" class="table table-dark text-center">
     <thead>
       <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Precio</th>
-        <th scope="col">Ver</th>
-        <th scope="col">Editar</th>
-        <th scope="col">Borrar</th>
+        <th scope="col">Nº Oferta</th>
+        <th scope="col">Oferta</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Empresa</th>
+        <th scope="col">Ubicacion</th>
+        <th scope="col">Salario mensual</th>
+        <th scope="col">Tipo de Contrato</th>
+        <th scope="col">Jornada</th>
+        <th scope="col" colspan="3"></th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let empleo of empleos">
         <td>{{empleo.id}}</td>
         <td>{{empleo.titulo}}</td>
-        <td>{{empleo.salario}}€</td>
+        <td>{{empleo.descripcion}}</td>
+        <td>{{empleo.empresa}}</td>
+        <td>{{empleo.ubicacion}}</td>
+        <td>{{empleo.salario}}€ Bruto/mes</td>
+        <td>{{empleo.tipoContrato}}</td>
+        <td>{{empleo.jornada}}</td>
+        <td><img src="data:image/png;base64,{{empleo.logo}}" alt="logo"></td>
         <td><button class="btn btn-outline-primary" routerLink="/detalle/{{empleo.id}}"><i class="far fa-eye"></i> Ver</button></td>
         <td><button class="btn btn-outline-warning" routerLink="/editar/{{empleo.id}}"><i class="far fa-edit"></i> Editar</button></td>
         <td><button class="btn btn-outline-danger" (click)="empleo.id !== undefined && borrar(empleo.id)"><i class="far fa-trash-alt"></i> Eliminar</button></td>
       </tr>
     </tbody>
   </table>
-</div>
