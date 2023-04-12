@@ -20,8 +20,8 @@ export class EmpleoService {
     return this.httpClient.get<Empleo>(this.empleoURL + `detail/${id}`);
   }
 
-  public save(producto: Empleo): Observable<any> {
-    return this.httpClient.post<any>(this.empleoURL, producto);
+  public save(empleo: Empleo): Observable<any> {
+    return this.httpClient.post<any>(this.empleoURL, empleo);
   }
 
   public update(id: number, empleo: Empleo): Observable<any> {

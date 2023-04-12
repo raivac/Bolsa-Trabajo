@@ -35,6 +35,7 @@ export class EmpleoService {
         //   }
           const empleo = this.empleoRepository.create(dto);
           await this.empleoRepository.save(empleo);
+          console.log(empleo)
           return empleo;
     }
 

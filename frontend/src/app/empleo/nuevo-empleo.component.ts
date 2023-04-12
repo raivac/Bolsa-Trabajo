@@ -3,7 +3,6 @@ import { EmpleoService } from '../services/empleo.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { Empleo } from '../models/empleo';
-import { ImgMaxSizeService } from 'ng2-img-max';
 
 
 @Component({
@@ -27,27 +26,18 @@ export class NuevoEmpleoComponent implements OnInit {
     private empleoService: EmpleoService,
     private toastr: ToastrService,
     private router: Router,
-    private imgMaxSizeService: ImgMaxSizeService
   ) { }
 
   ngOnInit() {
   }
 
-  handleLogoChange(event: any) {
-    console.log("Entro al conversor")
+  guardarLogo(event: any) {
     const file = event.target.files[0];
-    this.imgMaxSizeService
-      .compressImage(file, 0.1) 
-      .subscribe(result => {
-        const reader = new FileReader();
-        reader.readAsDataURL(result);
-        reader.onload = () => {
-          
-          this.logo = reader.result as string
-        };
-      }, error => {
-        console.log(error);
-      });
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      this.logo = reader.result as string;
+    };
   }
 
 
@@ -55,6 +45,7 @@ export class NuevoEmpleoComponent implements OnInit {
     const empleo = new Empleo(this.titulo, this.empresa, this.descripcion, this.tipoContrato, this.jornada, this.salario, this.logo, this.idEmpresa, this.ubicacion);
     this.empleoService.save(empleo).subscribe(
       data => {
+        console.log(empleo)
         this.toastr.success('Empleo Creado', 'OK', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });

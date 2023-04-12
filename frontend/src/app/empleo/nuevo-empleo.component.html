@@ -50,18 +50,9 @@
 
                 <div class="form-group">
                     <label for="logo">LOGO (TEMPORAL Y OPCIONAL)</label>
-                    <input type="file" class="form-control-file" id="logo" name="logo"
-                        (change)="handleLogoChange($event)" accept="image/*">
+                    <input type="file" class="form-control-file" id="logo" name="logo" (change)="guardarLogo($event)" accept="image/*">
                 </div>
 
-
-
-                <!--  <div class="form-group">
-                    <label for="logo">LOGO (TEMPORAL Y OPCIONAL)</label>
-                    <input type="text" class="form-control" id="logo" name="logo"
-                    [(ngModel)]="logo" autocomplete="off">
-                </div>
--->
                 <button class="btn btn-outline-success btn-block"> <i class="far fa-plus-square"></i> Crear</button>
             </form>
         </div>
