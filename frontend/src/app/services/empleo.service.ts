@@ -21,12 +21,11 @@ export class EmpleoService {
   }
 
   public save(empleo: Empleo): Observable<any> {
-    console.log(empleo)
     return this.httpClient.post<any>(this.empleoURL, empleo,{ reportProgress: true });
   }
 
   public update(id: number, empleo: Empleo): Observable<any> {
-    return this.httpClient.put<any>(this.empleoURL + `update/${id}`, empleo);
+    return this.httpClient.put<any>(this.empleoURL + `/${id}`, empleo,{ reportProgress: true });
   }
 
   public delete(id: number): Observable<any> {

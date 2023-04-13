@@ -20,7 +20,8 @@ label{
     margin-bottom: 0.5rem;
 }
 #boton{
-  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
 }
 span{
     color: red;

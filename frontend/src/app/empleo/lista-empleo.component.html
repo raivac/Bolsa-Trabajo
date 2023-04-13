@@ -3,16 +3,16 @@
     <tr>
       <th scope="col">Logo empresa</th>
       <th scope="col">Oferta</th>
-       <th scope="col">Descripcion</th>
+      <!-- <th scope="col">Descripcion</th> -->
       <th scope="col">Empresa</th>
       <th scope="col">Ubicacion</th>
-       <!-- <th scope="col">Salario mensual</th> -->
+      <!-- <th scope="col">Salario mensual</th> -->
       <!-- <th scope="col">Tipo de Contrato</th>  -->
       <th scope="col">Jornada</th>
       <th scope="col">Oferta publicada</th>
       <th scope="col" colspan="3"></th>
     </tr>
-  </thead> 
+  </thead>
 
   <tbody>
     <tr *ngFor="let empleo of empleos">
@@ -27,8 +27,8 @@
       <td>{{ getTime(empleo.createdAt) }}</td>
       <td><button class="btn btn-outline-primary" routerLink="/detalle/{{empleo.id}}"><i class="far fa-eye"></i>
           Ver</button>
-      <!--<td><button class="btn btn-outline-warning" routerLink="/editar/{{empleo.id}}"><i class="far fa-edit"></i>
-          Editar</button></td>-->
+      <td><button class="btn btn-outline-warning" routerLink="/editar/{{empleo.id}}"><i class="far fa-edit"></i>
+          Editar</button></td>
       <td><button class="btn btn-outline-danger" (click)="empleo.id !== undefined && borrar(empleo.id)"><i
             class="far fa-trash-alt"></i> Eliminar </button></td>
     </tr>
