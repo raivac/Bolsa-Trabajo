@@ -29,6 +29,14 @@ export class NuevoEmpleoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    // const contentElement = this.renderer.selectRootElement('#content');
+    // const elements = contentElement.querySelectorAll('*:contains("*")');
+    // elements.forEach((element: { innerHTML: string; }) => {
+    //   element.innerHTML = element.innerHTML.replace('*', '<span style="color:red">*</span>');
+    // });
+    console.log("Entro a ngOnInit")
+
   }
 
   guardarLogo(event: any) {
@@ -55,6 +63,7 @@ export class NuevoEmpleoComponent implements OnInit {
         this.toastr.error('Rellene los campos correctamente', 'Error', {
           timeOut: 3000, positionClass: 'toast-top-center',
         });
+        console.log(err)
       }
     );
   }

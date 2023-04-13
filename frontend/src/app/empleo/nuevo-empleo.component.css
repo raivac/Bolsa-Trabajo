@@ -1,0 +1,27 @@
+.form-group{
+    color: white;
+    width: 70%;
+    margin: 1rem auto;
+}
+.col-md-4{
+    background-color: rgb(44, 44, 44);
+    padding: 1vw;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 1vw;
+}
+h1{
+    color: white;
+    font-size: 3vw;
+    margin:3rem;
+    text-align: center;
+}
+label{
+    margin-bottom: 0.5rem;
+}
+#boton{
+  text-align: center;
+}
+span{
+    color: red;
+}
