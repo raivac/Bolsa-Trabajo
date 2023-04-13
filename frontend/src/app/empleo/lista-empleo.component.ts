@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Empleo } from '../models/empleo';
 import { EmpleoService } from '../services/empleo.service';
 import { ToastrService } from 'ngx-toastr';
+import Swal from 'sweetalert2';
 
 
 
@@ -13,6 +14,8 @@ import { ToastrService } from 'ngx-toastr';
 export class ListaEmpleoComponent implements OnInit {
 
   empleos: Empleo[] = [];
+
+  listaVacia = undefined;
 
   constructor(
     private empleoService: EmpleoService,
@@ -27,27 +30,43 @@ export class ListaEmpleoComponent implements OnInit {
     this.empleoService.lista().subscribe(
       data => {
         this.empleos = data;
+        this.listaVacia= undefined;
       },
       err => {
-        console.log(err);
+        this.listaVacia = err.error.message;
       }
     );
   }
 
   borrar(id: number) {
-    this.empleoService.delete(id).subscribe(
-      data => {
-        this.toastr.success('Empleo Eliminado', 'OK', {
-          timeOut: 3000, positionClass: 'toast-top-center'
-        });
-        this.cargarEmpleos();
-      },
-      err => {
-        this.toastr.error(err.error.mensaje, 'Fail', {
-          timeOut: 3000, positionClass: 'toast-top-center',
-        });
+
+
+    Swal.fire({
+      title: '¿Estas seguro que quieres eliminar la oferta?',
+      text: "¡No se podrán revertir los cambios!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si',
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.empleoService.delete(id).subscribe(
+          res => {
+            this.cargarEmpleos();
+          },
+          err =>{
+            console.log(err)
+          }
+        )
+        Swal.fire(
+          'Eliminada!',
+          'Tu oferta de empleo ha sido eliminada',
+          'success'
+        )
       }
-    );
+    })
   }
   
   getTime(createdAt: Date | undefined): string {

@@ -3,6 +3,7 @@ import { EmpleoService } from '../services/empleo.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { Empleo } from '../models/empleo';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -54,21 +55,26 @@ export class NuevoEmpleoComponent implements OnInit {
     this.empleoService.save(empleo).subscribe(
       data => {
         console.log(empleo)
-        this.toastr.success('Empleo creado exitosamente!', 'Exito', {
-          timeOut: 3000, positionClass: 'toast-top-center'
-        });
+        Swal.fire({
+          icon: 'success',
+          title: 'Oferta creada exitosamente!',
+          showConfirmButton: false,
+          timer: 3000
+        })
         this.router.navigate(['/']);
       },
       err => {
-        this.toastr.error('Rellene los campos correctamente', 'Error', {
-          timeOut: 3000, positionClass: 'toast-top-center',
-        });
+        Swal.fire({
+          icon: 'error',
+          title: 'Error al crear la oferta',
+          showConfirmButton: false,
+          timer: 3000
+        })
         console.log(err)
       }
     );
   }
 
-  
   volver(): void {
     this.router.navigate(['/']);
   }

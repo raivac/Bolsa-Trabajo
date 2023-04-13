@@ -1,4 +1,4 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Empleo } from '../models/empleo';
@@ -9,9 +9,9 @@ import { EmpleoService } from '../services/empleo.service';
   templateUrl: './editar-empleo.component.html',
   styleUrls: ['./editar-empleo.component.css']
 })
-export class EditarEmpleoComponent  implements OnInit{
+export class EditarEmpleoComponent implements OnInit {
 
-  
+
   titulo: string = '';
   empresa: string = '';
   tipoContrato: string = '';
@@ -22,7 +22,7 @@ export class EditarEmpleoComponent  implements OnInit{
   ubicacion: string = '';
   logo: string = '';
 
-  empleo:Empleo =  new Empleo(this.titulo, this.empresa, this.descripcion, this.tipoContrato, this.jornada, this.salario, this.logo, this.idEmpresa, this.ubicacion);
+  empleo: Empleo = new Empleo(this.titulo, this.empresa, this.descripcion, this.tipoContrato, this.jornada, this.salario, this.logo, this.idEmpresa, this.ubicacion);
 
   constructor(
     private empleoService: EmpleoService,
@@ -49,7 +49,7 @@ export class EditarEmpleoComponent  implements OnInit{
       },
       err => {
         this.toastr.error(err.error.mensaje, 'Fail', {
-          timeOut: 3000,  positionClass: 'toast-top-center',
+          timeOut: 3000, positionClass: 'toast-top-center',
         });
         this.router.navigate(['/']);
       }
@@ -59,7 +59,7 @@ export class EditarEmpleoComponent  implements OnInit{
   onUpdate(): void {
     const id = this.activatedRoute.snapshot.params['id'];
     this.empleo.logo = this.logo
-    this.empleo.createdAt= new Date()
+    this.empleo.createdAt = new Date()
     this.empleoService.update(id, this.empleo).subscribe(
       data => {
         this.toastr.success('Oferta actualizada exitosamente!', 'EXITO!', {
@@ -69,7 +69,7 @@ export class EditarEmpleoComponent  implements OnInit{
       },
       err => {
         this.toastr.error(err.error.message, 'ERROR', {
-          timeOut: 3000,  positionClass: 'toast-top-center',
+          timeOut: 3000, positionClass: 'toast-top-center',
         });
       }
     );
@@ -79,5 +79,5 @@ export class EditarEmpleoComponent  implements OnInit{
     this.router.navigate(['/']);
   }
 
-  
+
 }

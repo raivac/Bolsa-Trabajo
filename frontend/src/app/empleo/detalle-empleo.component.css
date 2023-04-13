@@ -1,7 +1,17 @@
 *{
     list-style:none;
 }
+
 #logo{
     max-width: 100%;
     max-height: 100%;
+}
+
+.card{
+    padding: 1vw;
+    margin: 3rem auto;
+    border-radius: 1vw;
+}
+.card-header, .card-footer{
+    background-color: rgb(224, 224, 224);
 }
