@@ -1,1 +1,30 @@
-<p>detalle-empleo works!</p>
+<div class="container">
+    <div class="row mt-5" *ngIf="empleo">
+        <div class="col-md-4 mx-auto">
+            <div class="card" style="width: 30rem;">
+                <div class="card-header text-center">
+                    Detalle de la oferta
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-grou-item"><img id="logo" src="{{empleo.logo}}" alt="logo">
+                    </li>
+                    <li class="list-group-item"><b>Nº de oferta: </b>{{empleo.id}}</li>
+                    <li class="list-group-item"><b>Oferta: </b>{{empleo.titulo}}</li>
+                    <li class="list-group-item"><b>Descripcion: </b>{{empleo.descripcion}}</li>
+                    <li class="list-group-item"><b>Empresa: </b>{{empleo.empresa}}</li>
+                    <li class="list-group-item"><b>Ubicacion: </b>{{empleo.ubicacion}}</li>
+                    <li class="list-group-item"><b>Salario: </b>{{empleo.salario}}€</li>
+                    <li class="list-group-item"><b>Tipo de Contrato: </b>{{empleo.tipoContrato}}</li>
+                    <li class="list-group-item"><b>Tipo de Jornada: </b>{{empleo.jornada}}</li>
+                    <li class="list-group-item"><b>Publicada: </b> {{ getTime(empleo.createdAt) }}</li>
+
+                </ul>
+                <div class="card-footer">
+                    <button class="btn btn-outline-primary btn-block" (click)="volver()"><i
+                            class="fas fa-arrow-alt-circle-left"></i> Volver</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

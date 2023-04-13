@@ -17,7 +17,7 @@ export class EmpleoService {
   }
 
   public detail(id: number): Observable<Empleo> {
-    return this.httpClient.get<Empleo>(this.empleoURL + `detail/${id}`);
+    return this.httpClient.get<Empleo>(this.empleoURL + `/${id}`);
   }
 
   public save(empleo: Empleo): Observable<any> {

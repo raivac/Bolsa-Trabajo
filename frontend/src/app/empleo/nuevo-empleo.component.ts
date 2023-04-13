@@ -67,4 +67,9 @@ export class NuevoEmpleoComponent implements OnInit {
       }
     );
   }
+
+  
+  volver(): void {
+    this.router.navigate(['/']);
+  }
 }
