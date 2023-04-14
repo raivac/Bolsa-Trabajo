@@ -1,4 +1,4 @@
-
+<!-- Barra de busqueda de empleo -->
   <div id="buscar" class="input-group">
     <div id="buscador" class="col">
       <input type="search" id="idd" class="form-control rounded" placeholder="Buscar...">
@@ -9,7 +9,7 @@
     </div>
   </div>
 
-
+<!-- lista con todos los empleos guardados en la bd -->
   <div class="lista" *ngIf="!listaVacia">
     <table id="tablaOfertas" class="table table-dark text-center rounded" *ngIf="mostrarTabla">
       <thead>
@@ -44,23 +44,23 @@
           <td>{{ getTime(empleo.createdAt) }}</td>
           <td><button class="btn btn-outline-primary" routerLink="/detalle/{{empleo.id}}"><i class="far fa-eye"></i>
               Ver</button>
-            <!-- <td><button class="btn btn-outline-warning" routerLink="/editar/{{empleo.id}}"><i class="far fa-edit"></i>
+            <td><button class="btn btn-outline-warning" routerLink="/editar/{{empleo.id}}"><i class="far fa-edit"></i>
             Editar</button></td>
         <td><button class="btn btn-outline-danger" (click)="empleo.id !== undefined && borrar(empleo.id)"><i
-              class="far fa-trash-alt"></i> Eliminar </button></td> -->
+              class="far fa-trash-alt"></i> Eliminar </button></td>
         </tr>
       </tbody>
     </table>
   </div>
 
-
+  <!-- Si la lista esta vacia mostrara... -->
   <div class="container" *ngIf="listaVacia">
     <div class="p-3 mb-2 bg-dark text-white text-center">
       <h2>La lista esta vacia</h2>
     </div>
   </div>
 
-
+  <!-- Lista que mostrara las ofertas cuyas palabras concidan con la busqueda -->
   <div class="lista" *ngIf="empleosFiltrados?.length ?? 0 > 0">
     <table id="tablaBusqueda" class="table table-dark text-center rounded">
       <thead>
@@ -86,10 +86,10 @@
           <td><button class="btn btn-outline-primary" routerLink="/detalle/{{empleo.id}}"><i class="far fa-eye"></i>
               Ver</button>
           </td>
-          <!-- <td><button class="btn btn-outline-warning" routerLink="/editar/{{empleo.id}}"><i class="far fa-edit"></i>
+          <td><button class="btn btn-outline-warning" routerLink="/editar/{{empleo.id}}"><i class="far fa-edit"></i>
             Editar</button></td>
         <td><button class="btn btn-outline-danger" (click)="empleo.id !== undefined && borrar(empleo.id)"><i
-              class="far fa-trash-alt"></i> Eliminar </button></td> -->
+              class="far fa-trash-alt"></i> Eliminar </button></td>
         </tr>
       </tbody>
     </table>
