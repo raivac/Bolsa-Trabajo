@@ -44,7 +44,10 @@ export class NuevoEmpleoComponent implements OnInit {
     };
   }
 
-  crear(): void {
+  
+
+   crear(): void {
+    this.valid = true;
   //validacion formulario crear
     if (!this.titulo) {
       this.toastr.error('El título es obligatorio', 'Error');
@@ -92,10 +95,9 @@ export class NuevoEmpleoComponent implements OnInit {
     }
 
     if (this.valid)  {
-      const empleo = new Empleo(this.titulo, this.empresa, this.descripcion, this.tipoContrato, this.jornada, this.salario, this.logo, this.idEmpresa, this.ubicacion, this.telefono, this.email);
-      this.empleoService.save(empleo).subscribe(
+      const empleo =  new Empleo(this.titulo, this.empresa, this.descripcion, this.tipoContrato, this.jornada, this.salario, this.logo, this.idEmpresa, this.ubicacion, this.telefono, this.email);
+       this.empleoService.save(empleo).subscribe(
         data => {
-          console.log(empleo)
           Swal.fire({
             icon: 'success',
             title: 'Oferta creada exitosamente!',

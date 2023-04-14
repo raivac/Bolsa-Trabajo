@@ -1,7 +1,7 @@
 <div class="container" *ngIf="empleo">
     <div class="row mt-5">
         <div class="col-md-4 mx-auto">
-            <form (ngSubmit)="actualizar()"  #myForm="ngForm">
+            <form (ngSubmit)="actualizar()" #myForm="ngForm">
 
                 <h1>Actualiza tu oferta</h1>
 
@@ -73,7 +73,7 @@
                 </div>
 
                 <div id="boton">
-                    <button class="btn btn-outline-success btn-block">
+                    <button type="submit" class="btn btn-outline-success btn-block">
                         <i class="fas fa-edit"></i>Actualizar</button>
                     <button class="btn btn-outline-primary btn-block" (click)="volver()"><i
                             class="fas fa-arrow-alt-circle-left"></i> Volver</button>

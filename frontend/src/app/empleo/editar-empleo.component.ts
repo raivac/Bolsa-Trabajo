@@ -61,6 +61,7 @@ export class EditarEmpleoComponent implements OnInit {
   }
 
   actualizar(): void {
+    this.valid = true;
     //validacion formulario editar
     if (!this.empleo.titulo) {
       this.toastr.error('El título es obligatorio', 'Error');
@@ -102,7 +103,7 @@ export class EditarEmpleoComponent implements OnInit {
       this.valid = false;
     }    
     
-    if (!this.empleo.email || !/\S+@\S+\.\S+/.test(this.email)) {
+    if (!this.empleo.email || !/\S+@\S+\.\S+/.test(this.empleo.email)) {
       this.toastr.error('El email es obligatorio y debe ser válido', 'Error');
       this.valid = false;
     }
@@ -113,9 +114,21 @@ export class EditarEmpleoComponent implements OnInit {
     this.empleo.createdAt = new Date()
     this.empleoService.update(id, this.empleo).subscribe(
       data => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Oferta actualizada exitosamente!',
+          showConfirmButton: false,
+          timer: 3000
+        })
         this.router.navigate(['/']);
       },
       err => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error al actualizar la oferta',
+          showConfirmButton: false,
+          timer: 3000
+        })
         console.log(err)
       }
     );
@@ -125,6 +138,4 @@ export class EditarEmpleoComponent implements OnInit {
   volver(): void {
     this.router.navigate(['/']);
   }
-
-
 }
