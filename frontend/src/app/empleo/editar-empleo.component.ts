@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Empleo } from '../models/empleo';
 import { EmpleoService } from '../services/empleo.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-editar-empleo',
@@ -20,9 +21,12 @@ export class EditarEmpleoComponent implements OnInit {
   descripcion: string = '';
   idEmpresa: number = 0;
   ubicacion: string = '';
+  telefono: number = 0;
+  email: string = '';
   logo: string = '';
+  valid: boolean = true;
 
-  empleo: Empleo = new Empleo(this.titulo, this.empresa, this.descripcion, this.tipoContrato, this.jornada, this.salario, this.logo, this.idEmpresa, this.ubicacion);
+  empleo: Empleo = new Empleo(this.titulo, this.empresa, this.descripcion, this.tipoContrato, this.jornada, this.salario, this.logo, this.idEmpresa, this.ubicacion, this.telefono,this.email);
 
   constructor(
     private empleoService: EmpleoService,
@@ -56,24 +60,67 @@ export class EditarEmpleoComponent implements OnInit {
     );
   }
 
-  onUpdate(): void {
+  actualizar(): void {
+    //validacion formulario editar
+    if (!this.empleo.titulo) {
+      this.toastr.error('El título es obligatorio', 'Error');
+      this.valid = false;
+    }
+
+    if (!this.empleo.empresa) {
+      this.toastr.error('La empresa es obligatoria', 'Error');
+      this.valid = false;
+    }
+
+    if (!this.empleo.tipoContrato) {
+      this.toastr.error('El tipo de contrato es obligatorio', 'Error');
+      this.valid = false;
+    }
+
+    if (!this.empleo.jornada) {
+      this.toastr.error('La jornada es obligatoria', 'Error');
+      this.valid = false;
+    }
+
+    if (!this.empleo.salario) {
+      this.toastr.error('El salario es obligatorio', 'Error');
+      this.valid = false;
+    }
+
+    if (!this.empleo.descripcion) {
+      this.toastr.error('La descripción es obligatoria', 'Error');
+      this.valid = false;
+    }
+
+    if (!this.empleo.ubicacion) {
+      this.toastr.error('La ubicación es obligatoria', 'Error');
+      this.valid = false;
+    }
+    
+    if (!this.empleo.telefono || !/^[679][0-9]{8}$/.test(this.empleo.telefono.toString())) {
+      this.toastr.error('El teléfono es obligatorio y debe ser válido', 'Error');
+      this.valid = false;
+    }    
+    
+    if (!this.empleo.email || !/\S+@\S+\.\S+/.test(this.email)) {
+      this.toastr.error('El email es obligatorio y debe ser válido', 'Error');
+      this.valid = false;
+    }
+
+    if (this.valid)  {
     const id = this.activatedRoute.snapshot.params['id'];
     this.empleo.logo = this.logo
     this.empleo.createdAt = new Date()
     this.empleoService.update(id, this.empleo).subscribe(
       data => {
-        this.toastr.success('Oferta actualizada exitosamente!', 'EXITO!', {
-          timeOut: 3000, positionClass: 'toast-top-center'
-        });
         this.router.navigate(['/']);
       },
       err => {
-        this.toastr.error(err.error.message, 'ERROR', {
-          timeOut: 3000, positionClass: 'toast-top-center',
-        });
+        console.log(err)
       }
     );
   }
+}
 
   volver(): void {
     this.router.navigate(['/']);

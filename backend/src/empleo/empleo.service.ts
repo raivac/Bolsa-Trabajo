@@ -56,6 +56,8 @@ export class EmpleoService {
         dto.salario? empleo.salario = dto.salario : empleo.salario = empleo.salario;
         dto.logo? empleo.logo = dto.logo : empleo.logo = empleo.logo;
         dto.idEmpresa? empleo.idEmpresa = dto.idEmpresa : empleo.idEmpresa = empleo.idEmpresa;
+        dto.email? empleo.email = dto.email : empleo.email = empleo.email;
+        dto.telefono? empleo.telefono = dto.telefono : empleo.telefono = empleo.telefono;
 
         await this.empleoRepository.save(empleo)
         return empleo

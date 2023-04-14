@@ -9,8 +9,10 @@ export class Empleo {
   logo?: string;
   idEmpresa: number;
   ubicacion: string;
+  telefono: number;
+  email: string;
 
-  constructor(titulo: string, empresa: string, descripcion: string, tipoContrato: string, jornada: string, salario: number, logo: string, idEmpresa: number , ubicacion: string) {
+  constructor(titulo: string, empresa: string, descripcion: string, tipoContrato: string, jornada: string, salario: number, logo: string, idEmpresa: number , ubicacion: string, telefono: number, email:string) {
     this.titulo = titulo;
     this.salario = salario;
     this.descripcion = descripcion;
@@ -20,5 +22,7 @@ export class Empleo {
     this.logo = logo;
     this.idEmpresa = idEmpresa;
     this.ubicacion = ubicacion;
+    this.telefono = telefono;
+    this.email = email;
   }
 }

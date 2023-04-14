@@ -1,20 +1,21 @@
 <div class="container" *ngIf="empleo">
     <div class="row mt-5">
         <div class="col-md-4 mx-auto">
-            <form (ngSubmit)="onUpdate()" novalidate #f="ngForm">
+            <form (ngSubmit)="actualizar()"  #myForm="ngForm">
 
                 <h1>Actualiza tu oferta</h1>
 
                 <div class="form-group">
                     <label for="logo">Logo de la empresa(OPCIONAL)</label><br>
-                    <input type="file" class="form-control-file" id="logo" name="logo"(change)="guardarLogo($event)"
+                    <input type="file" class="form-control-file" id="logo" name="logo" (change)="guardarLogo($event)"
                         accept="image/*">
                 </div>
 
 
                 <div class="form-group">
                     <label for="titulo">Titulo de la oferta <span>*</span></label>
-                    <input type="text" class="form-control" id="titulo" name="titulo" [(ngModel)]="empleo.titulo" required>
+                    <input type="text" class="form-control" id="titulo" name="titulo" [(ngModel)]="empleo.titulo"
+                        required>
                 </div>
 
                 <div class="form-group">
@@ -25,19 +26,20 @@
 
                 <div class="form-group">
                     <label for="empresa">Nombre de la empresa <span>*</span></label>
-                    <input type="text" class="form-control" id="empresa" name="empresa" [(ngModel)]="empleo.empresa" required>
+                    <input type="text" class="form-control" id="empresa" name="empresa" [(ngModel)]="empleo.empresa"
+                        required>
                 </div>
 
                 <div class="form-group">
                     <label for="ubicacion">Ubicacion de la empresa <span>*</span></label>
-                    <input type="text" class="form-control" id="ubicacion" name="ubicacion" [(ngModel)]="empleo.ubicacion"
-                        required>
+                    <input type="text" class="form-control" id="ubicacion" name="ubicacion"
+                        [(ngModel)]="empleo.ubicacion" required>
                 </div>
 
                 <div class="form-group">
                     <label for="salario">Salario Mensual <span>*</span></label>
                     <input type="number" class="form-control" id="salario" name="salario" [(ngModel)]="empleo.salario"
-                    min=0 required>
+                        min=0 required>
                 </div>
 
                 <div class="form-group">
@@ -46,6 +48,7 @@
                         required>
                         <option value="Contrato Temporal">Contrato Temporal</option>
                         <option value="Contrato Indefinido">Contrato Indefinido</option>
+                        <option value="Otro tipo de contacto">Otro tipo de contacto</option>
                     </select>
                 </div>
 
@@ -54,15 +57,21 @@
                     <select class="form-control" id="jornada" name="jornada" [(ngModel)]="empleo.jornada" required>
                         <option value="Media Jornada">Media Jornada</option>
                         <option value="Jornada Completa">Jornada Completa</option>
+                        <option value="Sin especificar">Sin especificar</option>
                     </select>
                 </div>
 
+                <div class="form-group">
+                    <label for="telefono">Telefono de contacto<span>*</span></label>
+                    <input type="number" class="form-control" id="telefono" name="telefono"
+                        [(ngModel)]="empleo.telefono" min=0 required>
+                </div>
 
-                <!-- <div class="form-group">
-                    <label for="idEmpresa">ID EMPRESA (TEMPORAL)</label>
-                    <input type="number" class="form-control" id="idEmpresa" name="idEmpresa" [(ngModel)]="empleo.idEmpresa"
-                        required>
-                </div> -->
+                <div class="form-group">
+                    <label for="email">Email de contacto<span>*</span></label>
+                    <input type="text" class="form-control" id="email" name="email" [(ngModel)]="empleo.email" required>
+                </div>
+
                 <div id="boton">
                     <button class="btn btn-outline-success btn-block">
                         <i class="fas fa-edit"></i>Actualizar</button>

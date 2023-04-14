@@ -11,7 +11,7 @@ import { Empleo } from '../models/empleo';
 })
 export class DetalleEmpleoComponent implements OnInit {
 
-  empleo: Empleo = new Empleo("","","","","",0,"",0,"") ;
+  empleo: Empleo = new Empleo("","","","","",0,"",0,"",0,"") ;
 
   constructor(
     private empleoService: EmpleoService,

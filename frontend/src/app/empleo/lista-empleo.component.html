@@ -10,6 +10,8 @@
         <!-- <th scope="col">Salario mensual</th> -->
         <!-- <th scope="col">Tipo de Contrato</th>  -->
         <th scope="col">Jornada</th>
+        <!-- <th scope="col">Telefono de contacto</th> -->
+        <!-- <th scope="col">Email de contacto</th> -->
         <th scope="col">Oferta publicada</th>
         <th scope="col" colspan="3"></th>
       </tr>
@@ -25,6 +27,8 @@
         <!-- <td>{{empleo.salario}}€ Bruto/mes</td> -->
         <!-- <td>{{empleo.tipoContrato}}</td> -->
         <td>{{empleo.jornada}}</td>
+        <!-- <td>{{empleo.telefono}}</td> -->
+        <!-- <td>{{empleo.email}}</td> -->
         <td>{{ getTime(empleo.createdAt) }}</td>
         <td><button class="btn btn-outline-primary" routerLink="/detalle/{{empleo.id}}"><i class="far fa-eye"></i>
             Ver</button>

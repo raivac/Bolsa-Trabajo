@@ -38,4 +38,12 @@ export class EmpleoDTO{
     @IsNumber()
     @IsNotEmpty()
     idEmpresa: number;
+
+    @IsString()
+    @IsNotEmpty()
+    email: string;
+  
+    @IsNumber()
+    @IsNotEmpty()
+    telefono: number;
 }

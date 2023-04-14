@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { EmpleoService } from '../services/empleo.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
@@ -21,7 +21,10 @@ export class NuevoEmpleoComponent implements OnInit {
   descripcion: string = '';
   idEmpresa: number = 0;
   ubicacion: string = '';
+  telefono: number = 0;
+  email: string = '';
   logo: string = '';
+  valid: boolean = true;
 
   constructor(
     private empleoService: EmpleoService,
@@ -30,14 +33,6 @@ export class NuevoEmpleoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
-    // const contentElement = this.renderer.selectRootElement('#content');
-    // const elements = contentElement.querySelectorAll('*:contains("*")');
-    // elements.forEach((element: { innerHTML: string; }) => {
-    //   element.innerHTML = element.innerHTML.replace('*', '<span style="color:red">*</span>');
-    // });
-    console.log("Entro a ngOnInit")
-
   }
 
   guardarLogo(event: any) {
@@ -49,32 +44,78 @@ export class NuevoEmpleoComponent implements OnInit {
     };
   }
 
+  crear(): void {
+  //validacion formulario crear
+    if (!this.titulo) {
+      this.toastr.error('El título es obligatorio', 'Error');
+      this.valid = false;
+    }
 
-  onCreate(): void {
-    const empleo = new Empleo(this.titulo, this.empresa, this.descripcion, this.tipoContrato, this.jornada, this.salario, this.logo, this.idEmpresa, this.ubicacion);
-    this.empleoService.save(empleo).subscribe(
-      data => {
-        console.log(empleo)
-        Swal.fire({
-          icon: 'success',
-          title: 'Oferta creada exitosamente!',
-          showConfirmButton: false,
-          timer: 3000
-        })
-        this.router.navigate(['/']);
-      },
-      err => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Error al crear la oferta',
-          showConfirmButton: false,
-          timer: 3000
-        })
-        console.log(err)
-      }
-    );
+    if (!this.empresa) {
+      this.toastr.error('La empresa es obligatoria', 'Error');
+      this.valid = false;
+    }
+
+    if (!this.tipoContrato) {
+      this.toastr.error('El tipo de contrato es obligatorio', 'Error');
+      this.valid = false;
+    }
+
+    if (!this.jornada) {
+      this.toastr.error('La jornada es obligatoria', 'Error');
+      this.valid = false;
+    }
+
+    if (!this.salario) {
+      this.toastr.error('El salario es obligatorio', 'Error');
+      this.valid = false;
+    }
+
+    if (!this.descripcion) {
+      this.toastr.error('La descripción es obligatoria', 'Error');
+      this.valid = false;
+    }
+
+    if (!this.ubicacion) {
+      this.toastr.error('La ubicación es obligatoria', 'Error');
+      this.valid = false;
+    }
+    
+    if (!this.telefono || !/^[679][0-9]{8}$/.test(this.telefono.toString())) {
+      this.toastr.error('El teléfono es obligatorio y debe ser válido', 'Error');
+      this.valid = false;
+    }    
+    
+    if (!this.email || !/\S+@\S+\.\S+/.test(this.email)) {
+      this.toastr.error('El email es obligatorio y debe ser válido', 'Error');
+      this.valid = false;
+    }
+
+    if (this.valid)  {
+      const empleo = new Empleo(this.titulo, this.empresa, this.descripcion, this.tipoContrato, this.jornada, this.salario, this.logo, this.idEmpresa, this.ubicacion, this.telefono, this.email);
+      this.empleoService.save(empleo).subscribe(
+        data => {
+          console.log(empleo)
+          Swal.fire({
+            icon: 'success',
+            title: 'Oferta creada exitosamente!',
+            showConfirmButton: false,
+            timer: 3000
+          })
+          this.router.navigate(['/']);
+        },
+        err => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error al crear la oferta',
+            showConfirmButton: false,
+            timer: 3000
+          })
+          console.log(err)
+        }
+      );
+    }
   }
-
   volver(): void {
     this.router.navigate(['/']);
   }

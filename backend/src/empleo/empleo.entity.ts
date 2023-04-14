@@ -35,4 +35,10 @@ export class EmpleoEntity {
 
   @Column({ type: 'int', nullable: false })
   idEmpresa: number; 
+
+  @Column({ type: 'varchar', nullable: false })
+  email: string;
+
+  @Column({ type: 'int', nullable: false })
+  telefono: number;
 }
