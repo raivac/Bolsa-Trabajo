@@ -1,16 +1,34 @@
-#tablaOfertas #buscar{
-    width: 90%;
+
+#buscar, .lista{
     margin: 0 auto;
+    width: 70%;
 }
 #logo{
     max-width: 10vw;
     max-height: 10vw;
 }
 
-
-#buscar>form{
+#buscador{
     display: flex;
-    width: 40%;
-    justify-content: space-evenly;
-    
+    margin: 1.5vw auto;
+    padding: 1vw;
+    background-color: #212529;
+    border-radius: 1vw;
 }
+
+#buscador>*{
+    margin: 0 0.5vw;
+}
+
+
+#buscador>input{
+    width: 60%;
+}
+
+#borde{
+    border-radius: 3vw;
+}
+#tablaOfertas {
+    border-radius: 10px;
+  }
+

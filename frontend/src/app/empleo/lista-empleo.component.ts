@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Empleo } from '../models/empleo';
 import { EmpleoService } from '../services/empleo.service';
-import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
 
 
@@ -16,21 +15,27 @@ export class ListaEmpleoComponent implements OnInit {
   empleos: Empleo[] = [];
 
   listaVacia = undefined;
+  empleosFiltrados: Empleo[] | undefined;
 
   constructor(
     private empleoService: EmpleoService,
-    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
     this.cargarEmpleos();
+
+
+    const input = document.getElementById('idd') as HTMLInputElement;
+    input.addEventListener('input', () => {
+      this.textoBusqueda = input.value;
+    });
   }
 
   cargarEmpleos(): void {
     this.empleoService.lista().subscribe(
       data => {
         this.empleos = data;
-        this.listaVacia= undefined;
+        this.listaVacia = undefined;
       },
       err => {
         this.listaVacia = err.error.message;
@@ -56,7 +61,7 @@ export class ListaEmpleoComponent implements OnInit {
           res => {
             this.cargarEmpleos();
           },
-          err =>{
+          err => {
             console.log(err)
           }
         )
@@ -68,14 +73,14 @@ export class ListaEmpleoComponent implements OnInit {
       }
     })
   }
-  
+
   getTime(createdAt: Date | undefined): string {
     if (!createdAt) {
       return '';
     }
     const created = new Date(createdAt);
     const now = new Date();
-    const diffMilliseconds = now.getTime() - (created.getTime()+7200000);
+    const diffMilliseconds = now.getTime() - (created.getTime() + 7200000);
     const diffMinutes = Math.round(diffMilliseconds / 60000);
     if (diffMinutes === 0) {
       return 'justo ahora';
@@ -89,4 +94,37 @@ export class ListaEmpleoComponent implements OnInit {
       return `hace ${diffDays} ${diffDays === 1 ? 'día' : 'días'}`;
     }
   }
+
+  //variables para la busqueda
+  mostrarTabla = true;
+  textoBusqueda: string = '';
+  buscando = false;
+  //funcion para buscar empleos.
+  buscar(): void {
+    const palabrasBusqueda = this.textoBusqueda?.trim().toLowerCase().split(/\s+/);
+    if (palabrasBusqueda && palabrasBusqueda.length > 0) {
+      this.empleosFiltrados = this.empleos.filter(empleado => {
+        for (const palabra of palabrasBusqueda) {
+          if (empleado.titulo.toLowerCase().includes(palabra) || empleado.descripcion.toLowerCase().includes(palabra) || empleado.jornada.toLowerCase().includes(palabra) || empleado.ubicacion.toLowerCase().includes(palabra)) {
+            this.mostrarTabla = false;
+            return true;
+          }
+        }
+        return false;
+      });
+    } else {
+      this.empleosFiltrados = this.empleos;
+    }
+  }
+  //limpiara la busqueda 
+  limpiarBusqueda(): void {
+    this.textoBusqueda = ''; 
+    this.empleosFiltrados = undefined; 
+    this.mostrarTabla = true;
+  }
+  
+  
+  
+
+
 }
