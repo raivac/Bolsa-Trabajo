@@ -1,11 +1,47 @@
+@import "bootstrap/dist/css/bootstrap.css";
+
 #navbar {
-    width: 100%;
-    margin-bottom: 1.5vw;
+  width: 100%;
+  margin-bottom: 1.5vw;
 }
 .navbar-brand{
-    margin: 0 1.5vw
+  margin: 0 1.5vw
 }
 
 .btn{
-    margin: 0 1.5vw;
+  margin: 0 1.5vw;
+}
+.card {
+  border: 1px solid #b8b8b8;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #ccc;
+}
+
+.card-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #ccc;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.list-group-item {
+  border: 0;
+  border-bottom: 1px solid #ccc;
+}
+#minimenu {
+  display: none;
+}
+.card-header{
+  text-align: center;
+}
+.card-header a{
+  margin: 1vw;
+}
+  
+@media(min-width:768px) {
+  #minimenu {
+    display: none;
+  }
 }

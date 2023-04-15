@@ -21,7 +21,7 @@ export class ListaEmpleoComponent implements OnInit {
   
   ngOnInit(): void {
     this.cargarEmpleos();
-    const input = document.getElementById('idd') as HTMLInputElement;
+    const input = document.getElementById('busca') as HTMLInputElement;
     input.addEventListener('input', () => {
       this.textoBusqueda = input.value;
     });
@@ -104,7 +104,7 @@ export class ListaEmpleoComponent implements OnInit {
     const palabrasBusqueda = this.textoBusqueda?.trim().toLowerCase().split(/\s+/);
     let resultadosEncontrados = false;
     
-    if (palabrasBusqueda && palabrasBusqueda.length > 0) {
+    if (palabrasBusqueda.length > 0) {
       this.empleosFiltrados = this.empleos.filter(empleado => {
         for (const palabra of palabrasBusqueda) {
           if (empleado.titulo.toLowerCase().includes(palabra) || empleado.descripcion.toLowerCase().includes(palabra) || empleado.jornada.toLowerCase().includes(palabra) || empleado.ubicacion.toLowerCase().includes(palabra)|| empleado.tipoContrato.toLowerCase().includes(palabra)) {

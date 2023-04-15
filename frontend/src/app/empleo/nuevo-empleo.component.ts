@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { EmpleoService } from '../services/empleo.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
