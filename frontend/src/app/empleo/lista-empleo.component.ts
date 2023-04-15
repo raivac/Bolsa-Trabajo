@@ -79,18 +79,18 @@ export class ListaEmpleoComponent implements OnInit {
     }
     const created = new Date(createdAt);
     const now = new Date();
-    const diffMilliseconds = now.getTime() - (created.getTime() + 7200000);
-    const diffMinutes = Math.round(diffMilliseconds / 60000);
-    if (diffMinutes === 0) {
+    const milisegundos = now.getTime() - (created.getTime() + 7200000);
+    const minutos = Math.round(milisegundos / 60000);
+    if (minutos === 0) {
       return 'justo ahora';
-    } else if (diffMinutes < 60) {
-      return `hace ${diffMinutes} minutos`;
-    } else if (diffMinutes < 1440) {
-      const diffHours = Math.floor(diffMinutes / 60);
-      return `hace ${diffHours} ${diffHours === 1 ? 'hora' : 'horas'}`;
+    } else if (minutos < 60) {
+      return `hace ${minutos} minutos`;
+    } else if (minutos < 1440) {
+      const horas = Math.floor(minutos / 60);
+      return `hace ${horas} ${horas === 1 ? 'hora' : 'horas'}`;
     } else {
-      const diffDays = Math.floor(diffMinutes / 1440);
-      return `hace ${diffDays} ${diffDays === 1 ? 'día' : 'días'}`;
+      const dias = Math.floor(minutos / 1440);
+      return `hace ${dias} ${dias === 1 ? 'día' : 'días'}`;
     }
   }
 

@@ -1,9 +1,9 @@
 <!-- Barra de busqueda de empleo -->
   <div id="buscar" class="input-group">
     <div id="buscador" class="col">
-      <input type="search" id="idd" class="form-control rounded" placeholder="Buscar...">
+      <input type="search" id="idd" class="form-control rounded" placeholder="Encuentra tu oferta de empleo">
       <button type="submit" class="btn btn-outline-primary" (click)="buscar()"><i class="fas fa-search-plus"></i>
-        Ver</button>
+        Buscar</button>
       <button class="btn btn-outline-danger" (click)="limpiarBusqueda()"><i class="fas fa-search-minus"></i> Limpiar
         búsqueda</button>
     </div>
@@ -14,7 +14,7 @@
     <table id="tablaOfertas" class="table table-dark text-center rounded" *ngIf="mostrarTabla">
       <thead>
         <tr>
-          <th scope="col">Logo empresa</th>
+          <th scope="col"></th>
           <th scope="col">Oferta</th>
           <!-- <th scope="col">Descripcion</th> -->
           <th scope="col">Empresa</th>
@@ -44,10 +44,10 @@
           <td>{{ getTime(empleo.createdAt) }}</td>
           <td><button class="btn btn-outline-primary" routerLink="/detalle/{{empleo.id}}"><i class="far fa-eye"></i>
               Ver</button>
-            <td><button class="btn btn-outline-warning" routerLink="/editar/{{empleo.id}}"><i class="far fa-edit"></i>
+            <!-- <td><button class="btn btn-outline-warning" routerLink="/editar/{{empleo.id}}"><i class="far fa-edit"></i>
             Editar</button></td>
         <td><button class="btn btn-outline-danger" (click)="empleo.id !== undefined && borrar(empleo.id)"><i
-              class="far fa-trash-alt"></i> Eliminar </button></td>
+              class="far fa-trash-alt"></i> Eliminar </button></td> -->
         </tr>
       </tbody>
     </table>
@@ -65,7 +65,7 @@
     <table id="tablaBusqueda" class="table table-dark text-center rounded">
       <thead>
         <tr>
-          <th scope="col">Logo empresa</th>
+          <th scope="col"></th>
           <th scope="col">Oferta</th>
           <th scope="col">Empresa</th>
           <th scope="col">Ubicacion</th>
@@ -86,10 +86,10 @@
           <td><button class="btn btn-outline-primary" routerLink="/detalle/{{empleo.id}}"><i class="far fa-eye"></i>
               Ver</button>
           </td>
-          <td><button class="btn btn-outline-warning" routerLink="/editar/{{empleo.id}}"><i class="far fa-edit"></i>
+          <!-- <td><button class="btn btn-outline-warning" routerLink="/editar/{{empleo.id}}"><i class="far fa-edit"></i>
             Editar</button></td>
         <td><button class="btn btn-outline-danger" (click)="empleo.id !== undefined && borrar(empleo.id)"><i
-              class="far fa-trash-alt"></i> Eliminar </button></td>
+              class="far fa-trash-alt"></i> Eliminar </button></td> -->
         </tr>
       </tbody>
     </table>

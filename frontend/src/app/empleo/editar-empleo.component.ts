@@ -107,7 +107,7 @@ export class EditarEmpleoComponent implements OnInit {
       this.toastr.error('El email es obligatorio y debe ser válido', 'Error');
       this.valid = false;
     }
-
+ 
     if (this.valid)  {
     const id = this.activatedRoute.snapshot.params['id'];
     this.empleo.logo = this.logo

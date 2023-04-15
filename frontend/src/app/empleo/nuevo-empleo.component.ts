@@ -34,7 +34,7 @@ export class NuevoEmpleoComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  //funcion para poder subir el logo y almacenarlo en base64
   guardarLogo(event: any) {
     const file = event.target.files[0];
     const reader = new FileReader();
@@ -93,7 +93,7 @@ export class NuevoEmpleoComponent implements OnInit {
       this.toastr.error('El email es obligatorio y debe ser válido', 'Error');
       this.valid = false;
     }
-
+    //si estan todos los campos correctos se creara la nueva oferta
     if (this.valid)  {
       const empleo =  new Empleo(this.titulo, this.empresa, this.descripcion, this.tipoContrato, this.jornada, this.salario, this.logo, this.idEmpresa, this.ubicacion, this.telefono, this.email);
        this.empleoService.save(empleo).subscribe(
