@@ -135,4 +135,11 @@ export class ListaEmpleoComponent implements OnInit {
     this.empleosFiltrados = undefined; 
     this.mostrarTabla = true;
   }
+ 
+  //cuando pulse enter buscara
+  enter(event: KeyboardEvent) {
+    if (event.key == 'Enter') {
+      this.buscar();
+    }
+  }
 }

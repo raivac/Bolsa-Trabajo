@@ -14,12 +14,12 @@ export class EmpleoService {
     ) { }
 
     async getAll(): Promise<EmpleoEntity[]> {
-        const listaEmpleos = await this.empleoRepository.find();
+        const listaEmpleos = await this.empleoRepository.find({order: { createdAt: 'DESC' }});
         if (!listaEmpleos.length) {
-            throw new NotFoundException({ message: 'Lista de empleos vacia' })
+          throw new NotFoundException({ message: 'Lista de empleos vacia' })
         }
         return listaEmpleos;
-    }
+      }
 
     async findById(id: number): Promise<EmpleoEntity> {
         const empleo = await this.empleoRepository.findOne({ where: { id: id } })

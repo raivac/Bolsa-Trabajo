@@ -10,6 +10,7 @@ import { ListaEmpleoComponent } from './empleo/lista-empleo.component';
 import { NuevoEmpleoComponent } from './empleo/nuevo-empleo.component';
 import { EditarEmpleoComponent } from './empleo/editar-empleo.component';
 import { DetalleEmpleoComponent } from './empleo/detalle-empleo.component';
+import { PoliticaComponent } from './empleo/politica.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { DetalleEmpleoComponent } from './empleo/detalle-empleo.component';
     ListaEmpleoComponent,
     NuevoEmpleoComponent,
     EditarEmpleoComponent,
-    DetalleEmpleoComponent
+    DetalleEmpleoComponent,
+    PoliticaComponent
   ],
   imports: [
     BrowserModule,
