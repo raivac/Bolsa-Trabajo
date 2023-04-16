@@ -1,7 +1,7 @@
 <!-- Barra de busqueda de empleo -->
   <div id="buscar" class="input-group">
     <div id="buscador" class="col">
-      <input type="search" id="busca" class="form-control rounded" placeholder="Busca por puesto, empresa o palabra clave" (keyup)="enter($event)">
+      <input type="search" id="busca" class="form-control rounded" placeholder="Busca por puesto, empresa o palabra clave..." (keyup)="enter($event)">
       <button type="submit" class="btn btn-outline-primary" (click)="buscar()"><i class="fas fa-search-plus"></i>
         Buscar</button>
       <button class="btn btn-outline-danger" (click)="limpiarBusqueda()"><i class="fas fa-search-minus"></i> Limpiar
@@ -15,7 +15,7 @@
       <thead>
         <tr>
           <th scope="col"></th>
-          <th scope="col">Oferta</th>
+          <th scope="col">Puesto</th>
           <!-- <th scope="col">Descripcion</th> -->
           <th scope="col">Empresa</th>
           <th scope="col">Ubicación</th>
@@ -66,7 +66,7 @@
       <thead>
         <tr>
           <th scope="col"></th>
-          <th scope="col">Oferta</th>
+          <th scope="col">Puesto</th>
           <th scope="col">Empresa</th>
           <th scope="col">Ubicación</th>
           <!-- <th scope="col">Jornada</th> -->

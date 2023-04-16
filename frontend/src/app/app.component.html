@@ -2,10 +2,10 @@
   <a class="navbar-brand" href="/">
     <h3>R-Jobs</h3>
   </a>
-  <button id="boton" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-  aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon menu-visible"></span>
-</button>
+  <button id="boton" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon menu-visible"></span>
+  </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
@@ -38,14 +38,19 @@
         <div class="card">
           <div class="card-header">
             <a class="btn btn-outline-primary" routerLink="/"><i class="fas fa-circle-user"></i> Accede como empresa</a>
-            <a class="btn btn-outline-danger" routerLink="/"><i class="fas fa-circle-user"></i> Accede como candidato</a>
+            <a class="btn btn-outline-danger" routerLink="/"><i class="fas fa-circle-user"></i> Accede como
+              candidato</a>
           </div>
           <div class="card-body">
             <div class="list-group">
-              <a routerLink="/" class="list-group-item list-group-item-action"><i class="far fa-list-alt"></i> Lista de ofertas</a>
-              <a routerLink="/nuevo" class="list-group-item list-group-item-action"><i class="fas fa-plus-circle"></i> Crear una oferta de empleo</a>
-              <a routerLink="/" class="list-group-item list-group-item-action"><i class="fas fa-circle-user"></i> Ver mis ofertas de empleo</a>
-              <a routerLink="/" class="list-group-item list-group-item-action"><i class="fas fa-circle-user"></i> Sube tu Curriculum Vitae</a>
+              <a routerLink="/" class="list-group-item list-group-item-action"><i class="far fa-list-alt"></i> Lista de
+                ofertas</a>
+              <a routerLink="/nuevo" class="list-group-item list-group-item-action"><i class="fas fa-plus-circle"></i>
+                Crear una oferta de empleo</a>
+              <a routerLink="/" class="list-group-item list-group-item-action"><i class="fas fa-circle-user"></i> Ver
+                mis ofertas de empleo</a>
+              <a routerLink="/" class="list-group-item list-group-item-action"><i class="fas fa-circle-user"></i> Sube
+                tu Curriculum Vitae</a>
             </div>
           </div>
         </div>
@@ -54,21 +59,26 @@
   </div>
 </nav>
 <div id="politica">
-  
-     <h3>Nos importa tu privacidad</h3>
-      <p>Con nuestros socios utilizamos cookies para almacenar y acceder a los datos personales como los datos de navegación con el proposito de personalizar el contenido, anuncios y analizar el tráfico del sitio. Podrás encontrar más información acerca del porque con nuestros socios usamos cookies o manejamos tus preferencias haciendo clic en "configuracion de cookies" en el botón debajo. Puedes volver a visitar el consentimiento que has dado o quitar el consentimiento en cualquier momento haciendo clic en configuracion de cookies en nuestra política de cookies. Trabajamos en coordinación con un marco de la industria, considerando tus preferencias globalmente con todos los sitios webs participantes. 
-      Con nuestros socios procesamos datos:
-      Almacena y/o accede a la información en un dispositivo. Anuncios personalizados. Contenido personalizado. Medición de anuncios y contenido, estadísticas de audiencia y desarrollo de producto. Para más información, <a routerLink="/politica">por favor lea nuestra Política de cookies.</a></p>
 
-  <button  id="botonPolitica" class="btn btn-outline-success" ><i class="fa-solid fa-check"></i>
+  <h3>Nos importa tu privacidad</h3>
+  <p>Con nuestros socios utilizamos cookies para almacenar y acceder a los datos personales como los datos de navegación
+    con el proposito de personalizar el contenido, anuncios y analizar el tráfico del sitio. Podrás encontrar más
+    información acerca del porque con nuestros socios usamos cookies o manejamos tus preferencias haciendo clic en
+    "configuracion de cookies" en el botón debajo. Puedes volver a visitar el consentimiento que has dado o quitar el
+    consentimiento en cualquier momento haciendo clic en configuracion de cookies en nuestra política de cookies.
+    Trabajamos en coordinación con un marco de la industria, considerando tus preferencias globalmente con todos los
+    sitios webs participantes.
+    Con nuestros socios procesamos datos:
+    Almacena y/o accede a la información en un dispositivo. Anuncios personalizados. Contenido personalizado. Medición
+    de anuncios y contenido, estadísticas de audiencia y desarrollo de producto. Para más información, <a
+      routerLink="/politica">por favor lea nuestra Política de cookies.</a></p>
+
+  <button id="botonPolitica" class="btn btn-outline-success"><i class="fa-solid fa-check"></i>
     Aceptar</button>
-   
-  <!-- <button class="btn btn-outline-danger" ><i class="fa-solid fa-ban"></i> Cancelar </button> -->
+
+  <!-- <button class="btn btn-outline-danger" ><i class="fa-solid fa-ban"></i> Rechazar </button> -->
 </div>
 <router-outlet></router-outlet>
 <footer>
-  <a routerLink="/politica">
-    <p> © 2023 R-Jobs - Todos los derechos reservados</p>
-  </a>
+  <p> © 2023 R-Jobs - Todos los derechos reservados | <a routerLink="/politica">Política de privacidad</a></p>
 </footer>
-

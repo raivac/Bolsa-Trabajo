@@ -27,13 +27,14 @@ export class DetalleEmpleoComponent implements OnInit {
         this.empleo = data;
       },
       err => {
-        this.toastr.error(err.error.message, 'Error', {
+        this.toastr.error('No se encontro la oferta', 'Error', {
           timeOut: 3000,  positionClass: 'toast-top-center',
         });
         this.volver();
       }
     );
   }
+  
   //funcion que devolvera cuanto hace que se creo la oferta y no la fecha de creacion
   getTime(createdAt: Date | undefined): string {
     if (!createdAt) {
@@ -46,7 +47,7 @@ export class DetalleEmpleoComponent implements OnInit {
     if (minutos === 0) {
       return 'justo ahora';
     } else if (minutos < 60) {
-      return `hace ${minutos} minutos`;
+      return `hace ${minutos} ${minutos === 1 ? 'minuto' : 'minutos'}`;
     } else if (minutos < 1440) {
       const horas = Math.floor(minutos / 60);
       return `hace ${horas} ${horas === 1 ? 'hora' : 'horas'}`;

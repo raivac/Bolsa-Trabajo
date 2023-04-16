@@ -48,7 +48,6 @@
 footer {
   background-color: #212529;
   width: 100%;
-  margin-top: 4rem;
 }
 
 footer p {
@@ -64,14 +63,14 @@ footer a {
 
 #politica {
   display: block;
-  padding:1.5vw;
+  padding: 1.5vw;
   position: fixed;
   bottom: 0;
   background-color: black;
   color: white;
 }
 
-li:nth-child(5){
+li:nth-child(5) {
   margin-left: 6rem;
 }
 
@@ -79,6 +78,10 @@ li:nth-child(5){
 @media(min-width:768px) {
   #minimenu {
     display: none;
+  }
+
+  footer {
+    margin-top: 5rem;
   }
 
 }

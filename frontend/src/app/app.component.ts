@@ -46,7 +46,7 @@ function ocultarPolitica() {
               localStorage.setItem("poli", "1");
           }
       });
-      if (poli === 1 && politica && politica.style) {
+      if (poli == 1 && politica && politica.style) {
           politica.style.display = "none";
       }
   }

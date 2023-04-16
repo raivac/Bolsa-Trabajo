@@ -28,8 +28,8 @@ export class ListaEmpleoComponent implements OnInit {
   }
 
   listaVacia = undefined;
-  empleosFiltrados: Empleo[] | undefined;
-  //funcion paa cargar los empleos
+
+  //funcion para cargar los empleos
   cargarEmpleos(): void {
     this.empleoService.lista().subscribe(
       data => {
@@ -83,9 +83,11 @@ export class ListaEmpleoComponent implements OnInit {
     const minutos = Math.round(milisegundos / 60000);
     if (minutos === 0) {
       return 'justo ahora';
-    } else if (minutos < 60) {
-      return `hace ${minutos} minutos`;
-    } else if (minutos < 1440) {
+    } else 
+    if (minutos < 60) {
+      return `hace ${minutos} ${minutos === 1 ? 'minuto' : 'minutos'}`;
+    } else 
+    if (minutos < 1440) {
       const horas = Math.floor(minutos / 60);
       return `hace ${horas} ${horas === 1 ? 'hora' : 'horas'}`;
     } else {
@@ -98,7 +100,7 @@ export class ListaEmpleoComponent implements OnInit {
   mostrarTabla = true;
   textoBusqueda: string = '';
   buscando = false;
-
+  empleosFiltrados: Empleo[] | undefined;
   //funcion que buscara si hay algun dato de la oferta que coincida con los datos introducidos en la busqueda
   buscar(): void {
     const palabrasBusqueda = this.textoBusqueda?.trim().toLowerCase().split(/\s+/);

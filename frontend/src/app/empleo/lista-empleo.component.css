@@ -22,7 +22,6 @@
     margin: 0 0.5vw;
 }
 
-
 #buscador>input {
     width: 60%;
 }
@@ -42,3 +41,8 @@ li {
     border-radius: 1vw;
     overflow: hidden;
   }
+
+.table td {
+    vertical-align: middle;
+  }
+  
