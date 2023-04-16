@@ -77,9 +77,10 @@ export class ListaEmpleoComponent implements OnInit {
     if (!createdAt) {
       return '';
     }
+    // (created.getTime() + 7200000);
     const created = new Date(createdAt);
     const now = new Date();
-    const milisegundos = now.getTime() - (created.getTime() + 7200000);
+    const milisegundos = now.getTime() - created.getTime();
     const minutos = Math.round(milisegundos / 60000);
     if (minutos === 0) {
       return 'justo ahora';
@@ -99,7 +100,6 @@ export class ListaEmpleoComponent implements OnInit {
   //variables para la busqueda
   mostrarTabla = true;
   textoBusqueda: string = '';
-  buscando = false;
   empleosFiltrados: Empleo[] | undefined;
   //funcion que buscara si hay algun dato de la oferta que coincida con los datos introducidos en la busqueda
   buscar(): void {
