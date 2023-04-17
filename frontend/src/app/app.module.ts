@@ -11,6 +11,11 @@ import { NuevoEmpleoComponent } from './empleo/nuevo-empleo.component';
 import { EditarEmpleoComponent } from './empleo/editar-empleo.component';
 import { DetalleEmpleoComponent } from './empleo/detalle-empleo.component';
 import { PoliticaComponent } from './empleo/politica.component';
+import { MenuComponent } from './menu/menu.component';
+import { LoginCandidatoComponent } from './auth/login-candidato.component';
+import { LoginEmpresaComponent } from './auth/login-empresa.component';
+import { RegistroEmpresaComponent } from './auth/registro-empresa.component';
+import { RegistroCandidatoComponent } from './auth/registro-candidato.component';
 
 
 @NgModule({
@@ -20,7 +25,12 @@ import { PoliticaComponent } from './empleo/politica.component';
     NuevoEmpleoComponent,
     EditarEmpleoComponent,
     DetalleEmpleoComponent,
-    PoliticaComponent
+    PoliticaComponent,
+    MenuComponent,
+    LoginCandidatoComponent,
+    LoginEmpresaComponent,
+    RegistroEmpresaComponent,
+    RegistroCandidatoComponent
   ],
   imports: [
     BrowserModule,
