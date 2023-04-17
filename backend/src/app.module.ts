@@ -5,6 +5,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DB_PORT,DB_PASSWORD,DB_DATABASE,DB_HOST,DB_USER} from './config/constants';
 import { EmpleoModule } from './empleo/empleo.module';
+import { RolModule } from './rol/rol.module';
+import { UsuarioModule } from './usuario/usuario.module';
 
 @Module({
   imports: [
@@ -27,7 +29,9 @@ import { EmpleoModule } from './empleo/empleo.module';
       }),
       inject: [ConfigService],
     }),
-    EmpleoModule
+    EmpleoModule,
+    RolModule,
+    UsuarioModule
   ],
   controllers: [AppController],
   providers: [AppService],

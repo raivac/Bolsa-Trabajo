@@ -128,6 +128,9 @@ export class ListaEmpleoComponent implements OnInit {
         'No se han encontrado ofertas',
         'error'
       )
+    this.textoBusqueda = ''; 
+    this.empleosFiltrados = undefined; 
+    this.mostrarTabla = true;
     }
   }
 
