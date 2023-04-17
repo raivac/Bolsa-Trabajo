@@ -1,5 +1,7 @@
+import { hash } from 'bcryptjs';
+import { hasUncaughtExceptionCaptureCallback } from 'process';
 import { RolEntity } from 'src/rol/rol.entity';
-import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { BeforeInsert, BeforeUpdate, Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({name: 'usuario'})
 export class UsuarioEntity {
@@ -25,7 +27,7 @@ export class UsuarioEntity {
     @Column({ type: 'int', nullable: false })
     telefono: number;
 
-    @Column({ type: 'varchar', nullable: false })
+    @Column({ type: 'varchar', nullable: false ,unique:true})
     cif: string;
 
     @Column({ type: 'varchar', nullable: true })
@@ -37,6 +39,14 @@ export class UsuarioEntity {
         joinColumn: {name:'usuario_id'},
         inverseJoinColumn: {name:'rol_id'}
     })
+
     roles: RolEntity[]
+
+    @BeforeInsert()
+    @BeforeUpdate()
+    async hashPassword(){
+        if(this.password) return;
+        this.password = await hash(this.password, 10 )
+    }
 
 }

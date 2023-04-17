@@ -7,6 +7,7 @@ import { DB_PORT,DB_PASSWORD,DB_DATABASE,DB_HOST,DB_USER} from './config/constan
 import { EmpleoModule } from './empleo/empleo.module';
 import { RolModule } from './rol/rol.module';
 import { UsuarioModule } from './usuario/usuario.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -31,7 +32,8 @@ import { UsuarioModule } from './usuario/usuario.module';
     }),
     EmpleoModule,
     RolModule,
-    UsuarioModule
+    UsuarioModule,
+    AuthModule
   ],
   controllers: [AppController],
   providers: [AppService],

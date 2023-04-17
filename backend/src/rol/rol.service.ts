@@ -14,7 +14,7 @@ export class RolService {
     async getAll(): Promise<RolEntity[]>{
         const roles = await this.rolRepository.find();
         if(!roles.length) throw new NotFoundException({ message: 'no hay roles' }) 
-        return;
+        return roles;
     }
     async create(dto: CreateRolDto): Promise<any>{
         const rol = await this.rolRepository.findOne({where : {rolNombre: dto.rolNombre}});
