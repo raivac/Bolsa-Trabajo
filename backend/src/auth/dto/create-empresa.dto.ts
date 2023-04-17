@@ -19,6 +19,7 @@ export class CreateEmpresaDto{
     apellidos: string;
 
     @IsString()
+    @IsNotEmpty()
     empresa: string;
 
     @IsNumber()
@@ -30,6 +31,5 @@ export class CreateEmpresaDto{
     cif: string;
 
     @IsString()
-    @IsNotEmpty()
     descripcion: string;
 }
