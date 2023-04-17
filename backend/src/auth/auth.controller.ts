@@ -41,6 +41,5 @@ export class AuthController {
     loginEmpresa(@Body() dto: LoginEmpresaDto) {
         return this.authService.loginEmpresa(dto)
     }
-
-
+    
 }
