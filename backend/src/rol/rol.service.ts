@@ -29,13 +29,17 @@ export class RolService {
         console.log(dto as RolEntity)
         return console.log('rol creado');
     }
-
     async crearRolesIniciales(): Promise<any> {
         for (const rol of Object.values(RolNombre)) {
+          const existingRol = await this.rolRepository.findOne({ where: { rolNombre: rol } });
+          if (!existingRol) {
             const createRolDto: CreateRolDto = {
-                rolNombre: rol
+              rolNombre: rol
             };
-            await this.create(createRolDto);
+            await this.rolRepository.create(createRolDto);
+          }
         }
-    }
+      }
+      
+      
 }

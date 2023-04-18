@@ -17,15 +17,15 @@ export class EmpleoController {
         return await this.empleoService.getAll();
     }
 
-    @RolDecorator(RolNombre.EMPRESA,RolNombre.CANDIDATO)
-    @UseGuards(JwtAuthGuard,RolesGuard)
+    // @RolDecorator(RolNombre.EMPRESA,RolNombre.CANDIDATO)
+    // @UseGuards(JwtAuthGuard,RolesGuard)
     @Get(':id')
     async getOne(@Param('id', ParseIntPipe) id: number) {
         return await this.empleoService.findById(id);
     }
 
-    @RolDecorator(RolNombre.EMPRESA)
-    @UseGuards(JwtAuthGuard,RolesGuard)
+    // @RolDecorator(RolNombre.EMPRESA)
+    // @UseGuards(JwtAuthGuard,RolesGuard)
     @UsePipes(new ValidationPipe({whitelist: true}))
     @Post()
     async create(@Body() dto: EmpleoDTO) {

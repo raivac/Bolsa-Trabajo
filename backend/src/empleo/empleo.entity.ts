@@ -14,7 +14,7 @@ export class EmpleoEntity {
 
   @Column({ type: 'varchar', nullable: false })
   ubicacion: string;
-
+  
   @Column({ type: 'datetime', default: ()=>'CURRENT_TIMESTAMP'})
   createdAt: Date;
 

@@ -77,10 +77,9 @@ export class ListaEmpleoComponent implements OnInit {
     if (!createdAt) {
       return '';
     }
-    // (created.getTime() + 7200000);
     const created = new Date(createdAt);
     const now = new Date();
-    const milisegundos = now.getTime() - (created.getTime() + 7200000);
+    const milisegundos = now.getTime() - (created.getTime() - 7200000);
     const minutos = Math.round(milisegundos / 60000);
     if (minutos === 0) {
       return 'justo ahora';
@@ -109,7 +108,7 @@ export class ListaEmpleoComponent implements OnInit {
     if (palabrasBusqueda.length > 0) {
       this.empleosFiltrados = this.empleos.filter(empleado => {
         for (const palabra of palabrasBusqueda) {
-          if (empleado.titulo.toLowerCase().includes(palabra) || empleado.descripcion.toLowerCase().includes(palabra) || empleado.jornada.toLowerCase().includes(palabra) || empleado.ubicacion.toLowerCase().includes(palabra)|| empleado.tipoContrato.toLowerCase().includes(palabra)) {
+          if (empleado.titulo.toLowerCase().includes(palabra) || empleado.descripcion.toLowerCase().includes(palabra) || empleado.empresa.toLowerCase().includes(palabra) || empleado.jornada.toLowerCase().includes(palabra) || empleado.ubicacion.toLowerCase().includes(palabra)|| empleado.tipoContrato.toLowerCase().includes(palabra)) {
             this.mostrarTabla = false;
             resultadosEncontrados = true; 
             return true;
