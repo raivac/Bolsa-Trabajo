@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class MenuComponent implements OnInit {
 
   id: string = "";
-
+  rol: any;
   isLogged: boolean = false;
 
   constructor(
@@ -18,7 +18,8 @@ export class MenuComponent implements OnInit {
     private router: Router
   ){}
   ngOnInit(): void {
-    // this.id = this.tokenService.getId()
+    this.id = this.tokenService.getId()
+    this.rol= this.tokenService.getRol()
     this.tokenService.isLogged() ? this.isLogged=true: this.isLogged=false;
   }
   logOut():void{
