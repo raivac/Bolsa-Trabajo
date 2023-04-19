@@ -17,7 +17,6 @@ export class LoginEmpresaComponent implements OnInit {
   email: string = "";
   password!: string;
 
-
   constructor(
     private authService: AuthService,
     private tokenService: TokenService,
@@ -29,11 +28,15 @@ export class LoginEmpresaComponent implements OnInit {
   }
 
   onLogin() {
+
+
+    
+
     this.loginEmpresa = new LoginEmpresaDto(this.email, this.password);
     this.authService.loginEmpresa(this.loginEmpresa).subscribe(
       data => {
         console.log(data.token);
-        if(!data.token) {
+        if (!data.token) {
           Swal.fire({
             icon: 'error',
             title: 'Error al iniciar sesión',
@@ -48,6 +51,14 @@ export class LoginEmpresaComponent implements OnInit {
             showConfirmButton: false,
             timer: 3000
           });
+          if(this.tokenService.getRol()=="candidato"){ 
+          localStorage.removeItem('token');
+          Swal.fire({
+            icon: 'warning',
+            title: 'Entra como empresa no como candidato',
+            showConfirmButton: false,
+            timer: 3000
+          });}
           this.router.navigate(['/']);
         }
       },
@@ -62,5 +73,5 @@ export class LoginEmpresaComponent implements OnInit {
       }
     );
   }
-  
+
 }
