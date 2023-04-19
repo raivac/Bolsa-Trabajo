@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Empleo } from '../models/empleo';
 import { Observable } from 'rxjs';
+import { env } from 'src/env/env';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmpleoService {
 
-  empleoURL = 'http://localhost:3000/empleo';
+  empleoURL = env.empleoURL;
 
   constructor(private httpClient: HttpClient) { }
 

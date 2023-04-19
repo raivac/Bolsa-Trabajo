@@ -47,7 +47,7 @@ export class AuthService {
             throw new InternalServerErrorException({ message: 'Roles no creados' });
         }
 
-        const passwordHash = await bcrypt.hash(password, 10); // Hashea la contraseña antes de almacenarla
+        const passwordHash = await bcrypt.hash(password, 10);
         const candidato = this.authRepository.create({ ...dto, password: passwordHash });
         candidato.roles = [rolCandidato];
         await this.authRepository.save(candidato);
@@ -67,7 +67,7 @@ export class AuthService {
             throw new InternalServerErrorException({ message: 'Roles no creados' });
         }
 
-        const passwordHash = await bcrypt.hash(password, 10); // Hashea la contraseña antes de almacenarla
+        const passwordHash = await bcrypt.hash(password, 10);
         const empresa = this.usuarioRepository.create({ ...dto, password: passwordHash });
         empresa.roles = [rolEmpresa];
         await this.usuarioRepository.save(empresa);
@@ -76,6 +76,7 @@ export class AuthService {
     }
 
     async loginCandidato(dto: LoginCantidatoDto): Promise<any> {
+        
         const candidato = await this.authRepository.findOne({ where: { email: dto.email } })
         if (!candidato) return new UnauthorizedException('No existe el email candidato');
 
