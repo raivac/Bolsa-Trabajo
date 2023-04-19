@@ -1,1 +1,32 @@
 <app-menu></app-menu>
+<div class="container d-flex justify-content-center">
+    <div class="card">
+        <div class="card-header">
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link active" routerLink="/login-candidato" routerLinkActive="active"><i
+                            class="fa-solid fa-right-to-bracket"></i> Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/registro-candidato" ><i class="fa-solid fa-user-plus"></i> Crea tu
+                        cuenta como candidato</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card-body">
+            <form class="form-group">
+                <label for="email">Email:</label>
+                <input type="text" class="form-control mb-3" name="email" id="email" required>
+            </form>
+            <form class="form-group">
+                <label for="password">Contraseña:</label>
+                <input type="password" class="form-control" name="password" id="password" required>
+            </form>
+            <form class="form-group">
+                <button class="btn btn-outline-success btn-block mt-4" ><i
+                    class="fa-solid fa-right-to-bracket"></i> Acceder</button>
+            </form>
+        </div>
+    </div>
+</div>

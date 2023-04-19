@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -49,5 +50,11 @@ export class TokenService {
   }
   logOut():void{
     localStorage.removeItem('token');
+      Swal.fire({
+        icon: 'warning',
+        title: 'Sesión cerrada',
+        showConfirmButton: false,
+        timer: 3000
+      });
   }
 }

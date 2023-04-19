@@ -52,7 +52,7 @@ export class EditarEmpleoComponent implements OnInit {
         this.empleo = data;
       },
       err => {
-        this.toastr.error(err.error.mensaje, 'Fail', {
+        this.toastr.error('Error', 'Error', {
           timeOut: 3000, positionClass: 'toast-top-center',
         });
         this.router.navigate(['/']);

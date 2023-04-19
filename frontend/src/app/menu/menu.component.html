@@ -27,13 +27,13 @@
           <a class="btn btn-outline-primary" routerLink="/login-empresa" *ngIf="!isLogged"><i class="fas fa-circle-user"></i> Accede como empresa</a>
         </li>
         <li class="nav-item ">
-          <a class="btn btn-outline-danger" routerLink="/login-candidato" *ngIf="isLogged" (click)="logOut()"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesion</a>
+          <a class="btn btn-outline-danger"  *ngIf="isLogged" (click)="logOut()"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesion</a>
         </li>
         <!-- <li class="nav-item ">
           <a class="btn btn-outline-danger" routerLink="/login-candidato"><i class="fas fa-circle-user"></i> Accede como candidato</a>
         </li> -->
         <li class="nav-item ">
-          <a class="btn btn-outline-primary" routerLink="/login-candidato"><i class="fas fa-circle-user"></i> Accede como candidato</a>
+          <a class="btn btn-outline-danger" routerLink="/login-candidato"  *ngIf="!isLogged"><i class="fas fa-circle-user"></i> Accede como candidato</a>
         </li>
       </ul>
     </div>

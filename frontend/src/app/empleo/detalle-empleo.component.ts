@@ -27,7 +27,7 @@ export class DetalleEmpleoComponent implements OnInit {
         this.empleo = data;
       },
       err => {
-        this.toastr.error('No se encontro la oferta', 'Error', {
+        this.toastr.error('Error', 'Error', {
           timeOut: 3000,  positionClass: 'toast-top-center',
         });
         this.volver();
