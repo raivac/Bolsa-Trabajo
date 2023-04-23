@@ -15,6 +15,8 @@ export class MisOfertasComponent implements OnInit{
   empleos: Empleo[] = [];
   isEmpresa: boolean = false;
   idEmpresa: number = 0;
+  empleoSeleccionado: any;
+  mostrarCandidatos: boolean = false;
   constructor(
     private empleoService: EmpleoService,
     private tokenService: TokenService,
@@ -24,10 +26,6 @@ export class MisOfertasComponent implements OnInit{
   ngOnInit(): void {
     this.idEmpresa = this.tokenService.getId()
     this.cargarEmpleos();
-    const input = document.getElementById('busca') as HTMLInputElement;
-    input.addEventListener('input', () => {
-      this.textoBusqueda = input.value;
-    });
     this.isEmpresa = this.tokenService.isEmpresa()
   }
 
@@ -59,6 +57,15 @@ export class MisOfertasComponent implements OnInit{
     const url = URL.createObjectURL(blob);
     return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
 }
+verCandidatos(empleo: any) {
+  this.empleoSeleccionado = empleo;
+  this.mostrarCandidatos = true;
+}
+ocultarCandidatos(empleo: any) {
+  this.empleoSeleccionado = empleo;
+  this.mostrarCandidatos = false;
+}
+
 
   
 
@@ -113,57 +120,6 @@ export class MisOfertasComponent implements OnInit{
     } else {
       const dias = Math.floor(minutos / 1440);
       return `hace ${dias} ${dias === 1 ? 'día' : 'días'}`;
-    }
-  }
-
-  //variables para la busqueda
-  mostrarTabla = true;
-  textoBusqueda: string = '';
-  empleosFiltrados: Empleo[] | undefined;
-  //funcion que buscara si hay algun dato de la oferta que coincida con los datos introducidos en la busqueda
-  buscar(): void {
-    const palabrasBusqueda = this.textoBusqueda?.trim().toLowerCase().split(/\s+/);
-    let resultadosEncontrados = false;
-    
-    if (palabrasBusqueda.length > 0) {
-      this.empleosFiltrados = this.empleos.filter(empleado => {
-        for (const palabra of palabrasBusqueda) {
-          if (empleado.titulo.toLowerCase().includes(palabra) || empleado.descripcion.toLowerCase().includes(palabra) || empleado.empresa.toLowerCase().includes(palabra) || empleado.jornada.toLowerCase().includes(palabra) || empleado.ubicacion.toLowerCase().includes(palabra)|| empleado.tipoContrato.toLowerCase().includes(palabra)) {
-            this.mostrarTabla = false;
-            resultadosEncontrados = true; 
-            return true;
-          }
-        }
-        return false;
-      });
-    } else {
-      this.empleosFiltrados = this.empleos;
-    }
-  
-    //mostrara la alerta si no se encuentra una oferta
-    if (!resultadosEncontrados) {
-      Swal.fire(
-        'No hay ofertas',
-        'No se han encontrado ofertas',
-        'error'
-      )
-    this.textoBusqueda = ''; 
-    this.empleosFiltrados = undefined; 
-    this.mostrarTabla = true;
-    }
-  }
-
-  //limpiara la busqueda 
-  limpiarBusqueda(): void {
-    this.textoBusqueda = ''; 
-    this.empleosFiltrados = undefined; 
-    this.mostrarTabla = true;
-  }
- 
-  //cuando pulse enter buscara
-  enter(event: KeyboardEvent) {
-    if (event.key == 'Enter') {
-      this.buscar();
     }
   }
 

@@ -50,16 +50,6 @@ export class DetalleEmpleoComponent implements OnInit {
     );
   }
 
-  // guardarCandidato(event: any) {
-  //   const file = event.target.files[0];
-  //   const reader = new FileReader();
-  //   reader.readAsDataURL(file);
-  //   reader.onload = () => {
-  //     let base64 = btoa(reader.result as string);
-  //     this.candidatos.push("data:" + file.type + ";base64," + base64); 
-  //   };
-  //   console.log(this.candidatos)
-  // }
   guardarCandidato(event: any) {
     const file = event.target.files[0];
     const reader = new FileReader();
