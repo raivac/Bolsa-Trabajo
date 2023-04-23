@@ -17,28 +17,28 @@
         <div class="card-body">
             <form class="form-group">
                 <label for="nombre">Nombre:</label>
-                <input type="text" class="form-control" name="nombre" id="nombre" required [(ngModel)]="nombre">
+                <input type="text" class="form-control mb-3" name="nombre" id="nombre" required [(ngModel)]="nombre">
                 
                 <label for="apellidos">Apellidos:</label>
-                <input type="text" class="form-control" name="apellidos" id="apellidos" required [(ngModel)]="apellidos">
+                <input type="text" class="form-control mb-3" name="apellidos" id="apellidos" required [(ngModel)]="apellidos">
                 
                 <label for="empresa">Empresa:</label>
-                <input type="text" class="form-control" name="empresa" id="empresa" required [(ngModel)]="empresa">
+                <input type="text" class="form-control mb-3" name="empresa" id="empresa" required [(ngModel)]="empresa">
             
                 <label for="telefono">telefono:</label>
-                <input type="number" min="0" class="form-control" name="telefono" id="telefono" required [(ngModel)]="telefono">
+                <input type="number" min="0" class="form-control mb-3" name="telefono" id="telefono" required [(ngModel)]="telefono">
             
                 <label for="cif">cif:</label>
-                <input type="text" class="form-control" name="cif" id="cif" required [(ngModel)]="cif">
+                <input type="text" class="form-control mb-3" name="cif" id="cif" required [(ngModel)]="cif">
             
                 <label for="descripcion">Descripción de la empresa:</label>
-                <textarea class="form-control" name="descripcion" id="descripcion" rows="4" required [(ngModel)]="descripcion"></textarea>
+                <textarea class="form-control" name="descripcion mb-3" id="descripcion" rows="4" required [(ngModel)]="descripcion"></textarea>
             
                 <label for="email">Email:</label>
-                <input type="text" class="form-control" name="email" id="email" required [(ngModel)]="email">
+                <input type="text" class="form-control mb-3" name="email" id="email" required [(ngModel)]="email">
             
                 <label for="password">Contraseña:</label>
-                <input type="password" class="form-control" name="password" id="password" required [(ngModel)]="password">
+                <input type="password" class="form-control mb-3" name="password" id="password" required [(ngModel)]="password">
             
                 <button class="btn btn-outline-success btn-block" (click)="onRegister()"><i class="fa-solid fa-user-plus"></i> Registrate</button>
             </form>

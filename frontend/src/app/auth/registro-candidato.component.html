@@ -18,22 +18,22 @@
         <div class="card-body">
             <form class="form-group">
                 <label for="nombre">Nombre:</label>
-                <input type="text" class="form-control" name="nombre" id="nombre" required  [(ngModel)]="nombre">
+                <input type="text" class="form-control mb-3" name="nombre" id="nombre" required  [(ngModel)]="nombre">
                 
                 <label for="apellidos">Apellidos:</label>
-                <input type="text" class="form-control" name="apellidos" id="apellidos" required [(ngModel)]="apellidos">
+                <input type="text" class="form-control mb-3" name="apellidos" id="apellidos" required [(ngModel)]="apellidos">
             
                 <label for="telefono">telefono:</label>
-                <input type="number" min="0" class="form-control" name="telefono" id="telefono" required  [(ngModel)]="telefono">
+                <input type="number" min="0" class="form-control mb-3" name="telefono" id="telefono" required  [(ngModel)]="telefono">
             
                 <label for="cif">cif:</label>
-                <input type="text" class="form-control" name="cif" id="cif" required  [(ngModel)]="cif">
+                <input type="text" class="form-control mb-3" name="cif" id="cif" required  [(ngModel)]="cif">
             
                 <label for="email">Email:</label>
-                <input type="text" class="form-control" name="email" id="email" required  [(ngModel)]="email">
+                <input type="text" class="form-control mb-3" name="email" id="email" required  [(ngModel)]="email">
             
                 <label for="password">Contraseña:</label>
-                <input type="password" class="form-control" name="password" id="password" required  [(ngModel)]="password">
+                <input type="password" class="form-control mb-3" name="password" id="password" required  [(ngModel)]="password">
             
                 <button class="btn btn-outline-success btn-block"  (click)="onRegister()"><i class="fa-solid fa-user-plus" ></i> Registrate</button>
             </form>

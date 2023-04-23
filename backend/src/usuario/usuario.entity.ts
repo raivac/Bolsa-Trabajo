@@ -1,5 +1,4 @@
 import { hash } from 'bcryptjs';
-import { hasUncaughtExceptionCaptureCallback } from 'process';
 import { RolEntity } from 'src/rol/rol.entity';
 import { BeforeInsert, BeforeUpdate, Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 

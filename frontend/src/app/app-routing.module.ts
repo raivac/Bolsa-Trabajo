@@ -12,14 +12,16 @@ import { RegistroEmpresaComponent } from './auth/registro-empresa.component';
 import { LoginEmpresaGuard } from './guards/login-empresa.guard';
 import { LoginCandidatoGuard } from './guards/login-candidato.guard';
 import { MisOfertasComponent } from './empleo/mis-ofertas.component';
+import { EmpleoGuard } from './guards/empleo.guard';
+import { UserGuard } from './guards/user.guard';
 
 const routes: Routes = [
   {path: 'politica', component: PoliticaComponent},
   {path: '', component: ListaEmpleoComponent},
-  {path: 'detalle/:id', component: DetalleEmpleoComponent},
-  {path: 'nuevo', component: NuevoEmpleoComponent},
-  {path: 'mis-ofertas', component: MisOfertasComponent},
-  {path: 'editar/:id', component: EditarEmpleoComponent},
+  {path: 'detalle/:id', component: DetalleEmpleoComponent, canActivate: [EmpleoGuard], data:{expectedRol:['empresa','candidato']}},
+  {path: 'nuevo', component: NuevoEmpleoComponent,canActivate: [EmpleoGuard], data:{expectedRol:['empresa']}},
+  {path: 'mis-ofertas', component: MisOfertasComponent,canActivate: [EmpleoGuard], data:{expectedRol:['empresa']}},
+  {path: 'editar/:id', component: EditarEmpleoComponent, canActivate: [EmpleoGuard,UserGuard], data:{expectedRol:['empresa']}},
   {path: 'login-candidato', component: LoginCandidatoComponent,canActivate:[LoginCandidatoGuard]},
   {path: 'login-empresa', component: LoginEmpresaComponent,canActivate:[LoginEmpresaGuard]},
   {path: 'registro-candidato', component: RegistroCandidatoComponent,canActivate:[LoginCandidatoGuard]},
