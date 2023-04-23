@@ -17,8 +17,6 @@ export class EmpleoController {
         return await this.empleoService.getAll();
     }
 
-    @RolDecorator(RolNombre.EMPRESA,RolNombre.CANDIDATO)
-    @UseGuards(JwtAuthGuard,RolesGuard)
     @Get(':id')
     async getOne(@Param('id', ParseIntPipe) id: number) {
         return await this.empleoService.findById(id);

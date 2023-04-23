@@ -35,8 +35,7 @@
                       </li>
                       <button class="btn btn-outline-success btn-block mt-3 "  *ngIf="isCandidato" (click)="actualizar()"><i
                         class="fas fa-arrow-alt-circle-left" *ngIf="!isCandidato"></i> Subir Curriculum</button>
-                        <button class="btn btn-outline-danger btn-block mt-3"*ngIf="!isCandidato" (click)="volver()"><i
-                            class="fas fa-arrow-alt-circle-left"></i> Logeate como candidato</button>
+                        <button class="btn btn-outline-danger btn-block mt-3"*ngIf="!isCandidato" (click)="loginCandidato()"><i class="fas fa-circle-user"></i> Logeate como candidato</button>
                         <button class="btn btn-outline-primary btn-block mt-3" (click)="volver()"><i
                             class="fas fa-arrow-alt-circle-left"></i> Volver</button>
                 </ul>

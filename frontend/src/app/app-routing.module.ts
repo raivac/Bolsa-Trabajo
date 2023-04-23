@@ -18,7 +18,7 @@ import { UserGuard } from './guards/user.guard';
 const routes: Routes = [
   {path: 'politica', component: PoliticaComponent},
   {path: '', component: ListaEmpleoComponent},
-  {path: 'detalle/:id', component: DetalleEmpleoComponent, canActivate: [EmpleoGuard], data:{expectedRol:['empresa','candidato']}},
+  {path: 'detalle/:id', component: DetalleEmpleoComponent},
   {path: 'nuevo', component: NuevoEmpleoComponent,canActivate: [EmpleoGuard], data:{expectedRol:['empresa']}},
   {path: 'mis-ofertas', component: MisOfertasComponent,canActivate: [EmpleoGuard], data:{expectedRol:['empresa']}},
   {path: 'editar/:id', component: EditarEmpleoComponent, canActivate: [EmpleoGuard,UserGuard], data:{expectedRol:['empresa']}},

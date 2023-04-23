@@ -116,4 +116,7 @@ export class DetalleEmpleoComponent implements OnInit {
   volver(): void {
     this.router.navigate(['/']);
   }
+  loginCandidato(): void {
+    this.router.navigate(['/login-candidato']);
+  }
 }

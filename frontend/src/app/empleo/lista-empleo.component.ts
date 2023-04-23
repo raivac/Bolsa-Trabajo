@@ -120,16 +120,4 @@ export class ListaEmpleoComponent implements OnInit {
       this.buscar();
     }
   }
-
-  alertaLogin() {
-    if(!this.tokenService.isLogged()){
-    Swal.fire({
-      title: 'Error',
-      text: 'Inicie sesión para ver los detalles',
-      icon: 'error',
-      showConfirmButton: false,
-      timer: 3000
-    });
-  }
-  }
 }
