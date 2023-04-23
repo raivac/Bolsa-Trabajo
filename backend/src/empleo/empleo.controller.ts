@@ -39,7 +39,7 @@ export class EmpleoController {
         return await this.empleoService.delete(id);
     }
 
-    @RolDecorator(RolNombre.EMPRESA)
+    @RolDecorator(RolNombre.EMPRESA,RolNombre.CANDIDATO)
     @UseGuards(JwtAuthGuard,RolesGuard)
     @Put(':id')
     async update(@Param('id', ParseIntPipe) id: number, @Body() dto: EmpleoDTO) {
