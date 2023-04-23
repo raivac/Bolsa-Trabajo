@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { EmpleoService } from '../services/empleo.service';
 import { Empleo } from '../models/empleo';
 
@@ -16,7 +15,6 @@ export class DetalleEmpleoComponent implements OnInit {
   constructor(
     private empleoService: EmpleoService,
     private activatedRoute: ActivatedRoute,
-    private toastr: ToastrService,
     private router: Router
   ) { }
 
@@ -27,29 +25,28 @@ export class DetalleEmpleoComponent implements OnInit {
         this.empleo = data;
       },
       err => {
-        this.toastr.error('Error', 'Error', {
-          timeOut: 3000,  positionClass: 'toast-top-center',
-        });
+        console.log(err)
         this.volver();
       }
     );
   }
   
   //funcion que devolvera cuanto hace que se creo la oferta y no la fecha de creacion
-  getTime(createdAt: Date | undefined): string {
+  publicado(createdAt: Date | undefined): string {
     if (!createdAt) {
       return '';
     }
-    
     const created = new Date(createdAt);
     const now = new Date();
-    const milisegundos = now.getTime() - (created.getTime() + 7200000);
+    const milisegundos = now.getTime() - (created.getTime() - 7200000);
     const minutos = Math.round(milisegundos / 60000);
     if (minutos === 0) {
       return 'justo ahora';
-    } else if (minutos < 60) {
+    } else 
+    if (minutos < 60) {
       return `hace ${minutos} ${minutos === 1 ? 'minuto' : 'minutos'}`;
-    } else if (minutos < 1440) {
+    } else 
+    if (minutos < 1440) {
       const horas = Math.floor(minutos / 60);
       return `hace ${horas} ${horas === 1 ? 'hora' : 'horas'}`;
     } else {

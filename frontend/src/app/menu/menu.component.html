@@ -13,10 +13,10 @@
           <a id="of" class="nav-link" routerLink="/"><i class="far fa-list-alt"></i> Lista de ofertas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" *ngIf="isEmpresa" routerLink="/nuevo"><i class="fas fa-plus-circle"></i> Crear una oferta de empleo</a>
+          <a class="nav-link" (click)="alertaLoginEmpresa()" routerLink="/nuevo"><i class="fas fa-plus-circle"></i> Crear una oferta de empleo</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" *ngIf="isEmpresa" routerLink="/"><i class="fas fa-circle-user"></i> Ver mis ofertas de empleo</a>
+          <a class="nav-link"  (click)="alertaLoginEmpresa()"  routerLink="/mis-ofertas"><i class="fas fa-circle-user"></i> Ver mis ofertas de empleo</a>
         </li>
       </ul>
     </div>
@@ -46,12 +46,10 @@
               <div class="list-group">
                 <a routerLink="/" class="list-group-item list-group-item-action"><i class="far fa-list-alt"></i> Lista de
                   ofertas</a>
-                <a routerLink="/nuevo" class="list-group-item list-group-item-action"><i class="fas fa-plus-circle"></i>
+                <a routerLink="/nuevo" (click)="alertaLoginEmpresa()"   class="list-group-item list-group-item-action"><i class="fas fa-plus-circle"></i>
                   Crear una oferta de empleo</a>
-                <a routerLink="/" class="list-group-item list-group-item-action"><i class="fas fa-circle-user"></i> Ver
+                <a routerLink="/" (click)="alertaLoginEmpresa()"  class="list-group-item list-group-item-action"><i class="fas fa-circle-user"></i> Ver
                   mis ofertas de empleo</a>
-                <a routerLink="/" class="list-group-item list-group-item-action"><i class="fas fa-circle-user"></i> Sube
-                  tu Curriculum Vitae</a>
               </div>
             </div>
           </div>

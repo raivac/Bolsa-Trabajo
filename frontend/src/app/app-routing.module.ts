@@ -11,12 +11,14 @@ import { RegistroCandidatoComponent } from './auth/registro-candidato.component'
 import { RegistroEmpresaComponent } from './auth/registro-empresa.component';
 import { LoginEmpresaGuard } from './guards/login-empresa.guard';
 import { LoginCandidatoGuard } from './guards/login-candidato.guard';
+import { MisOfertasComponent } from './empleo/mis-ofertas.component';
 
 const routes: Routes = [
   {path: 'politica', component: PoliticaComponent},
   {path: '', component: ListaEmpleoComponent},
   {path: 'detalle/:id', component: DetalleEmpleoComponent},
   {path: 'nuevo', component: NuevoEmpleoComponent},
+  {path: 'mis-ofertas', component: MisOfertasComponent},
   {path: 'editar/:id', component: EditarEmpleoComponent},
   {path: 'login-candidato', component: LoginCandidatoComponent,canActivate:[LoginCandidatoGuard]},
   {path: 'login-empresa', component: LoginEmpresaComponent,canActivate:[LoginEmpresaGuard]},

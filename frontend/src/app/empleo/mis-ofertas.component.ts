@@ -1,21 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 import { Empleo } from '../models/empleo';
 import { EmpleoService } from '../services/empleo.service';
-import Swal from 'sweetalert2';
 import { TokenService } from '../services/token.service';
 
-
-
 @Component({
-  selector: 'app-lista-empleo',
-  templateUrl: './lista-empleo.component.html',
-  styleUrls: ['./lista-empleo.component.css']
+  selector: 'app-mis-ofertas',
+  templateUrl: './mis-ofertas.component.html',
+  styleUrls: ['./mis-ofertas.component.css']
 })
-export class ListaEmpleoComponent implements OnInit {
+export class MisOfertasComponent implements OnInit{
 
   empleos: Empleo[] = [];
   isEmpresa: boolean = false;
-
+  idEmpresa: number = 0;
   constructor(
     private empleoService: EmpleoService,
     private tokenService: TokenService
@@ -23,6 +21,7 @@ export class ListaEmpleoComponent implements OnInit {
   
   
   ngOnInit(): void {
+    this.idEmpresa = this.tokenService.getId()
     this.cargarEmpleos();
     const input = document.getElementById('busca') as HTMLInputElement;
     input.addEventListener('input', () => {
@@ -33,17 +32,47 @@ export class ListaEmpleoComponent implements OnInit {
 
   listaVacia = undefined;
 
-  //funcion para cargar los empleos
+//funcion para cargar los empleos
   cargarEmpleos(): void {
     this.empleoService.lista().subscribe(
       data => {
-        this.empleos = data;
+        this.empleos = data.filter(empleo => empleo.idEmpresa == this.idEmpresa);
         this.listaVacia = undefined;
       },
       err => {
         this.listaVacia = err.error.message;
       }
     );
+  }
+
+  //funcion para eliminar una oferta por su id
+  borrar(id: number) {
+    Swal.fire({
+      title: '¿Estas seguro que quieres eliminar la oferta?',
+      text: "¡No se podrán revertir los cambios!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si',
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.empleoService.delete(id).subscribe(
+          res => {
+            this.cargarEmpleos();
+          },
+          err => {
+            console.log(err)
+          }
+        )
+        Swal.fire(
+          'Eliminada!',
+          'Tu oferta de empleo ha sido eliminada',
+          'success'
+        )
+      }
+    })
   }
 
   //funcion que devolvera cuanto hace que se creo la oferta y no la fecha de creacion

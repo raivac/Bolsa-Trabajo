@@ -18,8 +18,14 @@
         <tr>
           <th scope="col"></th>
           <th scope="col">Puesto</th>
+          <!-- <th scope="col">Descripcion</th> -->
           <th scope="col">Empresa</th>
           <th scope="col">Ubicación</th>
+          <!-- <th scope="col">Salario mensual</th> -->
+          <!-- <th scope="col">Tipo de Contrato</th>  -->
+          <!-- <th scope="col">Jornada</th> -->
+          <!-- <th scope="col">Telefono de contacto</th> -->
+          <!-- <th scope="col">Email de contacto</th> -->
           <th scope="col">Publicada</th>
           <th scope="col" colspan="3"></th>
         </tr>
@@ -29,11 +35,22 @@
         <tr *ngFor="let empleo of empleos">
           <td><img id="logo" src="{{empleo.logo}}" alt="logo"></td>
           <td>{{empleo.titulo}}</td>
+          <!-- <td>{{empleo.descripcion}}</td> -->
           <td>{{empleo.empresa}}</td>
           <td>{{empleo.ubicacion}}</td>
+          <!-- <td>{{empleo.salario}}€ Bruto/mes</td> -->
+          <!-- <td>{{empleo.tipoContrato}}</td> -->
+          <!-- <td>{{empleo.jornada}}</td> -->
+          <!-- <td>{{empleo.telefono}}</td> -->
+          <!-- <td>{{empleo.email}}</td> -->
           <td>{{ publicado(empleo.createdAt) }}</td>
           <td><button  class="btn btn-outline-primary" (click)="alertaLogin()" routerLink="/detalle/{{empleo.id}}"><i class="far fa-eye"></i>
               Ver</button>
+            <td><button *ngIf="isEmpresa" class="btn btn-outline-warning" routerLink="/editar/{{empleo.id}}"><i class="far fa-edit"></i>
+            Editar</button></td>
+        <td><button *ngIf="isEmpresa" class="btn btn-outline-danger" (click)="empleo.id !== undefined && borrar(empleo.id)"><i
+              class="far fa-trash-alt"></i> Eliminar </button></td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -71,6 +88,11 @@
           <td><button class="btn btn-outline-primary" (click)="alertaLogin()" routerLink="/detalle/{{empleo.id}}"><i class="far fa-eye"></i>
               Ver</button>
           </td>
+          <td><button  *ngIf="isEmpresa" class="btn btn-outline-warning" routerLink="/editar/{{empleo.id}}"><i class="far fa-edit"></i>
+            Editar</button></td>
+        <td><button  *ngIf="isEmpresa" class="btn btn-outline-danger" (click)="empleo.id !== undefined && borrar(empleo.id)"><i
+              class="far fa-trash-alt"></i> Eliminar </button></td>
+        </tr>
       </tbody>
     </table>
   </div>

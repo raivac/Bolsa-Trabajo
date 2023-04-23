@@ -17,6 +17,7 @@ import { RegistroCandidatoComponent } from './auth/registro-candidato.component'
 import { interceptorProvider } from './interceptors/empleo.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { MisOfertasComponent } from './empleo/mis-ofertas.component';
 
 
 
@@ -32,7 +33,8 @@ import { ToastrModule } from 'ngx-toastr';
     LoginCandidatoComponent,
     LoginEmpresaComponent,
     RegistroEmpresaComponent,
-    RegistroCandidatoComponent
+    RegistroCandidatoComponent,
+    MisOfertasComponent
   ],
   imports: [
     BrowserModule,

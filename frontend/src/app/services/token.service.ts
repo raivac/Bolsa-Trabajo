@@ -24,9 +24,9 @@ export class TokenService {
     return localStorage.getItem('token');
   }
 
-  getId(): string {
+  getId(): number {
     if (!this.isLogged()) {
-      return "Logeate";
+      return 0;
     }
     const token = this.getToken()
     const payload = token.split('.')[1];

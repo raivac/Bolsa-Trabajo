@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Empleo } from '../models/empleo';
 import { EmpleoService } from '../services/empleo.service';
 import Swal from 'sweetalert2';
+import { TokenService } from '../services/token.service';
 
 @Component({
   selector: 'app-editar-empleo',
@@ -29,6 +30,7 @@ export class EditarEmpleoComponent implements OnInit {
   empleo: Empleo = new Empleo(this.titulo, this.empresa, this.descripcion, this.tipoContrato, this.jornada, this.salario, this.logo, this.idEmpresa, this.ubicacion, this.telefono,this.email);
 
   constructor(
+    private tokenService: TokenService,
     private empleoService: EmpleoService,
     private activatedRoute: ActivatedRoute,
     private toastr: ToastrService,
@@ -58,6 +60,8 @@ export class EditarEmpleoComponent implements OnInit {
         this.router.navigate(['/']);
       }
     );
+    this.idEmpresa = this.tokenService.getId()
+
   }
 
   actualizar(): void {

@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { Empleo } from '../models/empleo';
 import Swal from 'sweetalert2';
+import { TokenService } from '../services/token.service';
 
 
 @Component({
@@ -25,14 +26,15 @@ export class NuevoEmpleoComponent implements OnInit {
   email: string = '';
   logo: string = '';
   valid: boolean = true;
-
   constructor(
     private empleoService: EmpleoService,
     private toastr: ToastrService,
     private router: Router,
+    private tokenService: TokenService
   ) { }
 
   ngOnInit() {
+    this.idEmpresa = this.tokenService.getId()
   }
   //funcion para poder subir el logo y almacenarlo en base64
   guardarLogo(event: any) {
