@@ -25,6 +25,7 @@ export class NuevoEmpleoComponent implements OnInit {
   telefono: number = 0;
   email: string = '';
   logo: string = '';
+  candidatos: string="No hay candidatos";
   valid: boolean = true;
   constructor(
     private empleoService: EmpleoService,
@@ -95,9 +96,10 @@ export class NuevoEmpleoComponent implements OnInit {
       this.toastr.error('El email es obligatorio y debe ser válido', 'Error');
       this.valid = false;
     }
+    console.log(this.candidatos)
     //si estan todos los campos correctos se creara la nueva oferta
     if (this.valid)  {
-      const empleo =  new Empleo(this.titulo, this.empresa, this.descripcion, this.tipoContrato, this.jornada, this.salario, this.logo, this.idEmpresa, this.ubicacion, this.telefono, this.email);
+      const empleo =  new Empleo(this.titulo, this.empresa, this.descripcion, this.tipoContrato, this.jornada, this.salario, this.logo, this.idEmpresa, this.ubicacion, this.telefono, this.email,this.candidatos);
        this.empleoService.save(empleo).subscribe(
         data => {
           Swal.fire({

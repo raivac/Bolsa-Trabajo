@@ -46,4 +46,7 @@ export class EmpleoDTO{
     @IsNumber()
     @IsNotEmpty()
     telefono: number;
+
+    @IsString()
+    candidatos: string;
 }

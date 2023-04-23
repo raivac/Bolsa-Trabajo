@@ -33,6 +33,9 @@ export class EmpleoService {
         if (!dto.logo) {
             dto.logo = LOGO_DEFAULT;
           }
+          if (!dto.candidatos) {
+            dto.candidatos = "No hay candidatos";
+          }
           const empleo = this.empleoRepository.create(dto);
           await this.empleoRepository.save(empleo);
           console.log(empleo)
@@ -50,7 +53,6 @@ export class EmpleoService {
         dto.descripcion? empleo.descripcion = dto.descripcion : empleo.descripcion = empleo.descripcion;
         dto.empresa? empleo.empresa = dto.empresa : empleo.empresa = empleo.empresa;
         dto.ubicacion? empleo.ubicacion = dto.ubicacion : empleo.ubicacion = empleo.ubicacion;
-        dto.createdAt? empleo.createdAt = dto.createdAt : empleo.createdAt = empleo.createdAt;
         dto.tipoContrato? empleo.tipoContrato = dto.tipoContrato : empleo.tipoContrato = empleo.tipoContrato;
         dto.jornada? empleo.jornada = dto.jornada : empleo.jornada = empleo.jornada;
         dto.salario? empleo.salario = dto.salario : empleo.salario = empleo.salario;
@@ -58,6 +60,7 @@ export class EmpleoService {
         dto.idEmpresa? empleo.idEmpresa = dto.idEmpresa : empleo.idEmpresa = empleo.idEmpresa;
         dto.email? empleo.email = dto.email : empleo.email = empleo.email;
         dto.telefono? empleo.telefono = dto.telefono : empleo.telefono = empleo.telefono;
+        dto.candidatos? empleo.candidatos = dto.candidatos : empleo.candidatos = empleo.candidatos;
 
         await this.empleoRepository.save(empleo)
         return empleo

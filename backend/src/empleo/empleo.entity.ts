@@ -41,4 +41,7 @@ export class EmpleoEntity {
 
   @Column({ type: 'int', nullable: false })
   telefono: number;
+
+  @Column({ type: 'longtext', nullable: true})
+  candidatos: string;
 }

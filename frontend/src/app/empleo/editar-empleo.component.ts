@@ -25,9 +25,10 @@ export class EditarEmpleoComponent implements OnInit {
   telefono: number = 0;
   email: string = '';
   logo: string = '';
+  candidatos :string= 'No hay candidatos'
   valid: boolean = true;
 
-  empleo: Empleo = new Empleo(this.titulo, this.empresa, this.descripcion, this.tipoContrato, this.jornada, this.salario, this.logo, this.idEmpresa, this.ubicacion, this.telefono,this.email);
+  empleo: Empleo = new Empleo(this.titulo, this.empresa, this.descripcion, this.tipoContrato, this.jornada, this.salario, this.logo, this.idEmpresa, this.ubicacion, this.telefono,this.email,this.candidatos);
 
   constructor(
     private tokenService: TokenService,
