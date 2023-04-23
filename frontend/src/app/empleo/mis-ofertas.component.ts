@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import { Empleo } from '../models/empleo';
 import { EmpleoService } from '../services/empleo.service';
 import { TokenService } from '../services/token.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-mis-ofertas',
@@ -16,9 +17,9 @@ export class MisOfertasComponent implements OnInit{
   idEmpresa: number = 0;
   constructor(
     private empleoService: EmpleoService,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    public domSanitizer: DomSanitizer,
   ) { }
-  
   
   ngOnInit(): void {
     this.idEmpresa = this.tokenService.getId()
@@ -32,7 +33,7 @@ export class MisOfertasComponent implements OnInit{
 
   listaVacia = undefined;
 
-//funcion para cargar los empleos
+  //funcion para cargar los empleos
   cargarEmpleos(): void {
     this.empleoService.lista().subscribe(
       data => {
@@ -44,6 +45,22 @@ export class MisOfertasComponent implements OnInit{
       }
     );
   }
+  // función para obtener un array con los candidatos del empleo
+  getCandidatosArray(candidatosString: string): string[] {
+    return candidatosString.split('\n').slice(1);
+  }
+  getBase64(base64String: string): SafeResourceUrl {
+    const binary = atob(base64String.split(',')[1]);
+    const byteArray = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) {
+      byteArray[i] = binary.charCodeAt(i);
+    }
+    const blob = new Blob([byteArray], { type: 'application/pdf' });
+    const url = URL.createObjectURL(blob);
+    return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
+}
+
+  
 
   //funcion para eliminar una oferta por su id
   borrar(id: number) {

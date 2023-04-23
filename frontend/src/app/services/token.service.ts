@@ -46,6 +46,17 @@ export class TokenService {
     const rol = valuesJson.roles[0]
     return rol
   }
+  getCandidatos(): string {
+    if (!this.isLogged()) {
+      return "Logeate";
+    }
+    const token = this.getToken()
+    const payload = token.split('.')[1];
+    const values = atob(payload);
+    const valuesJson = JSON.parse(values);
+    const candidatos = valuesJson.candidatos
+    return candidatos
+  }
   isEmpresa(): boolean{
     if (!this.isLogged()) {
       return false;
