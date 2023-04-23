@@ -12,15 +12,15 @@ export class MenuComponent implements OnInit {
   id: string = "";
   rol: any;
   isLogged: boolean = false;
+  isEmpresa: boolean = false;
 
   constructor(
     private tokenService: TokenService,
     private router: Router
   ){}
   ngOnInit(): void {
-    this.id = this.tokenService.getId()
-    this.rol= this.tokenService.getRol()
-    this.tokenService.isLogged() ? this.isLogged=true: this.isLogged=false;
+    this.isLogged = this.tokenService.isLogged();
+    this.isEmpresa = this.tokenService.isEmpresa();
   }
   logOut():void{
     this.tokenService.logOut()

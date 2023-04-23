@@ -44,11 +44,11 @@
           <!-- <td>{{empleo.telefono}}</td> -->
           <!-- <td>{{empleo.email}}</td> -->
           <td>{{ getTime(empleo.createdAt) }}</td>
-          <td><button class="btn btn-outline-primary" routerLink="/detalle/{{empleo.id}}"><i class="far fa-eye"></i>
+          <td><button  class="btn btn-outline-primary" routerLink="/detalle/{{empleo.id}}"><i class="far fa-eye"></i>
               Ver</button>
-            <td><button class="btn btn-outline-warning" routerLink="/editar/{{empleo.id}}"><i class="far fa-edit"></i>
+            <td><button *ngIf="isEmpresa" class="btn btn-outline-warning" routerLink="/editar/{{empleo.id}}"><i class="far fa-edit"></i>
             Editar</button></td>
-        <td><button class="btn btn-outline-danger" (click)="empleo.id !== undefined && borrar(empleo.id)"><i
+        <td><button *ngIf="isEmpresa" class="btn btn-outline-danger" (click)="empleo.id !== undefined && borrar(empleo.id)"><i
               class="far fa-trash-alt"></i> Eliminar </button></td>
         </tr>
       </tbody>
@@ -88,9 +88,9 @@
           <td><button class="btn btn-outline-primary" routerLink="/detalle/{{empleo.id}}"><i class="far fa-eye"></i>
               Ver</button>
           </td>
-          <td><button class="btn btn-outline-warning" routerLink="/editar/{{empleo.id}}"><i class="far fa-edit"></i>
+          <td><button  *ngIf="isEmpresa" class="btn btn-outline-warning" routerLink="/editar/{{empleo.id}}"><i class="far fa-edit"></i>
             Editar</button></td>
-        <td><button class="btn btn-outline-danger" (click)="empleo.id !== undefined && borrar(empleo.id)"><i
+        <td><button  *ngIf="isEmpresa" class="btn btn-outline-danger" (click)="empleo.id !== undefined && borrar(empleo.id)"><i
               class="far fa-trash-alt"></i> Eliminar </button></td>
         </tr>
       </tbody>

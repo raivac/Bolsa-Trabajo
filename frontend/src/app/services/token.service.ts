@@ -8,8 +8,8 @@ export class TokenService {
 
   constructor() { }
 
-  isLogged(): boolean{
-    if(this.getToken()){
+  isLogged(): boolean {
+    if (this.getToken()) {
       return true;
     }
     return false;
@@ -24,37 +24,64 @@ export class TokenService {
     return localStorage.getItem('token');
   }
 
-  getId():string{
-    if(!this.isLogged()){
+  getId(): string {
+    if (!this.isLogged()) {
       return "Logeate";
     }
     const token = this.getToken()
     const payload = token.split('.')[1];
     const values = atob(payload);
-    const valuesJson= JSON.parse(values);
+    const valuesJson = JSON.parse(values);
     const id = valuesJson.id;
-    console.log(valuesJson)
     return id
   }
-  getRol():string{
-    if(!this.isLogged()){
+  getRol(): string {
+    if (!this.isLogged()) {
       return "Logeate";
     }
     const token = this.getToken()
     const payload = token.split('.')[1];
     const values = atob(payload);
-    const valuesJson= JSON.parse(values);
+    const valuesJson = JSON.parse(values);
     const rol = valuesJson.roles[0]
-    console.log(rol)
     return rol
   }
-  logOut():void{
-    localStorage.removeItem('token');
-      Swal.fire({
-        icon: 'warning',
-        title: 'Sesión cerrada',
-        showConfirmButton: false,
-        timer: 3000
-      });
+  isEmpresa(): boolean{
+    if (!this.isLogged()) {
+      return false;
+    }
+    const token = this.getToken()
+    const payload = token.split('.')[1];
+    const values = atob(payload);
+    const valuesJson = JSON.parse(values);
+    const roles = valuesJson.roles;
+    if(roles.indexOf('empresa')<0){
+      return false;
+    }
+    return true
   }
+  isCandidato(): boolean{
+    if (!this.isLogged()) {
+      return false;
+    }
+    const token = this.getToken()
+    const payload = token.split('.')[1];
+    const values = atob(payload);
+    const valuesJson = JSON.parse(values);
+    const roles = valuesJson.roles;
+    if(roles.indexOf('candidato')<0){
+      return false;
+    }
+    return true
+  }
+  logOut(): void {
+    localStorage.removeItem('token');
+    Swal.fire({
+      icon: 'warning',
+      title: 'Sesión cerrada',
+      showConfirmButton: false,
+      timer: 3000
+    });
+  }
+  
 }

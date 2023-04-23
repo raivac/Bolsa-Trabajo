@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Empleo } from '../models/empleo';
 import { EmpleoService } from '../services/empleo.service';
 import Swal from 'sweetalert2';
+import { TokenService } from '../services/token.service';
 
 
 
@@ -13,9 +14,11 @@ import Swal from 'sweetalert2';
 export class ListaEmpleoComponent implements OnInit {
 
   empleos: Empleo[] = [];
+  isEmpresa: boolean = false;
 
   constructor(
     private empleoService: EmpleoService,
+    private tokenService: TokenService
   ) { }
   
   
@@ -25,6 +28,7 @@ export class ListaEmpleoComponent implements OnInit {
     input.addEventListener('input', () => {
       this.textoBusqueda = input.value;
     });
+    this.isEmpresa = this.tokenService.isEmpresa()
   }
 
   listaVacia = undefined;

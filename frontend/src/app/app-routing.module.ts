@@ -9,6 +9,8 @@ import { LoginCandidatoComponent } from './auth/login-candidato.component';
 import { LoginEmpresaComponent } from './auth/login-empresa.component';
 import { RegistroCandidatoComponent } from './auth/registro-candidato.component';
 import { RegistroEmpresaComponent } from './auth/registro-empresa.component';
+import { LoginEmpresaGuard } from './guards/login-empresa.guard';
+import { LoginCandidatoGuard } from './guards/login-candidato.guard';
 
 const routes: Routes = [
   {path: 'politica', component: PoliticaComponent},
@@ -16,10 +18,10 @@ const routes: Routes = [
   {path: 'detalle/:id', component: DetalleEmpleoComponent},
   {path: 'nuevo', component: NuevoEmpleoComponent},
   {path: 'editar/:id', component: EditarEmpleoComponent},
-  {path: 'login-candidato', component: LoginCandidatoComponent},
-  {path: 'login-empresa', component: LoginEmpresaComponent},
-  {path: 'registro-candidato', component: RegistroCandidatoComponent},
-  {path: 'registro-empresa', component: RegistroEmpresaComponent},
+  {path: 'login-candidato', component: LoginCandidatoComponent,canActivate:[LoginCandidatoGuard]},
+  {path: 'login-empresa', component: LoginEmpresaComponent,canActivate:[LoginEmpresaGuard]},
+  {path: 'registro-candidato', component: RegistroCandidatoComponent,canActivate:[LoginCandidatoGuard]},
+  {path: 'registro-empresa', component: RegistroEmpresaComponent,canActivate:[LoginEmpresaGuard]},
   {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 

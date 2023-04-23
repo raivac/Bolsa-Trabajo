@@ -4,8 +4,6 @@ import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr';
 import { ListaEmpleoComponent } from './empleo/lista-empleo.component';
 import { NuevoEmpleoComponent } from './empleo/nuevo-empleo.component';
 import { EditarEmpleoComponent } from './empleo/editar-empleo.component';
@@ -16,6 +14,10 @@ import { LoginCandidatoComponent } from './auth/login-candidato.component';
 import { LoginEmpresaComponent } from './auth/login-empresa.component';
 import { RegistroEmpresaComponent } from './auth/registro-empresa.component';
 import { RegistroCandidatoComponent } from './auth/registro-candidato.component';
+import { interceptorProvider } from './interceptors/empleo.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
 
 
 @NgModule({
@@ -40,7 +42,7 @@ import { RegistroCandidatoComponent } from './auth/registro-candidato.component'
     ToastrModule.forRoot(),
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [interceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
