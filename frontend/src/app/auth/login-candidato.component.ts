@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { LoginCandidatoDto } from '../models/login-empresa.dto copy';
+import { LoginCandidatoDto } from '../models/login-candiato.dto';
 import { AuthService } from '../services/auth.service';
 import { TokenService } from '../services/token.service';
 
@@ -10,7 +10,7 @@ import { TokenService } from '../services/token.service';
   templateUrl: './login-candidato.component.html',
   styleUrls: ['./login-candidato.component.css']
 })
-export class LoginCandidatoComponent {
+export class LoginCandidatoComponent implements OnInit{
 
   loginCandidato: LoginCandidatoDto = new LoginCandidatoDto('ejemplo@ejemplo.com', 'contraseña');
   email: string = "";
@@ -22,13 +22,14 @@ export class LoginCandidatoComponent {
     private router: Router
 
   ) { }
+  ngOnInit(): void {
+  }
+  
   
   onLogin() {
-    
     this.loginCandidato = new LoginCandidatoDto(this.email, this.password);
     this.authService.loginCandidato(this.loginCandidato).subscribe(
       data => {
-        console.log(data.token);
         if (!data.token) {
           Swal.fire({
             icon: 'error',
@@ -48,7 +49,7 @@ export class LoginCandidatoComponent {
           localStorage.removeItem('token');
           Swal.fire({
             icon: 'warning',
-            title: 'Entra comocandidato no como empresa ',
+            title: 'Entra como candidato no como empresa ',
             showConfirmButton: false,
             timer: 3000
           });}

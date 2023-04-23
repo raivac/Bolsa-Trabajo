@@ -17,11 +17,13 @@
         <div class="card-body">
             <form class="form-group">
                 <label for="email">Email:</label>
-                <input type="text" class="form-control mb-3" name="email" id="email" required>
+                <input type="text" class="form-control mb-3" name="email" id="email" required
+                [(ngModel)]="email">
             </form>
             <form class="form-group">
                 <label for="password">Contraseña:</label>
-                <input type="password" class="form-control" name="password" id="password" required>
+                <input type="password" class="form-control" name="password" id="password" required
+                [(ngModel)]="password">
             </form>
             <form class="form-group">
                 <button class="btn btn-outline-success btn-block mt-4" (click)="onLogin()"><i

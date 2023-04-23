@@ -82,11 +82,6 @@ export class AuthService {
 
         const passwordOk = await bcrypt.compare(dto.password, candidato.password);
 
-        console.log(dto.password);
-        console.log(typeof dto.password);
-        console.log(candidato.password)
-        console.log(typeof candidato.password)
-
         if (!passwordOk) return new UnauthorizedException('contraseña incorresta');
 
 

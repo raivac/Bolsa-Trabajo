@@ -32,7 +32,6 @@ export class LoginEmpresaComponent implements OnInit {
     this.loginEmpresa = new LoginEmpresaDto(this.email, this.password);
     this.authService.loginEmpresa(this.loginEmpresa).subscribe(
       data => {
-        console.log(data.token);
         if (!data.token) {
           Swal.fire({
             icon: 'error',

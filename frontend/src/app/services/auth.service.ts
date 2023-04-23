@@ -4,7 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { LoginEmpresaDto } from '../models/login-empresa.dto';
 import { Observable } from 'rxjs';
 import { CreateEmpresaDto } from '../models/create-empresa.dto';
-import { LoginCandidatoDto } from '../models/login-empresa.dto copy';
+import { LoginCandidatoDto } from '../models/login-candiato.dto';
 import { CreateCandidatoDto } from '../models/create-candidato.dto';
 
 
