@@ -10,7 +10,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   templateUrl: './mis-ofertas.component.html',
   styleUrls: ['./mis-ofertas.component.css']
 })
-export class MisOfertasComponent implements OnInit{
+export class MisOfertasComponent implements OnInit {
 
   empleos: Empleo[] = [];
   isEmpresa: boolean = false;
@@ -22,7 +22,7 @@ export class MisOfertasComponent implements OnInit{
     private tokenService: TokenService,
     public domSanitizer: DomSanitizer,
   ) { }
-  
+
   ngOnInit(): void {
     this.idEmpresa = this.tokenService.getId()
     this.cargarEmpleos();
@@ -56,18 +56,18 @@ export class MisOfertasComponent implements OnInit{
     const blob = new Blob([byteArray], { type: 'application/pdf' });
     const url = URL.createObjectURL(blob);
     return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
-}
-verCandidatos(empleo: any) {
-  this.empleoSeleccionado = empleo;
-  this.mostrarCandidatos = true;
-}
-ocultarCandidatos(empleo: any) {
-  this.empleoSeleccionado = empleo;
-  this.mostrarCandidatos = false;
-}
+  }
+  verCandidatos(empleo: any) {
+    this.empleoSeleccionado = empleo;
+    this.mostrarCandidatos = true;
+  }
+  ocultarCandidatos(empleo: any) {
+    this.empleoSeleccionado = empleo;
+    this.mostrarCandidatos = false;
+  }
 
 
-  
+
 
   //funcion para eliminar una oferta por su id
   borrar(id: number) {
@@ -110,28 +110,28 @@ ocultarCandidatos(empleo: any) {
     const minutos = Math.round(milisegundos / 60000);
     if (minutos === 0) {
       return 'justo ahora';
-    } else 
-    if (minutos < 60) {
-      return `hace ${minutos} ${minutos === 1 ? 'minuto' : 'minutos'}`;
-    } else 
-    if (minutos < 1440) {
-      const horas = Math.floor(minutos / 60);
-      return `hace ${horas} ${horas === 1 ? 'hora' : 'horas'}`;
-    } else {
-      const dias = Math.floor(minutos / 1440);
-      return `hace ${dias} ${dias === 1 ? 'día' : 'días'}`;
-    }
+    } else
+      if (minutos < 60) {
+        return `hace ${minutos} ${minutos === 1 ? 'minuto' : 'minutos'}`;
+      } else
+        if (minutos < 1440) {
+          const horas = Math.floor(minutos / 60);
+          return `hace ${horas} ${horas === 1 ? 'hora' : 'horas'}`;
+        } else {
+          const dias = Math.floor(minutos / 1440);
+          return `hace ${dias} ${dias === 1 ? 'día' : 'días'}`;
+        }
   }
 
   alertaLogin() {
-    if(!this.tokenService.isLogged()){
-    Swal.fire({
-      title: 'Error',
-      text: 'Inicie sesión para ver los detalles',
-      icon: 'error',
-      showConfirmButton: false,
-      timer: 3000
-    });
-  }
+    if (!this.tokenService.isLogged()) {
+      Swal.fire({
+        title: 'Error',
+        text: 'Inicie sesión para ver los detalles',
+        icon: 'error',
+        showConfirmButton: false,
+        timer: 3000
+      });
+    }
   }
 }

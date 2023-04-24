@@ -9,7 +9,7 @@
         <th scope="col">Empresa</th>
         <th scope="col">Ubicación</th>
         <th scope="col">Publicada</th>
-        <th scope="col" colspan="4"></th>
+        <th scope="col" colspan="5"></th>
       </tr>
     </thead>
 
@@ -39,13 +39,14 @@
   </table>
   <div class="container" *ngIf="mostrarCandidatos">
     <div class="col-md-6" *ngFor="let empleo of empleos">
-      <table >
+      <table class="candidatos-table" >
         <tr *ngFor="let candidato of getCandidatosArray(empleo.candidatos)">
-          <td><iframe [src]="getBase64(candidato)" width="100%" height="1000px"></iframe></td>
+          <td><iframe [src]="getBase64(candidato)" width="100%" height="500px"></iframe></td>
         </tr>
       </table>
     </div>
   </div>
+  
 
 </div>
 
