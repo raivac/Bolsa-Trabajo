@@ -1,51 +1,44 @@
 <app-menu></app-menu>
-<!-- lista con todos los empleos guardados en la bd -->
 <div class="lista" *ngIf="!listaVacia">
-  <table id="tablaOfertas" class="table table-dark text-center">
-    <thead>
-      <tr>
-        <th scope="col"></th>
-        <th scope="col">Puesto</th>
-        <th scope="col">Empresa</th>
-        <th scope="col">Ubicación</th>
-        <th scope="col">Publicada</th>
-        <th scope="col" colspan="5"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <ng-container *ngFor="let empleo of empleos">
-        <tr>
-          <td><img id="logo" src="{{empleo.logo}}" alt="logo"></td>
-          <td>{{empleo.titulo}}</td>
-          <td>{{empleo.empresa}}</td>
-          <td>{{empleo.ubicacion}}</td>
-          <td>{{ publicado(empleo.createdAt) }}</td>
-          <td><button class="btn btn-outline-primary" (click)="alertaLogin()" routerLink="/detalle/{{empleo.id}}"><i
-                class="far fa-eye"></i>
-              Ver</button></td>
-          <td><button *ngIf="isEmpresa  && !empleo.mostrarCandidatos"  class="btn btn-outline-primary" (click)="verCandidatos(empleo)"><i class="far fa-eye"></i>
-              Ver Candidatos</button></td>
-              <button class="btn btn-outline-danger" *ngIf="empleo.mostrarCandidatos" (click)="ocultarCandidatos(empleo)">
-                Ocultar candidatos
-              </button>
-          <td><button *ngIf="isEmpresa" class="btn btn-outline-warning" routerLink="/editar/{{empleo.id}}"><i
-                class="far fa-edit"></i>
-              Editar</button></td>
-          <td><button *ngIf="isEmpresa" class="btn btn-outline-danger"
-              (click)="empleo.id !== undefined && borrar(empleo.id)"><i class="far fa-trash-alt"></i> Eliminar </button>
-          </td>
-        </tr>
+  <ul id="listaOfertas" class="list-group list-group-dark">
+    <ng-container *ngFor="let empleo of empleos">
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex justify-content-between align-items-center">
+            <img id="logo" src="{{empleo.logo}}" alt="logo" class="mr-3">
+            <p class="mb-1">{{empleo.titulo}}</p>
+            <p class="mb-1">{{empleo.empresa}}</p>
+            <p class="mb-1">{{empleo.ubicacion}}</p>
+            <p class="mb-1">{{ publicado(empleo.createdAt) }}</p>
+          </div>
+          <div>
+            <button class="btn btn-outline-primary mr-2" (click)="alertaLogin()" routerLink="/detalle/{{empleo.id}}"><i
+                  class="far fa-eye"></i>
+              Ver</button>
+            <button *ngIf="isEmpresa  && !empleo.mostrarCandidatos" class="btn btn-outline-primary mr-2"
+              (click)="verCandidatos(empleo)"><i class="far fa-eye"></i>
+              Ver Candidatos</button>
+            <button class="btn btn-outline-danger mr-2" *ngIf="empleo.mostrarCandidatos"
+              (click)="ocultarCandidatos(empleo)">
+              Ocultar candidatos
+            </button>
+            <button *ngIf="isEmpresa" class="btn btn-outline-warning mr-2" routerLink="/editar/{{empleo.id}}"><i
+                  class="far fa-edit"></i>
+              Editar</button>
+            <button *ngIf="isEmpresa" class="btn btn-outline-danger" (click)="empleo.id !== undefined && borrar(empleo.id)"><i class="far fa-trash-alt"></i> Eliminar </button>
+          </div>
+        </div>
         <ng-container *ngIf="empleo.mostrarCandidatos">
-          <tr *ngFor="let candidato of getCandidatosArray(empleo.candidatos)">
-            <td><iframe [src]="getBase64(candidato)" width="100%" height="1000vh"></iframe></td>
-          </tr>
+          <ul *ngFor="let candidato of getCandidatosArray(empleo.candidatos)">
+            <li>
+              <iframe [src]="getBase64(candidato)"></iframe>
+            </li>
+          </ul>
         </ng-container>
-      </ng-container>
-    </tbody>
-  </table>
+      </li>
+    </ng-container>
+  </ul>
 </div>
-
-<!-- Si la lista esta vacia mostrara... -->
 <div class="container" *ngIf="listaVacia">
   <div class="p-3 mb-2 bg-dark text-white text-center">
     <h2>La lista esta vacia</h2>
