@@ -12,42 +12,37 @@
         <th scope="col" colspan="5"></th>
       </tr>
     </thead>
-
     <tbody>
-      <tr *ngFor="let empleo of empleos">
-        <td><img id="logo" src="{{empleo.logo}}" alt="logo"></td>
-        <td>{{empleo.titulo}}</td>
-        <td>{{empleo.empresa}}</td>
-        <td>{{empleo.ubicacion}}</td>
-        <td>{{ publicado(empleo.createdAt) }}</td>
-        <td><button class="btn btn-outline-primary" (click)="alertaLogin()" routerLink="/detalle/{{empleo.id}}"><i
-              class="far fa-eye"></i>
-            Ver</button></td>
-        <td><button *ngIf="!mostrarCandidatos" class="btn btn-outline-primary" (click)="verCandidatos(empleo)"><i class="far fa-eye"></i>
-            Ver Candidatos</button></td>
-        <td><button class="btn btn-outline-danger" *ngIf="mostrarCandidatos" (click)="ocultarCandidatos(empleo)"><i class="far fa-trash-alt"></i> Ocultar
-            candidatos</button></td>
-        <td><button *ngIf="isEmpresa" class="btn btn-outline-warning" routerLink="/editar/{{empleo.id}}"><i
-              class="far fa-edit"></i>
-            Editar</button></td>
-        <td><button *ngIf="isEmpresa" class="btn btn-outline-danger"
-            (click)="empleo.id !== undefined && borrar(empleo.id)"><i class="far fa-trash-alt"></i> Eliminar </button>
-        </td>
-      </tr>
-
+      <ng-container *ngFor="let empleo of empleos">
+        <tr>
+          <td><img id="logo" src="{{empleo.logo}}" alt="logo"></td>
+          <td>{{empleo.titulo}}</td>
+          <td>{{empleo.empresa}}</td>
+          <td>{{empleo.ubicacion}}</td>
+          <td>{{ publicado(empleo.createdAt) }}</td>
+          <td><button class="btn btn-outline-primary" (click)="alertaLogin()" routerLink="/detalle/{{empleo.id}}"><i
+                class="far fa-eye"></i>
+              Ver</button></td>
+          <td><button *ngIf="isEmpresa  && !empleo.mostrarCandidatos"  class="btn btn-outline-primary" (click)="verCandidatos(empleo)"><i class="far fa-eye"></i>
+              Ver Candidatos</button></td>
+              <button class="btn btn-outline-danger" *ngIf="empleo.mostrarCandidatos" (click)="ocultarCandidatos(empleo)">
+                Ocultar candidatos
+              </button>
+          <td><button *ngIf="isEmpresa" class="btn btn-outline-warning" routerLink="/editar/{{empleo.id}}"><i
+                class="far fa-edit"></i>
+              Editar</button></td>
+          <td><button *ngIf="isEmpresa" class="btn btn-outline-danger"
+              (click)="empleo.id !== undefined && borrar(empleo.id)"><i class="far fa-trash-alt"></i> Eliminar </button>
+          </td>
+        </tr>
+        <ng-container *ngIf="empleo.mostrarCandidatos">
+          <tr *ngFor="let candidato of getCandidatosArray(empleo.candidatos)">
+            <td><iframe [src]="getBase64(candidato)" width="100%" height="1000vh"></iframe></td>
+          </tr>
+        </ng-container>
+      </ng-container>
     </tbody>
   </table>
-  <div class="container" *ngIf="mostrarCandidatos">
-    <div class="col-md-6" *ngFor="let empleo of empleos">
-      <table class="candidatos-table" >
-        <tr *ngFor="let candidato of getCandidatosArray(empleo.candidatos)">
-          <td><iframe [src]="getBase64(candidato)" width="100%" height="500px"></iframe></td>
-        </tr>
-      </table>
-    </div>
-  </div>
-  
-
 </div>
 
 <!-- Si la lista esta vacia mostrara... -->

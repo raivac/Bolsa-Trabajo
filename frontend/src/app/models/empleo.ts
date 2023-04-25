@@ -12,6 +12,7 @@ export class Empleo {
   telefono: number;
   email: string;
   candidatos:string;
+  mostrarCandidatos?: boolean;
 
   constructor(titulo: string, empresa: string, descripcion: string, tipoContrato: string, jornada: string, salario: number, logo: string, idEmpresa: number , ubicacion: string, telefono: number, email:string,candidatos:string) {
     this.titulo = titulo;

@@ -15,7 +15,6 @@ export class MisOfertasComponent implements OnInit {
   empleos: Empleo[] = [];
   isEmpresa: boolean = false;
   idEmpresa: number = 0;
-  empleoSeleccionado: any;
   mostrarCandidatos: boolean = false;
   constructor(
     private empleoService: EmpleoService,
@@ -57,13 +56,13 @@ export class MisOfertasComponent implements OnInit {
     const url = URL.createObjectURL(blob);
     return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
   }
-  verCandidatos(empleo: any) {
-    this.empleoSeleccionado = empleo;
-    this.mostrarCandidatos = true;
+  verCandidatos(empleo: Empleo) {
+    this.empleos.forEach(e => e.mostrarCandidatos = false);
+    empleo.mostrarCandidatos = true; 
   }
-  ocultarCandidatos(empleo: any) {
-    this.empleoSeleccionado = empleo;
-    this.mostrarCandidatos = false;
+  ocultarCandidatos(empleo: Empleo) {
+    this.empleos.forEach(e => e.mostrarCandidatos = false);
+    empleo.mostrarCandidatos = false; 
   }
 
 
