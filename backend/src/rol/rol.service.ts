@@ -21,25 +21,29 @@ export class RolService {
         return roles;
     }
 
-    async create(dto: CreateRolDto): Promise<any> {
-        const rol = await this.rolRepository.findOne({ where: { rolNombre: dto.rolNombre } });
-        console.log(rol)
-        if (rol) throw new BadRequestException({ message: 'rol existentes' })
-        await this.rolRepository.save(dto as RolEntity);
-        console.log(dto as RolEntity)
-        return console.log('rol creado');
+    async create(dto: CreateRolDto): Promise<void> {
+      const existingRol = await this.rolRepository.findOne({ where: { rolNombre: dto.rolNombre } });
+      if (existingRol) {
+        throw new BadRequestException('El rol ya existe');
+      }
+    
+      const newRol = new RolEntity();
+      newRol.rolNombre = dto.rolNombre;
+    
+      await this.rolRepository.save(newRol);
     }
-    async crearRolesIniciales(): Promise<any> {
-        for (const rol of Object.values(RolNombre)) {
-          const existingRol = await this.rolRepository.findOne({ where: { rolNombre: rol } });
-          if (!existingRol) {
-            const createRolDto: CreateRolDto = {
-              rolNombre: rol
-            };
-            await this.rolRepository.create(createRolDto);
-          }
+    async crearRolesIniciales(): Promise<void> {
+      for (const rol of Object.values(RolNombre)) {
+        const existRol = await this.rolRepository.findOne({ where: { rolNombre: rol } });
+        if (!existRol) {
+          const createRolDto: CreateRolDto = {
+            rolNombre: rol
+          };
+          await this.create(createRolDto);
         }
       }
+    }
+    
       
       
 }

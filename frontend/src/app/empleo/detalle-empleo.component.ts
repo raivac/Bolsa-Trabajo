@@ -78,7 +78,7 @@ export class DetalleEmpleoComponent implements OnInit {
       err => {
         Swal.fire({
           icon: 'error',
-          title: 'Error al actualizar la oferta',
+          title: 'Error al subir el documento',
           showConfirmButton: false,
           timer: 3000
         })
