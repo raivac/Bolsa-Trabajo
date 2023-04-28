@@ -69,7 +69,7 @@ export class DetalleEmpleoComponent implements OnInit {
       data => {
         Swal.fire({
           icon: 'success',
-          title: 'Oferta actualizada exitosamente!',
+          title: 'Registrado correctamente',
           showConfirmButton: false,
           timer: 3000
         })

@@ -30,7 +30,7 @@
                     <li class="list-group-item"><b>Publicada: </b> {{ publicado(empleo.createdAt) }}<input type="hidden" class="form-control" id="createdAt" name="createdAt"
                         [(ngModel)]="empleo.createdAt" required></li>
                     <li class="list-group-item" *ngIf="isCandidato">
-                        <label for="pdf-upload"><b>Sube tu Currivulum Vitae (PDF): </b></label>
+                        <label for="pdf-upload"><b>Sube tu Currivulum Vitae (PDF): </b></label><br>
                         <input id="pdf-upload" type="file" accept="application/pdf" (change)="guardarCandidato($event)">
                       </li>
                       <button class="btn btn-outline-success btn-block mt-3 "  *ngIf="isCandidato" (click)="actualizar()"><i
