@@ -1,0 +1,31 @@
+* {
+    list-style: none;
+}
+
+#logo {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.card {
+    padding: 1vw;
+    border-radius: 1vw;
+    box-shadow: 0px 0px 10px white;
+    background-color: #212529;
+}
+
+.card-header,
+.card-footer,
+.list-group-item {
+    /* background-color: rgb(209, 209, 209); */
+    background-color: #212529;
+    color: white;
+}
+
+li:nth-child(1) {
+    margin: 1.5rem auto;
+}
+.container{
+    display: flex;
+    justify-content: center;
+}

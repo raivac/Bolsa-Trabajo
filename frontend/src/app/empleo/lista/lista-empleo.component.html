@@ -1,0 +1,80 @@
+<app-menu></app-menu>
+<!-- Barra de busqueda de empleo -->
+<div id="buscar" class="input-group">
+  <div id="buscador" class="col">
+    <input type="search" id="busca" class="form-control rounded"
+      placeholder="Busca por puesto, empresa o palabra clave..." (keyup)="enter($event)">
+    <button type="submit" class="btn btn-outline-primary" (click)="buscar()"><i class="fas fa-search-plus"></i>
+      Buscar</button>
+    <button class="btn btn-outline-danger" (click)="limpiarBusqueda()"><i class="fas fa-search-minus"></i> Limpiar
+      búsqueda</button>
+  </div>
+</div>
+
+<!-- lista con todos los empleos guardados en la bd -->
+<div class="lista" *ngIf="!listaVacia">
+  <table id="tablaOfertas" class="table table-dark text-center" *ngIf="mostrarTabla">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Puesto</th>
+        <th scope="col">Salario</th>
+        <th scope="col">Empresa</th>
+        <th scope="col">Jornada</th>
+        <th scope="col">Ubicación</th>
+        <th scope="col">Publicada</th>
+        <th scope="col" colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let empleo of empleos">
+        <td><img id="logo" src="{{empleo.logo}}" alt="logo"></td>
+        <td>{{empleo.titulo}}</td>
+        <td>{{empleo.salario}}€</td>
+        <td>{{empleo.empresa}}</td>
+        <td>{{empleo.jornada}}</td>
+        <td>{{empleo.ubicacion}}</td>
+        <td>{{ publicado(empleo.createdAt) }}</td>
+        <td><button class="btn btn-outline-primary" routerLink="/detalle/{{empleo.id}}"><i class="far fa-eye"></i>
+            Ver</button>
+    </tbody>
+  </table>
+</div>
+
+<!-- Si la lista esta vacia mostrara... -->
+<div class="container" *ngIf="listaVacia">
+  <div class="p-3 mb-2 bg-dark text-white text-center">
+    <h2>La lista esta vacia</h2>
+  </div>
+</div>
+
+<!-- Lista que mostrara las ofertas cuyas palabras concidan con la busqueda -->
+<div class="lista" *ngIf="empleosFiltrados?.length ?? 0 > 0">
+  <table id="tablaBusqueda" class="table table-dark text-center">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Puesto</th>
+        <th scope="col">Empresa</th>
+        <th scope="col">Jornada</th>
+        <th scope="col">Ubicación</th>
+        <th scope="col">Publicada</th>
+        <th scope="col" colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let empleo of empleosFiltrados">
+        <td><img id="logo" src="{{empleo.logo}}" alt="logo"></td>
+        <td>{{empleo.titulo}}</td>
+        <td>{{empleo.empresa}}</td>
+        <td>{{empleo.jornada}}</td>
+        <td>{{empleo.ubicacion}}</td>
+        <td>{{ publicado(empleo.createdAt) }}</td>
+        <td><button class="btn btn-outline-primary" routerLink="/detalle/{{empleo.id}}"><i class="far fa-eye"></i>
+            Ver</button>
+        </td>
+    </tbody>
+  </table>
+</div>

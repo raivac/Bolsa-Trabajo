@@ -1,0 +1,43 @@
+<app-menu></app-menu>
+
+<div class="container d-flex justify-content-center">
+    <div class="card">
+        <div class="card-header">
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/login-candidato"><i class="fa-solid fa-right-to-bracket"></i>
+                        Login</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" routerLink="/registro-candidato" routerLinkActive="active"><i class="fa-solid fa-user-plus"></i> Crea tu
+                        cuenta como candidato</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card-body">
+            <form class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" class="form-control mb-3" name="nombre" id="nombre" required  [(ngModel)]="nombre">
+                
+                <label for="apellidos">Apellidos:</label>
+                <input type="text" class="form-control mb-3" name="apellidos" id="apellidos" required [(ngModel)]="apellidos">
+            
+                <label for="telefono">telefono:</label>
+                <input type="number" min="0" class="form-control mb-3" name="telefono" id="telefono" required  [(ngModel)]="telefono">
+            
+                <label for="cif">cif:</label>
+                <input type="text" class="form-control mb-3" name="cif" id="cif" required  [(ngModel)]="cif">
+            
+                <label for="email">Email:</label>
+                <input type="text" class="form-control mb-3" name="email" id="email" required  [(ngModel)]="email">
+            
+                <label for="password">Contraseña:</label>
+                <input type="password" class="form-control mb-3" name="password" id="password" required  [(ngModel)]="password">
+            
+                <button class="btn btn-outline-success btn-block"  (click)="onRegister()"><i class="fa-solid fa-user-plus" ></i> Registrate</button>
+            </form>
+            
+        </div>
+    </div>
+</div>

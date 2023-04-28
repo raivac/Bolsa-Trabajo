@@ -1,0 +1,80 @@
+<app-menu></app-menu>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-4 mx-auto">
+            <form #myForm="ngForm" (ngSubmit)="crear()">
+
+                <h1>Publica tu oferta</h1>
+
+                <div class="form-group">
+                    <label for="logo">Logo de la empresa(OPCIONAL)</label><br>
+                    <input type="file" class="form-control-file" id="logo" name="logo" (change)="guardarLogo($event)"
+                        accept="image/*">
+                </div>
+
+                <div class="form-group">
+                    <label for="titulo">Titulo de la oferta <span>*</span></label>
+                    <input type="text" class="form-control" id="titulo" name="titulo" [(ngModel)]="titulo" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="descripcion">Descripcion de la oferta <span>*</span></label>
+                    <textarea class="form-control" name="descripcion" id="descripcion" rows="4" required  [(ngModel)]="descripcion"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="empresa">Nombre de la empresa <span>*</span></label>
+                    <input type="text" class="form-control" id="empresa" name="empresa" [(ngModel)]="empresa" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="ubicacion">Ubicacion de la empresa <span>*</span></label>
+                    <input type="text" class="form-control" id="ubicacion" name="ubicacion" [(ngModel)]="ubicacion"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="salario">Salario Mensual <span>*</span></label>
+                    <input type="number" class="form-control" id="salario" name="salario" [(ngModel)]="salario"
+                       min=0 required>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipoContrato">Tipo de Contrato <span>*</span></label>
+                    <select class="form-control" id="tipoContrato" name="tipoContrato" [(ngModel)]="tipoContrato"
+                        required>
+                        <option value="Contrato Temporal">Contrato Temporal</option>
+                        <option value="Contrato Indefinido">Contrato Indefinido</option>
+                        <option value="Otro tipo de contacto">Otro tipo de contrato</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="jornada">Jornada laboral <span>*</span></label>
+                    <select class="form-control" id="jornada" name="jornada" [(ngModel)]="jornada" required>
+                        <option value="Media Jornada">Media Jornada</option>
+                        <option value="Jornada Completa">Jornada Completa</option>
+                        <option value="Sin especificar">Sin especificar</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono">Telefono de contacto<span> *</span></label>
+                    <input type="number" class="form-control" id="telefono" name="telefono"
+                        [(ngModel)]="telefono" min=0 required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email de contacto<span> *</span></label>
+                    <input type="text" class="form-control" id="email" name="email" [(ngModel)]="email" required>
+                </div>
+
+                <div id="boton">
+                    <button type="submit" class="btn btn-outline-success btn-block"> <i class="far fa-plus-square"></i> Crear</button>
+                    <button class="btn btn-outline-primary btn-block" (click)="volver()"><i
+                        class="fas fa-arrow-alt-circle-left"></i> Volver</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
