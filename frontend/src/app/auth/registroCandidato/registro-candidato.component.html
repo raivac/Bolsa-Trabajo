@@ -17,22 +17,22 @@
 
         <div class="card-body">
             <form class="form-group">
-                <label for="nombre">Nombre:</label>
+                <label for="nombre">Nombre: <span>*</span></label>
                 <input type="text" class="form-control mb-3" name="nombre" id="nombre" required  [(ngModel)]="nombre">
                 
-                <label for="apellidos">Apellidos:</label>
+                <label for="apellidos">Apellidos: <span>*</span></label>
                 <input type="text" class="form-control mb-3" name="apellidos" id="apellidos" required [(ngModel)]="apellidos">
             
-                <label for="telefono">telefono:</label>
+                <label for="telefono">Telefono: <span>*</span></label>
                 <input type="number" min="0" class="form-control mb-3" name="telefono" id="telefono" required  [(ngModel)]="telefono">
             
-                <label for="cif">cif:</label>
+                <label for="cif">Cif: <span>*</span></label>
                 <input type="text" class="form-control mb-3" name="cif" id="cif" required  [(ngModel)]="cif">
             
-                <label for="email">Email:</label>
+                <label for="email">Email: <span>*</span></label>
                 <input type="text" class="form-control mb-3" name="email" id="email" required  [(ngModel)]="email">
             
-                <label for="password">Contraseña:</label>
+                <label for="password">Contraseña: <span>*</span></label>
                 <input type="password" class="form-control mb-3" name="password" id="password" required  [(ngModel)]="password">
             
                 <button class="btn btn-outline-success btn-block"  (click)="onRegister()"><i class="fa-solid fa-user-plus" ></i> Registrate</button>
