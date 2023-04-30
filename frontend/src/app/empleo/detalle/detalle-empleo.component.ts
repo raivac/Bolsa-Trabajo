@@ -24,7 +24,7 @@ export class DetalleEmpleoComponent implements OnInit {
   telefono: number = 0;
   email: string = '';
   logo: string = '';
-  candidatos: string[] = []; // actualizada a un array
+  candidatos: string[] = [];
 
   empleo: Empleo = new Empleo(this.titulo, this.empresa, this.descripcion, this.tipoContrato, this.jornada, this.salario, this.logo, this.idEmpresa, this.ubicacion, this.telefono, this.email, this.candidatos.join('\n')); // actualizada para unir los candidatos con saltos de línea
 
@@ -35,6 +35,7 @@ export class DetalleEmpleoComponent implements OnInit {
     private tokenService: TokenService
   ) { }
 
+  //cuando inicie...
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.params['id'];
     this.isCandidato = this.tokenService.isCandidato()
@@ -50,6 +51,7 @@ export class DetalleEmpleoComponent implements OnInit {
     );
   }
 
+  //funcion para guardar el cv en el array
   guardarCandidato(event: any) {
     const file = event.target.files[0];
     const reader = new FileReader();
@@ -60,6 +62,7 @@ export class DetalleEmpleoComponent implements OnInit {
     };
   }
 
+  //funcion para actualizar la oferta añadiendole el nuevo array de candidatos
   actualizar(): void {
     const id = this.activatedRoute.snapshot.params['id'];
     this.empleo.logo = this.logo
@@ -110,10 +113,12 @@ export class DetalleEmpleoComponent implements OnInit {
         }
   }
 
+  //funcion para volver a la pagina de innicio
   volver(): void {
     this.router.navigate(['/']);
   }
   
+  //funcion para redirigir al login del candidato
   loginCandidato(): void {
     this.router.navigate(['/login-candidato']);
   }

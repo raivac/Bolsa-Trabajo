@@ -19,14 +19,45 @@ export class MenuComponent implements OnInit {
     private tokenService: TokenService,
     private router: Router
   ) { }
+  //cuando inicie
   ngOnInit(): void {
+    this.mostrarMenu();
     this.isLogged = this.tokenService.isLogged();
     this.isEmpresa = this.tokenService.isEmpresa();
   }
-  logOut(): void {
-    this.tokenService.logOut()
-    this.router.navigate(['/login-empresa'])
+//funcion para mostrar el menu en version mobil
+async mostrarMenu() {
+  const boton = await document.getElementById("boton");
+  const minimenu = await document.getElementById("minimenu");
+  if (boton) {
+    boton.addEventListener("click", function () {
+      if (minimenu && minimenu.style) {
+        if (minimenu.style.display == "none") {
+          minimenu.style.display = "block";
+        } else {
+          minimenu.style.display = "none";
+        }
+      }
+
+    });
   }
+}
+  //funcion para volver al inicio cuando se cierre sesón 
+  logOut():void {
+     this.tokenService.logOut()
+     this.router.navigate(['/'])
+    Swal.fire({
+      icon: 'warning',
+      title: 'Sesión cerrada',
+      showConfirmButton: false,
+      timer: 3000
+    });
+    setTimeout(() => {
+     window.location.reload()
+    }, 3000);
+    
+  }
+  //funcion para avisar que inicien sesón como empresa
   alertaLoginEmpresa() {
     if(!this.tokenService.isEmpresa()){
     this.router.navigate(['/']);
@@ -39,4 +70,7 @@ export class MenuComponent implements OnInit {
     });
   }
   }
+
+  
+
 }

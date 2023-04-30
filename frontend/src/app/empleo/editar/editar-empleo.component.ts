@@ -38,7 +38,7 @@ export class EditarEmpleoComponent implements OnInit {
     private router: Router
   ) { }
 
-
+ //funcion para recoger el logo y guardarlo
   guardarLogo(event: any) {
     const file = event.target.files[0];
     const reader = new FileReader();
@@ -48,6 +48,7 @@ export class EditarEmpleoComponent implements OnInit {
     };
   }
 
+  //cuando inicie...
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.params['id'];
     this.empleoService.detail(id).subscribe(
@@ -65,9 +66,10 @@ export class EditarEmpleoComponent implements OnInit {
 
   }
 
+  //funcion para actualizar la oferta
   actualizar(): void {
     this.valid = true;
-    //validacion formulario editar
+
     if (!this.empleo.titulo) {
       this.toastr.error('El título es obligatorio', 'Error');
       this.valid = false;
@@ -140,6 +142,7 @@ export class EditarEmpleoComponent implements OnInit {
   }
 }
 
+//funcion para volver a mis ofertas
   volver(): void {
     this.router.navigate(['/mis-ofertas']);
   }

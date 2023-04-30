@@ -34,6 +34,7 @@ export class NuevoEmpleoComponent implements OnInit {
     private tokenService: TokenService
   ) { }
 
+  //cuando inicie...
   ngOnInit() {
     this.idEmpresa = this.tokenService.getId()
   }
@@ -48,10 +49,10 @@ export class NuevoEmpleoComponent implements OnInit {
   }
 
   
-
+  //funcion para crear la nueva oferta
    crear(): void {
     this.valid = true;
-  //validacion formulario crear
+
     if (!this.titulo) {
       this.toastr.error('El título es obligatorio', 'Error');
       this.valid = false;
@@ -121,6 +122,7 @@ export class NuevoEmpleoComponent implements OnInit {
       );
     }
   }
+  //funcion para volver a la pagina inicial
   volver(): void {
     this.router.navigate(['/']);
   }

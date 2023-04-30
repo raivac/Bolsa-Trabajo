@@ -7,34 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   router: any;
+
+  //cuando inicie...
   ngOnInit(): void {
-    mostrarMenu();
     ocultarPolitica();
   }
   title = 'frontend';
 }
 
-
-function mostrarMenu() {
-  const boton = document.getElementById("boton");
-  const minimenu = document.getElementById("minimenu");
-  if (boton) {
-    boton.addEventListener("click", function () {
-      if (minimenu && minimenu.style) {
-        if (minimenu.style.display == "none") {
-          minimenu.style.display = "block";
-        } else {
-          minimenu.style.display = "none";
-        }
-      }
-
-    });
-  }
-}
-
-
 //localStorage.setItem("poli", "0");
 const poli = parseInt(localStorage.getItem("poli") ?? "0");
+
 //funcion que oculara el div de los cookies
 function ocultarPolitica() {
   const boton = document.getElementById("botonPolitica");

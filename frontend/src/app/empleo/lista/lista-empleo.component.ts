@@ -21,7 +21,7 @@ export class ListaEmpleoComponent implements OnInit {
     private tokenService: TokenService
   ) { }
   
-  
+  //cuando inicie...
   ngOnInit(): void {
     this.cargarEmpleos();
     const input = document.getElementById('busca') as HTMLInputElement;

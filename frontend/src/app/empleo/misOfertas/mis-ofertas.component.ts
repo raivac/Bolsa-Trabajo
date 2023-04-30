@@ -46,6 +46,8 @@ export class MisOfertasComponent implements OnInit {
   getCandidatosArray(candidatosString: string): string[] {
     return candidatosString.split('\n').slice(1);
   }
+
+  //funcion para poder ver los  pdf de los candidatos
   getBase64(base64String: string): SafeResourceUrl {
     const binary = atob(base64String.split(',')[1]);
     const byteArray = new Uint8Array(binary.length);
@@ -56,10 +58,12 @@ export class MisOfertasComponent implements OnInit {
     const url = URL.createObjectURL(blob);
     return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
   }
+  //funcion para mostrar  la lista de los candidatos
   verCandidatos(empleo: Empleo) {
     this.empleos.forEach(e => e.mostrarCandidatos = false);
     empleo.mostrarCandidatos = true; 
   }
+  //funcion para ocultar  la lista de los candidatos
   ocultarCandidatos(empleo: Empleo) {
     this.empleos.forEach(e => e.mostrarCandidatos = false);
     empleo.mostrarCandidatos = false; 
@@ -122,6 +126,7 @@ export class MisOfertasComponent implements OnInit {
         }
   }
 
+  //alerta para avisar de que se inicien sesión
   alertaLogin() {
     if (!this.tokenService.isLogged()) {
       Swal.fire({
