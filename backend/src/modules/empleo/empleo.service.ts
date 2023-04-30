@@ -33,12 +33,8 @@ export class EmpleoService {
         if (!dto.logo) {
             dto.logo = LOGO_DEFAULT;
           }
-          if (!dto.candidatos) {
-            dto.candidatos = "No hay candidatos";
-          }
           const empleo = this.empleoRepository.create(dto);
           await this.empleoRepository.save(empleo);
-          console.log(empleo)
           return empleo;
     }
 

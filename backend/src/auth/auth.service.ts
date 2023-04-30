@@ -1,13 +1,13 @@
 import { BadRequestException, Injectable, InternalServerErrorException, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { RolEntity } from 'src/rol/rol.entity';
-import { RolNombre } from 'src/rol/rol.enum';
-import { RolRepository } from 'src/rol/rol.repository';
-import { UsuarioEntity } from 'src/usuario/usuario.entity';
+import { RolEntity } from 'src/modules/rol/rol.entity';
+import { RolNombre } from 'src/modules/rol/rol.enum';
+import { RolRepository } from 'src/modules/rol/rol.repository';
+import { UsuarioEntity } from 'src/modules/usuario/usuario.entity';
 import { AuthRepository } from './auth.repository';
 import { CreateCantidatoDto } from './dto/create-candidato.dto';
 import { CreateEmpresaDto } from './dto/create-empresa.dto';
-import { UsuarioRepository } from 'src/usuario/usuario.repository';
+import { UsuarioRepository } from 'src/modules/usuario/usuario.repository';
 import { LoginCantidatoDto } from './dto/login-candidato.dto';
 import { PayloadInterface } from './payload.interface';
 import { JwtService } from '@nestjs/jwt';

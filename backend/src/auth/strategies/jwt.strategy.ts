@@ -6,7 +6,7 @@ import { ConfigService } from "@nestjs/config";
 import { JWT_SECRET } from "src/config/constants";
 import { PayloadInterface } from "../payload.interface";
 import { InjectRepository } from "@nestjs/typeorm";
-import { UsuarioEntity } from "src/usuario/usuario.entity";
+import { UsuarioEntity } from "src/modules/usuario/usuario.entity";
 
 @Injectable()
 export class JwTStrategy extends PassportStrategy(Strategy){

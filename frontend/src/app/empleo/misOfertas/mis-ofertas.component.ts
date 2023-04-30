@@ -42,7 +42,7 @@ export class MisOfertasComponent implements OnInit {
       }
     );
   }
-  // función para obtener un array con los candidatos del empleo
+  //función para obtener un array con los candidatos del empleo
   getCandidatosArray(candidatosString: string): string[] {
     return candidatosString.split('\n').slice(1);
   }

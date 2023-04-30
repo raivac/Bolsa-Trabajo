@@ -63,8 +63,7 @@ export class DetalleEmpleoComponent implements OnInit {
   actualizar(): void {
     const id = this.activatedRoute.snapshot.params['id'];
     this.empleo.logo = this.logo
-    this.empleo.candidatos = this.candidatos.join('\n'); 
-    console.log(this.empleo.candidatos = this.candidatos.join('\n'))
+    this.empleo.candidatos = this.candidatos.join('\n');
     this.empleoService.update(id, this.empleo).subscribe(
       data => {
         Swal.fire({
@@ -86,8 +85,6 @@ export class DetalleEmpleoComponent implements OnInit {
       }
     );
   }
-
-
 
   //funcion que devolvera cuanto hace que se creo la oferta y no la fecha de creacion
   publicado(createdAt: Date | undefined): string {
@@ -116,6 +113,7 @@ export class DetalleEmpleoComponent implements OnInit {
   volver(): void {
     this.router.navigate(['/']);
   }
+  
   loginCandidato(): void {
     this.router.navigate(['/login-candidato']);
   }

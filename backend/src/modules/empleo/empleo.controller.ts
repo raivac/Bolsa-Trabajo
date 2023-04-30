@@ -4,8 +4,7 @@ import { EmpleoDTO } from './dto/empleo.dto';
 import { JwtAuthGuard } from 'src/guards/jwt.guard';
 import { RolesGuard } from 'src/guards/rol.guard';
 import { RolDecorator } from 'src/decorators/rol.decorator';
-import { RolNombre } from 'src/rol/rol.enum';
-
+import { RolNombre } from '../rol/rol.enum';
 @Controller('empleo')
 export class EmpleoController {
 

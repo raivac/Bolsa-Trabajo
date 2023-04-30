@@ -6,8 +6,8 @@
       <li class="list-group-item">
         <div class="d-flex justify-content-between align-items-center">
           <div class="d-flex justify-content-between align-items-center">
-            <img id="logo" src="{{empleo.logo}}" alt="logo" class="mr-3">
-            <p> <b>OFERTA: </b>{{empleo.titulo}}</p>
+            <b>OFERTA: </b><img id="logo" src="{{empleo.logo}}" alt="logo">
+            <p>{{empleo.titulo}}</p>
             <p>|</p>
             <p>{{ publicado(empleo.createdAt) }}</p>
           </div>
@@ -19,7 +19,8 @@
               (click)="verCandidatos(empleo)"><i class="far fa-eye"></i>
               Ver Candidatos</button>
             <button class="btn btn-outline-danger mr-2" *ngIf="empleo.mostrarCandidatos"
-              (click)="ocultarCandidatos(empleo)">
+              (click)="ocultarCandidatos(empleo)"><i
+              class="far fa-eye-slash"></i> 
               Ocultar candidatos
             </button>
             <button *ngIf="isEmpresa" class="btn btn-outline-warning mr-2" routerLink="/editar/{{empleo.id}}"><i

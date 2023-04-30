@@ -19,10 +19,8 @@ export class UserGuard implements CanActivate {
     state: RouterStateSnapshot): Promise<boolean | UrlTree> {
 
     const idOferta = next.params['id'];
-    console.log(idOferta)
     const idUsuario = await this.tokenService.getId();
     const idEmpresa: number | undefined = (await this.empleoService.detail(idOferta).toPromise())?.idEmpresa;
-    console.log(idEmpresa)
 
     if (idEmpresa !== undefined && idUsuario !== idEmpresa) {
       return this.router.createUrlTree(['/error']);

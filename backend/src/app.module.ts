@@ -1,12 +1,10 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DB_PORT,DB_PASSWORD,DB_DATABASE,DB_HOST,DB_USER} from './config/constants';
-import { EmpleoModule } from './empleo/empleo.module';
-import { RolModule } from './rol/rol.module';
-import { UsuarioModule } from './usuario/usuario.module';
+import { EmpleoModule } from './modules/empleo/empleo.module';
+import { RolModule } from './modules/rol/rol.module';
+import { UsuarioModule } from './modules/usuario/usuario.module';
 import { AuthModule } from './auth/auth.module';
 
 @Module({
@@ -36,7 +34,7 @@ import { AuthModule } from './auth/auth.module';
     UsuarioModule,
     AuthModule
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}

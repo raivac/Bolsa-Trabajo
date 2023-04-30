@@ -1,10 +1,9 @@
-import { BadRequestException, Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UsuarioRepository } from './usuario.repository';
 import { UsuarioEntity } from './usuario.entity';
-import { RolEntity } from 'src/rol/rol.entity';
-import { RolRepository } from 'src/rol/rol.repository';
-import { RolNombre } from 'src/rol/rol.enum';
+import { RolEntity } from '../rol/rol.entity';
+import { RolRepository } from '../rol/rol.repository';
 
 @Injectable()
 export class UsuarioService {
@@ -22,7 +21,6 @@ export class UsuarioService {
         if(!usuarios.length) throw new NotFoundException({ message: 'no hay usuarios' }) 
         return usuarios;
     }
-
 }
 
 

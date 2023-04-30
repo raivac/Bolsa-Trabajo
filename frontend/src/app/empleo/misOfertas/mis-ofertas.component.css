@@ -26,6 +26,7 @@ button,p, p b {
   max-width: 10vw;
   max-height: 10vw;
   margin: 1vw;
+  margin-left: 3vw;
 }
 
 #listaOfertas{
