@@ -21,24 +21,27 @@ export class MenuComponent implements OnInit {
   ) { }
   //cuando inicie
   ngOnInit(): void {
-    this.mostrarMenu();
+    this.mostrarMenu()
+    this.recargarVentanas(); 
     this.isLogged = this.tokenService.isLogged();
     this.isEmpresa = this.tokenService.isEmpresa();
   }
 //funcion para mostrar el menu en version mobil
-async mostrarMenu() {
-  const boton = await document.getElementById("boton");
-  const minimenu = await document.getElementById("minimenu");
-  if (boton) {
+mostrarMenu():void {
+  const boton = document.getElementById("boton");
+  const minimenu = document.getElementById("minimenu");
+  if (boton && minimenu) {
     boton.addEventListener("click", function () {
-      if (minimenu && minimenu.style) {
-        if (minimenu.style.display == "none") {
-          minimenu.style.display = "block";
-        } else {
-          minimenu.style.display = "none";
-        }
-      }
-
+      minimenu.style.display = minimenu.style.display === "block" ? "none" : "block";
+    });
+  }
+}
+// Función para agregar el listener a los elementos a
+recargarVentanas(): void {
+  const enlaces = document.getElementsByTagName('a');
+  for (let i = 0; i < enlaces.length; i++) {
+    enlaces[i].addEventListener('click', () => {
+      location.reload();
     });
   }
 }
@@ -70,7 +73,4 @@ async mostrarMenu() {
     });
   }
   }
-
-  
-
 }

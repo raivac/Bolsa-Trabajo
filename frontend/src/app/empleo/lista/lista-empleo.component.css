@@ -5,8 +5,8 @@
 }
 
 #logo {
-    max-width: 10vw;
-    max-height: 10vw;
+    max-width: 15vw;
+    max-height: 15vw;
 }
 
 #buscador {
@@ -47,4 +47,13 @@ li {
   }
   button{
     margin: 2vw;
+  }
+
+  @media(min-width:768px) {
+    #logo {
+      max-width: 10vw;
+      max-height: 10vw;
+      margin: 1vw;
+      margin-left: 3vw;
+    }
   }

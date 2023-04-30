@@ -23,8 +23,8 @@ button,p, p b {
 }
 
 #logo {
-  max-width: 10vw;
-  max-height: 10vw;
+  max-width: 15vw;
+  max-height: 15vw;
   margin: 1vw;
   margin-left: 3vw;
 }
@@ -37,4 +37,29 @@ h1{
   text-align: center;
   margin: 2vw;
   font-size: 4em;
+}
+#botones{
+  display: block;
+}
+.d-flex.justify-content-between.align-items-center {
+  flex-direction: column;
+}
+
+p:nth-child(4){
+  display: none;
+}
+
+@media(min-width:768px) {
+  .d-flex.justify-content-between.align-items-center {
+    flex-direction: row;
+  }
+  p:nth-child(4){
+    display: block;
+  }
+  #logo {
+    max-width: 10vw;
+    max-height: 10vw;
+    margin: 1vw;
+    margin-left: 3vw;
+  }
 }
