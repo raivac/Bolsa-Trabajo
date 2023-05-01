@@ -28,7 +28,6 @@ export class LoginEmpresaComponent implements OnInit {
   }
 
   onLogin() {
-
     this.loginEmpresa = new LoginEmpresaDto(this.email, this.password);
     this.authService.loginEmpresa(this.loginEmpresa).subscribe(
       data => {
@@ -69,5 +68,4 @@ export class LoginEmpresaComponent implements OnInit {
       }
     );
   }
-
 }

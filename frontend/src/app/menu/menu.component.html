@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a id="of" class="nav-link" routerLink="/"><i class="far fa-list-alt"></i> Lista de ofertas</a>
+          <a id="of" class="nav-link"  routerLink="/"><i class="far fa-list-alt"></i> Lista de ofertas</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" (click)="alertaLoginEmpresa()" routerLink="/nuevo"><i class="fas fa-plus-circle"></i> Crear una oferta de empleo</a>
@@ -38,14 +38,14 @@
         <div class="col-md-4 offset-md-4">
           <div class="card">
             <div class="card-header">
-              <a class="btn btn-outline-primary"*ngIf="!isLogged" routerLink="/login-empresa"><i class="fas fa-circle-user"></i> Accede como empresa</a>
-              <a class="btn btn-outline-danger" *ngIf="!isLogged"routerLink="/login-candidato"><i class="fas fa-circle-user"></i> Accede como
+              <a class="btn btn-outline-primary"*ngIf="!isLogged" routerLink="/login-empresa" width="100%"><i class="fas fa-circle-user"></i> Accede como empresa</a>
+              <a class="btn btn-outline-danger" *ngIf="!isLogged"routerLink="/login-candidato" width="100%"><i class="fas fa-circle-user"></i> Accede como
                 candidato</a>
                   <a class="btn btn-outline-danger"  *ngIf="isLogged" (click)="logOut()"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesion</a>
             </div>
             <div class="card-body">
               <div class="list-group">
-                <a routerLink="/" class="list-group-item list-group-item-action"><i class="far fa-list-alt"></i> Lista de
+                <a routerLink="/" class="list-group-item list-group-item-action" (click)="espera()"><i class="far fa-list-alt"></i> Lista de
                   ofertas</a>
                 <a routerLink="/nuevo" (click)="alertaLoginEmpresa()"   class="list-group-item list-group-item-action"><i class="fas fa-plus-circle"></i>
                   Crear una oferta de empleo</a>

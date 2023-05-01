@@ -1,59 +1,114 @@
 #buscar,
 .lista {
-    margin: 0 auto;
-    width: 70%;
+  margin: 0 auto;
+  width: 70%;
 }
-
 #logo {
-    max-width: 15vw;
-    max-height: 15vw;
+  max-width: 30vw;
+  max-height: 30vw;
+  margin: 2vw auto;
 }
 
-#buscador {
-    display: flex;
-    margin: 1.5vw auto;
-    padding: 1vw;
-    background-color: #212529;
-    border-radius: 0.75vw;
-    box-shadow: 0px 0px 10px rgb(230, 230, 230);
-}
-
-#buscador>* {
-    margin: 0 0.5vw;
-}
-
-#buscador>input {
-    width: 60%;
-}
-
-.lista {
+.listaMovil {
     box-shadow: 0px 0px 1vw rgb(230, 230, 230);
-    border-radius: 0.75vw;
+    background-color: #212529;
+    margin: 5vw auto;
+    width: 70%;
+    list-style: none;
+    border-radius: 1vw;
 }
 
 li {
     color: white;
+    background-color: #212529;
 }
 
-.table {
+#buscador {
+  display: flex;
+  flex-direction: column;
+  margin: 1.5vw auto;
+  padding: 1vw;
+  background-color: #212529;
+  border-radius: 0.75vw;
+  box-shadow: 0px 0px 10px rgb(230, 230, 230);
+}
+
+#buscador>* {
+  margin: 1vw;
+}
+
+#buscador>input {
+  width: 98%;
+}
+.lista {
+  display: none;
+}
+
+.d-flex.justify-content-between {
+  flex-direction: column;
+}
+#botones{
+  margin: 0 auto;
+}
+
+
+@media(min-width:768px) {
+  #logo {
+    max-width: 10vw;
+    max-height: 10vw;
+    margin: 1vw;
+    margin-left: 3vw;
+  }
+
+  #buscar,
+  .lista {
+    margin: 0 auto;
+    width: 70%;
+  }
+
+  #logo {
+    max-width: 15vw;
+    max-height: 15vw;
+  }
+
+  #buscador {
+    flex-direction: row;
+  }
+
+  #buscador>* {
+    margin: 0 0.5vw;
+  }
+
+  #buscador>input {
+    width: 60%;
+  }
+  .listaMovil{
+    display: none;
+  }
+
+  .lista {
+    display: block;
+    box-shadow: 0px 0px 1vw rgb(230, 230, 230);
+    border-radius: 0.75vw;
+  }
+
+  li {
+    color: white;
+  }
+
+  .table {
     border-collapse: separate;
     border-spacing: 0;
     border-radius: 0.75vw;
     overflow: hidden;
   }
 
-.table td {
+  .table td {
     vertical-align: middle;
   }
-  button{
+
+  button {
     margin: 2vw;
   }
 
-  @media(min-width:768px) {
-    #logo {
-      max-width: 10vw;
-      max-height: 10vw;
-      margin: 1vw;
-      margin-left: 3vw;
-    }
-  }
+}
