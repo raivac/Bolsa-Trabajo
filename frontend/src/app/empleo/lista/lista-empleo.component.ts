@@ -18,8 +18,8 @@ export class ListaEmpleoComponent implements OnInit {
 
   //para la paginacion
   page = 1;
-  pageFiltrada = 1;
   pageSize = 4;
+  pageSizeMobil = 2;
   collectionSize = 0;
 
   constructor(
@@ -76,9 +76,9 @@ export class ListaEmpleoComponent implements OnInit {
     });
     this.collectionSize = this.empleosFiltrados.length;
     if (resultadosEncontrados) {
-      this.pageFiltrada = 1;
       this.page = 1;
       this.pageSize = 4;
+      this.pageSizeMobil = 2;
     }
   } else {
     this.empleosFiltrados = this.empleos;
@@ -126,6 +126,7 @@ export class ListaEmpleoComponent implements OnInit {
     this.textoBusqueda = '';
     this.empleosFiltrados = undefined;
     this.mostrarTabla = true;
+    location.reload();
   }
 
   //cuando pulse enter buscara

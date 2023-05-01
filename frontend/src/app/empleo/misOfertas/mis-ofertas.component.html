@@ -2,7 +2,7 @@
 <div class="lista" *ngIf="!listaVacia">
   <ul id="listaOfertas" class="list-group list-group-dark">
     <h1>Mis ofertas</h1>
-    <ng-container *ngFor="let empleo of empleos">
+    <ng-container *ngFor="let empleo of empleos | slice:(page-1)*pageSize:page*pageSize">
       <li class="list-group-item">
         <div class="d-flex justify-content-between align-items-center">
           <div class="d-flex justify-content-between align-items-center">
@@ -39,11 +39,12 @@
       </li>
     </ng-container>
   </ul>
+</div>
 <div class="pagination justify-content-center">
   <pagination [(ngModel)]="page" [totalItems]="collectionSize" [itemsPerPage]="pageSize" [maxSize]="5"
-    [rotate]="false"></pagination>
+    [rotate]="false" previousText="Anterior" nextText="Siguiente"></pagination>
 </div>
-</div>
+
 <div class="container" *ngIf="listaVacia">
   <div class="p-3 mb-2 bg-dark text-white text-center">
     <h2>La lista esta vacia</h2>

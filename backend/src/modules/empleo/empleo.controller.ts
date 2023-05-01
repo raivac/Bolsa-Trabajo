@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Param, ParseIntPipe, Post, Put, Body, UsePipes, ValidationPipe, UseGuards, UnauthorizedException } from '@nestjs/common';
+import { Controller, Delete, Get, Param, ParseIntPipe, Post, Put, Body, UsePipes, ValidationPipe, UseGuards } from '@nestjs/common';
 import { EmpleoService } from './empleo.service';
 import { EmpleoDTO } from './dto/empleo.dto';
 import { JwtAuthGuard } from 'src/guards/jwt.guard';

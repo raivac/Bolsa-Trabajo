@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   title = 'frontend';
 }
 
-//localStorage.setItem("poli", "0");
+// localStorage.setItem("poli", "0");
 const poli = parseInt(localStorage.getItem("poli") ?? "0");
 
 //funcion que oculara el div de los cookies
