@@ -16,6 +16,13 @@ export class MisOfertasComponent implements OnInit {
   isEmpresa: boolean = false;
   idEmpresa: number = 0;
   mostrarCandidatos: boolean = false;
+
+   //para la paginacion
+   page = 1;
+   pageSize = 4;
+   collectionSize = 0;
+
+
   constructor(
     private empleoService: EmpleoService,
     private tokenService: TokenService,
@@ -36,6 +43,8 @@ export class MisOfertasComponent implements OnInit {
       data => {
         this.empleos = data.filter(empleo => empleo.idEmpresa == this.idEmpresa);
         this.listaVacia = undefined;
+        this.collectionSize = this.empleos.length;
+        console.log(this.collectionSize)
       },
       err => {
         this.listaVacia = err.error.message;

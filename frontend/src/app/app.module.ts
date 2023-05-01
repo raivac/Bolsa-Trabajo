@@ -18,6 +18,9 @@ import { interceptorProvider } from './interceptors/empleo.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { MisOfertasComponent } from './empleo/misOfertas/mis-ofertas.component';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+
+
 
 
 @NgModule({
@@ -42,6 +45,7 @@ import { MisOfertasComponent } from './empleo/misOfertas/mis-ofertas.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     AppRoutingModule,
+    PaginationModule.forRoot()
   ],
   providers: [interceptorProvider],
   bootstrap: [AppComponent]

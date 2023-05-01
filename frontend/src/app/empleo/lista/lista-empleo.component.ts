@@ -16,11 +16,17 @@ export class ListaEmpleoComponent implements OnInit {
   empleos: Empleo[] = [];
   isEmpresa: boolean = false;
 
+  //para la paginacion
+  page = 1;
+  pageFiltrada = 1;
+  pageSize = 4;
+  collectionSize = 0;
+
   constructor(
     private empleoService: EmpleoService,
     private tokenService: TokenService
   ) { }
-  
+
   //cuando inicie...
   ngOnInit(): void {
     this.cargarEmpleos();
@@ -39,12 +45,58 @@ export class ListaEmpleoComponent implements OnInit {
       data => {
         this.empleos = data;
         this.listaVacia = undefined;
+        this.collectionSize = this.empleos.length;
       },
       err => {
         this.listaVacia = err.error.message;
       }
     );
   }
+
+  //variables para la busqueda
+  mostrarTabla = true;
+  textoBusqueda: string = '';
+  empleosFiltrados: Empleo[] | undefined;
+  //funcion que buscara si hay algun dato de la oferta que coincida con los datos introducidos en la busqueda
+  buscar(): void {
+  const palabrasBusqueda = this.textoBusqueda?.trim().toLowerCase().split(/\s+/);
+  let resultadosEncontrados = false;
+
+  if (palabrasBusqueda.length > 0) {
+
+    this.empleosFiltrados = this.empleos.filter(empleado => {
+      for (const palabra of palabrasBusqueda) {
+        if (empleado.titulo.toLowerCase().includes(palabra) || empleado.descripcion.toLowerCase().includes(palabra) || empleado.empresa.toLowerCase().includes(palabra) || empleado.jornada.toLowerCase().includes(palabra) || empleado.ubicacion.toLowerCase().includes(palabra) || empleado.tipoContrato.toLowerCase().includes(palabra)) {
+          this.mostrarTabla = false;
+          resultadosEncontrados = true;
+          return true;
+        }
+      }
+      return false;
+    });
+    this.collectionSize = this.empleosFiltrados.length;
+    if (resultadosEncontrados) {
+      this.pageFiltrada = 1;
+      this.page = 1;
+      this.pageSize = 4;
+    }
+  } else {
+    this.empleosFiltrados = this.empleos;
+    this.collectionSize = this.empleos.length;
+  }
+  //mostrara la alerta si no se encuentra una oferta
+  if (!resultadosEncontrados) {
+    Swal.fire(
+      'No hay ofertas',
+      'No se han encontrado ofertas',
+      'error'
+    )
+    this.collectionSize = 0;
+    this.textoBusqueda = '';
+    this.empleosFiltrados = undefined;
+    this.mostrarTabla = true;
+  }
+}
 
   //funcion que devolvera cuanto hace que se creo la oferta y no la fecha de creacion
   publicado(createdAt: Date | undefined): string {
@@ -57,63 +109,25 @@ export class ListaEmpleoComponent implements OnInit {
     const minutos = Math.round(milisegundos / 60000);
     if (minutos === 0) {
       return 'justo ahora';
-    } else 
-    if (minutos < 60) {
-      return `hace ${minutos} ${minutos === 1 ? 'minuto' : 'minutos'}`;
-    } else 
-    if (minutos < 1440) {
-      const horas = Math.floor(minutos / 60);
-      return `hace ${horas} ${horas === 1 ? 'hora' : 'horas'}`;
-    } else {
-      const dias = Math.floor(minutos / 1440);
-      return `hace ${dias} ${dias === 1 ? 'día' : 'días'}`;
-    }
-  }
-
-  //variables para la busqueda
-  mostrarTabla = true;
-  textoBusqueda: string = '';
-  empleosFiltrados: Empleo[] | undefined;
-  //funcion que buscara si hay algun dato de la oferta que coincida con los datos introducidos en la busqueda
-  buscar(): void {
-    const palabrasBusqueda = this.textoBusqueda?.trim().toLowerCase().split(/\s+/);
-    let resultadosEncontrados = false;
-    
-    if (palabrasBusqueda.length > 0) {
-      this.empleosFiltrados = this.empleos.filter(empleado => {
-        for (const palabra of palabrasBusqueda) {
-          if (empleado.titulo.toLowerCase().includes(palabra) || empleado.descripcion.toLowerCase().includes(palabra) || empleado.empresa.toLowerCase().includes(palabra) || empleado.jornada.toLowerCase().includes(palabra) || empleado.ubicacion.toLowerCase().includes(palabra)|| empleado.tipoContrato.toLowerCase().includes(palabra)) {
-            this.mostrarTabla = false;
-            resultadosEncontrados = true; 
-            return true;
-          }
+    } else
+      if (minutos < 60) {
+        return `hace ${minutos} ${minutos === 1 ? 'minuto' : 'minutos'}`;
+      } else
+        if (minutos < 1440) {
+          const horas = Math.floor(minutos / 60);
+          return `hace ${horas} ${horas === 1 ? 'hora' : 'horas'}`;
+        } else {
+          const dias = Math.floor(minutos / 1440);
+          return `hace ${dias} ${dias === 1 ? 'día' : 'días'}`;
         }
-        return false;
-      });
-    } else {
-      this.empleosFiltrados = this.empleos;
-    }
-  
-    //mostrara la alerta si no se encuentra una oferta
-    if (!resultadosEncontrados) {
-      Swal.fire(
-        'No hay ofertas',
-        'No se han encontrado ofertas',
-        'error'
-      )
-    this.textoBusqueda = ''; 
-    this.empleosFiltrados = undefined; 
-    this.mostrarTabla = true;
-    }
   }
-
   //limpiara la busqueda 
   limpiarBusqueda(): void {
-    this.textoBusqueda = ''; 
-    this.empleosFiltrados = undefined; 
+    this.textoBusqueda = '';
+    this.empleosFiltrados = undefined;
     this.mostrarTabla = true;
   }
- 
+
   //cuando pulse enter buscara
   enter(event: KeyboardEvent) {
     if (event.key == 'Enter') {

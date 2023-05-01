@@ -45,6 +45,9 @@
   li:nth-child(5) {
     margin-left: 6rem;
   }
+  .navbar-toggler{
+    margin: 1.5vw;
+  }
   
   @media(min-width:768px) {
     #minimenu {

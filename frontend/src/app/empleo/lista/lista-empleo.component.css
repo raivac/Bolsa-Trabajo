@@ -54,8 +54,8 @@ li {
 
 @media(min-width:768px) {
   #logo {
-    max-width: 10vw;
-    max-height: 10vw;
+    max-width: 13vw;
+    max-height: 13vw;
     margin: 1vw;
     margin-left: 3vw;
   }
@@ -64,11 +64,6 @@ li {
   .lista {
     margin: 0 auto;
     width: 70%;
-  }
-
-  #logo {
-    max-width: 15vw;
-    max-height: 15vw;
   }
 
   #buscador {
@@ -88,7 +83,6 @@ li {
 
   .lista {
     display: block;
-    box-shadow: 0px 0px 1vw rgb(230, 230, 230);
     border-radius: 0.75vw;
   }
 
@@ -101,6 +95,7 @@ li {
     border-spacing: 0;
     border-radius: 0.75vw;
     overflow: hidden;
+    box-shadow: 0px 0px 1vw rgb(230, 230, 230);
   }
 
   .table td {

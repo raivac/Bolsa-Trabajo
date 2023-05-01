@@ -39,6 +39,10 @@
       </li>
     </ng-container>
   </ul>
+<div class="pagination justify-content-center">
+  <pagination [(ngModel)]="page" [totalItems]="collectionSize" [itemsPerPage]="pageSize" [maxSize]="5"
+    [rotate]="false"></pagination>
+</div>
 </div>
 <div class="container" *ngIf="listaVacia">
   <div class="p-3 mb-2 bg-dark text-white text-center">
