@@ -13,7 +13,7 @@
 }
 h1{
     color: white;
-    font-size: 5rem;
+    font-size: 3rem;
     margin:3rem;
     text-align: center;
 }
@@ -23,7 +23,16 @@ label{
 #boton{
   display: flex;
   justify-content: space-evenly;
+  margin: 0.5rem;
 }
 span{
     color: red;
+}
+
+
+@media(min-width:768px) {
+    h1{
+        font-size: 5rem;
+
+    }
 }

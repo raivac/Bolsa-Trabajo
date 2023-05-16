@@ -14,7 +14,6 @@ li {
 
 iframe {
   width: 100%;
-  height: 700px;
 }
 
 button,
@@ -78,4 +77,8 @@ button{
     margin: 2vw;
     font-size: 4em;
   }
+  
+iframe {
+  height: 700px;
+}
 }
