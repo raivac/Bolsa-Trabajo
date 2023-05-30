@@ -62,7 +62,7 @@ button{
     flex-direction: row;
   }
 
-  p:nth-child(4) {
+  p:nth-child(4),b{
     display: block;
   }
 
