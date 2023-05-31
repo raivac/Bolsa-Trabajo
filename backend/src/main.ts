@@ -6,7 +6,9 @@ import * as bodyParser from 'body-parser';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.enableCors();
+  app.enableCors({
+    origin: ['https://r-jobs.es','https://217.160.114.213:3000/empleo','https://217.160.114.213:3000/auth/'],
+  });
   app.use(bodyParser.json({ limit: '50mb' }));
   const configService = app.get(ConfigService);
 
