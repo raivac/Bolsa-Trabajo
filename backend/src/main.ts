@@ -6,12 +6,15 @@ import * as bodyParser from 'body-parser';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.enableCors();
+  app.enableCors({
+    origin: 'http://localhost:4200',
+  });
   app.use(bodyParser.json({ limit: '50mb' }));
   const configService = app.get(ConfigService);
 
   const port = configService.get<number>(SERVER_PORT)
   await app.listen(port);
-  
 }
 bootstrap();
+
+
