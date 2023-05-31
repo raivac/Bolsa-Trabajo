@@ -1,4 +1,4 @@
 export const env ={
-    authURL:'https://r-jobs.es:3000/auth/',
-    empleoURL:'https://r-jobs.es:3000/empleo'
+    authURL:'https://217.160.114.213:3000/auth/',
+    empleoURL:'https://217.160.114.213:3000/empleo'
 }
