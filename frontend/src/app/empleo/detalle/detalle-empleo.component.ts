@@ -96,7 +96,7 @@ export class DetalleEmpleoComponent implements OnInit {
     }
     const created = new Date(createdAt);
     const now = new Date();
-    const milisegundos = now.getTime() - (created.getTime() - 7200000);
+    const milisegundos = now.getTime() - (created.getTime());
     const minutos = Math.round(milisegundos / 60000);
     if (minutos === 0) {
       return 'justo ahora';
